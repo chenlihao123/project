@@ -1,8 +1,12 @@
 package com.service.impl;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.dao.impl.StudentDaoImpl;
 import com.entity.Student;
 import com.service.StudentService;
+import com.utils.SmsUtil;
+
+import java.util.Random;
 
 /**
  * @author chenlihao
@@ -20,5 +24,25 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student login(String username, String password) {
         return studentDao.queryByUserNameAndPassword(username,password);
+    }
+
+    @Override
+    public boolean register(Student student) {
+        return studentDao.addStudent(student);
+    }
+
+    @Override
+    public String sendSMS(String phone) {
+        Random random = new Random();
+        String randomStr="";
+        for (int i = 0; i < 6; i++) {
+            randomStr+=random.nextInt(9);
+        }
+        try {
+            SmsUtil.sendSms(phone,randomStr);
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+        return randomStr;
     }
 }

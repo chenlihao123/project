@@ -19,6 +19,24 @@ public class Student {
     public Student() {
     }
 
+    public Student(String username, String password, String realName, String gender, String phone, String email, String school, String department, Integer classId) {
+        this.username = username;
+        this.password = password;
+        this.realName = realName;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.school = school;
+        this.department = department;
+        this.classId = classId;
+    }
+
+    public Student(String username, String password, String phone) {
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
