@@ -255,13 +255,19 @@
         var password = $("#pwd").val();
         $.ajax({
             url:"http://localhost:8080/onlinelearning/stu.do",
-            type: "GET",
+            type: "POST",
+            dataType:"text",
             data:{
                 username:username,
-                password:password
+                password:password,
+                action:"login"
             },
             success:function (result) {
-                // if (result.)
+                if (result=="登录成功") {
+                    alert("登录成功");
+                } else {
+                    alert("登录失败")
+                }
             }
 
         })

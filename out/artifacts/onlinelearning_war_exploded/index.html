@@ -62,7 +62,7 @@
                 	<input type="hidden" id="_blank" value="1">
                     <!--电话号码-->
                     <div class="lg-item icon-tel margin-btm24">
-                        <input type="text" class="ipt-tel"   placeholder="手机号"  id="phone" maxlength="50">
+                        <input type="text" class="ipt-tel"   placeholder="用户名"  id="username" maxlength="50">
                         <p class="err-txt" id="phoneMsg"></p>
                     </div>
                     <!--密码-->
@@ -249,4 +249,31 @@
     })
 </script> -->
 </body>
+<script>
+    $("#loginBtn").click(function () {
+        var username = $("#username").val();
+        var password = $("#pwd").val();
+        $.ajax({
+            url:"http://localhost:8080/onlinelearning/stu.do",
+            type: "POST",
+            dataType:"text",
+            data:{
+                username:username,
+                password:password,
+                action:"login"
+            },
+            success:function (result) {
+                alert(result.toString())
+                if (result.toString()=="登陆成功") {
+                    alert("登录成功");
+                } else {
+                    alert("登录失败")
+                }
+            }
+
+        })
+
+    })
+
+</script>
 </html>

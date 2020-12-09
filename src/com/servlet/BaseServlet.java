@@ -30,9 +30,7 @@ public class BaseServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
-        //不是多段数据action会直接被赋值
-        String action = request.getParameter("action");
-        if(action==null){//没被赋值说明是多段数据
+        String action=null;
             //1 先判断上传的数据是否多段数据（只有是多段的数据，才是文件上传的）
             if (ServletFileUpload.isMultipartContent(request)) {
                 // 创建 FileItemFactory 工厂实现类
@@ -43,14 +41,16 @@ public class BaseServlet extends HttpServlet {
                     list = servletFileUpload.parseRequest(request);
                     for (FileItem item : list) {
                         if ("action".equals(item.getFieldName())) {
-                            action = item.getString("UTF-8");
+                            action = item.getString("UTF-8");//给action赋值
                         }
                     }
                 } catch (FileUploadException e) {
                     e.printStackTrace();
                 }
+            }else {//如果不是多段数据
+                action=request.getParameter("action");//给action赋值
             }
-        }
+//        }
         try {
             //获取方法
             Method method = this.getClass().getDeclaredMethod(action, HttpServletRequest.class, HttpServletResponse.class);
