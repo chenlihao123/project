@@ -50,8 +50,9 @@ public class StudentServlet extends BaseServlet {
         String code = request.getParameter("code");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
+//        String phone = request.getParameter("phone");
         String sms = (String) request.getSession().getAttribute("sendSMS");
+        String phone = (String) request.getSession().getAttribute("phone");
         String codeMsg = "验证码错误";//返回客户端验证码是否成功信息
         String registerMsg = "注册失败";//返回客户端注册是否成功信息
         if (sms != null && sms.equals(code)) {
@@ -75,21 +76,21 @@ public class StudentServlet extends BaseServlet {
     //发送验证码
     public void sendCode(HttpServletRequest request, HttpServletResponse response) {
         String phone = request.getParameter("phone");
+        System.out.println(phone);
         String sendSMS = studentService.sendSMS(phone);
+        request.getSession().setAttribute("phone",phone);
         request.getSession().setAttribute("sendSMS", sendSMS);//将验证码放到session域当中
     }
 
     //唯一性校验
     public void check(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String phone = request.getParameter("phone");
-        System.out.println(phone);
         String email = request.getParameter("email");
         String username = request.getParameter("username");
         Student student = null;
         String checkMsg="1";//1代表检查合格
         if (phone != null) {
             student = studentService.queryStudentByPhone(phone);
-            System.out.println(student);
         }
         if (email != null) {
             student = studentService.queryStudentByEmail(email);
@@ -100,7 +101,6 @@ public class StudentServlet extends BaseServlet {
         if (student!=null){
             checkMsg="0";//如果student不为空，说明用户有重复，0代表不合格
         }
-        System.out.println(checkMsg);
         response.getWriter().write(checkMsg);
     }
 }
