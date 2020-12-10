@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>注册</title>
+		<link rel="stylesheet" href="static/css/common.css">
+		<link rel="stylesheet" href="static/css/login.css">
+		<!-- <script type="text/javascript" src="/js/jquery.min.js"></script> -->
+		<script src="static/js/jquery-3.4.1.js"></script>
+		<script src="static/js/util.js"></script>
+		<script src="static/js/register.js"></script>
+		<!-- <script type="text/javascript" src="/js/fanya/login.js"></script> -->
+		<!-- <script type="text/javascript" src="/js/fanya/util.js?v=2"></script> -->
+		<!-- <script type="text/javascript" src="/js/fanya/register.js"></script> -->
+	</head>
+
+
+	<style type="text/css">
+		.Agreement {
+			text-align: center;
+			font-size: 12px;
+			color: #A8A8B3;
+			position: relative;
+			left: 0px;
+			bottom: -60px;
+		}
+
+		.Agreement a {
+			display: inline-block;
+			padding: 0 5px;
+			color: #3A8BFF
+		}
+	</style>
+	<body>
+		<!--忘记密码-->
+		<div class="lg-container" id="registerVm">
+			<div class="main main-def-w lg-register">
+				<div class="lg-top fs14">
+					<a id="back" href="javascript:void(0)" onclick="window.history.go(-1);" class="back icon-back col-lightblue">返回</a>
+					<!-- <a href="/v5/toCustomer" target="_blank" class="service col-lightblue">客服</a> -->
+				</div>
+				<form action="">
+					<!--第一步-->
+					<div>
+						<h3 class="lg-title">注册</h3>
+						<!--电话号码-->
+						<div class="item-tel clearaft item-select">
+							<span class="tel-area fl icon-down to-select-list" onclick="showTelList(this)" id="countryShow">+86</span>
+							<input type="hidden" value="86" id="countryCode">
+							<input type="tel" class="ipt-focus fl" name="user_mobile" placeholder="手机号" id="phone" maxlength="20" />
+							<p class="err-txt" id="phoneMsg"></p>
+							<div class="filter-list">
+								<div class="li-search">
+									<div class="dataSearch">
+										<input type="text" name="" value="" class="dataSearch_input fl" placeholder="搜索" id="searchInput" />
+										<input type="button" name="" value="" class="dataSearch_bnt fl" id="searchButton" />
+									</div>
+								</div>
+								<ul class="list beat-scroll" id="countryList">
+								</ul>
+							</div>
+
+						</div>
+
+						<!--验证码-->
+						<div class="lg-item icon-verify margin-btm24 item-getcode">
+							<input type="text" class="ipt-code" placeholder="验证码" id="messageCode" maxlength="4">
+							<input type="hidden" name="validate" id="validate" />
+							<a href="javascript:;" class="get-code col-blue pos-r24" id="sendCodeBtn">获取验证码</a>
+							<a href="javascript:;" class="col-gray pos-r24 before-reget" id="showcountdown"> 60s后重新获取</a>
+							<p class="err-txt" id="codeMsg"></p>
+						</div>
+
+						<!--用户名-->
+						<div class="lg-item icon-tel margin-btm24">
+							<input type="text" class="ipt-tel" placeholder="用户名" id="username" maxlength="50">
+							<p class="err-txt" id="usernameMsg"></p>
+						</div>
+						<!--密码-->
+						<div class="lg-item icon-pwd">
+							<input type="password" class="pd-right60" placeholder="设置密码" id="pwd" maxlength="20">
+							<i class="pos-r24 icon-eye-close fr" onclick="initPassword(this)"></i>
+							<p class="pwd-rule">密码要求6-16位，至少包含数字、字母、符号两种元素</p>
+							<p class="err-txt" id="pwdMsg"></p>
+
+						</div>
+					</div>
+					<input type="hidden" id="fid" name="fid" value="0" />
+					<input type="hidden" id="refer" name="refer" value="http://i.chaoxing.com" />
+					<div class="btns-box">
+						<p class="err-tip" id="err-txt"></p>
+						<button type="button" class="btn-big-blue" onclick="register();">下一步</button>
+					</div>
+				</form>
+				<p class="Agreement">注册即表示同意平台<a href="https://homewh.chaoxing.com/agree/privacyPolicy?appId=900001" target="_blank">《隐私政策》</a>和<a
+					 href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001" target="_blank">《用户协议》</a></p>
+			</div>
+		</div>
+		<script>
+			$("#phone").blur(function () {
+                var phone = $("#phone").val().trim();
+                // util.showMsg(true,"phoneMsg","手机号码已被注册",true);
+                $.ajax({
+                    url:"http://localhost:8080/onlinelearning/stu.do",
+                    type:"GET",
+                    data:{
+                        phone:phone,
+                        action:"check"
+                    },
+                    dataType:"text",
+                    success:function(result){
+                        if(result==0){
+                            util.showMsg(true,"phoneMsg","手机号码已被注册",true);
+                        }
+                    }
+
+                })
+            });
+			$("#phone").focus(function () {
+                // util.showMsg(true,"phoneMsg","",true);
+
+            });
+
+
+
+
+
+
+            $("#sendCodeBtn").click(function(){
+                util.showMsg(false,"phoneMsg","",true);
+                var phone = $("#phone").val().trim();
+                if(util.isEmpty(phone)){
+                    util.showMsg(true,"phoneMsg","请输入手机号",true);
+                    $("#phone").focus();
+                    return;
+                }
+                // alert(1234)
+                $.ajax({
+                    url:"http://localhost:8080/onlinelearning/stu.do",
+                    type:"GET",
+                    data:{
+                        phone:phone,
+                        action:"check"
+                    },
+                    dataType:"text",
+                    success:function(result){
+                        if(result==0){
+                            alert("手机号已被注册!")
+                        }
+                        if(result==1){
+                            alert("短信已发送,注意查收!")
+                        }
+                    }
+
+                })
+            })
+		</script>
+		<!-- <script>
+	var capInstance  = null;
+    var url = 'https://captcha.chaoxing.com/load.min.js' + '?t=' + getTimestamp(1 * 60 * 1000) // 时长1分钟，建议时长分钟级别
+	loadScript(url, function () {
+	   initSelectList();
+       countryCode.init('searchInput','searchButton','countryList','countryShow');
+       phoneCode.init("phone","countryCode","sendCodeBtn","phoneMsg","err-txt",false);
+   		//验证码初始化
+		initCXCaptcha({
+		captchaId: 'GcXX5vewqE7DezKGlyvleKCnkTglvGpL',
+		element: '#captcha',
+		mode:'popup',
+		onVerify: function (err, data) {
+			if (err) return; // 当验证失败时，内部会自动refresh方法，无需手动再调用一次
+			$("#validate").val(data.validate);
+			//成功后执行发送验证码
+			phoneCode.send();
+			//
+			capInstance.refresh();
+		}
+		}, function onload(instance) {
+			capInstance = instance;
+		}, function onerror(err) {
+		});
+	})
+    if(history.length <= 1){
+    	$("#back").hide();
+    }
+</script> -->
+		<div id="captcha"></div>
+	</body>
+</html>
