@@ -113,11 +113,10 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.41</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.suxingli/aliyuncs -->
         <dependency>
-            <groupId>com.github.suxingli</groupId>
-            <artifactId>aliyuncs</artifactId>
-            <version>1.0.1</version>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>3.7.1</version>
         </dependency>
 
     </dependencies>

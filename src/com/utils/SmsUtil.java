@@ -41,6 +41,8 @@ public class SmsUtil {
      */
     public static void sendSms(String phoneNum, String code) throws ClientException {
         DefaultProfile profile = DefaultProfile.getProfile(regionId, accessKey, secret);
+//        IAcsClient client = new DefaultAcsClient(profile);
+//        IAcsClient client = new DefaultAcsClient(profile);
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);

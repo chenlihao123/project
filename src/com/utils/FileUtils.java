@@ -45,7 +45,7 @@ public class FileUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<String, String>();
         //文件在硬盘中的绝对路径 从盘符开始
         map.put("imagePath", imagePath);
         //文件名
