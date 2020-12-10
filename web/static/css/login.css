@@ -375,7 +375,7 @@ input::-moz-placeholder {
     display: inline-block;
     width: 11px;
     height: 100%;
-    background: url("/images/fanya/login/icon-down.png") no-repeat center;
+    background: url(../images/icon-down.png) no-repeat center;
     background-size: 100%;
     position: absolute;
     right: 20px;
