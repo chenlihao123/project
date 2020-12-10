@@ -28,5 +28,8 @@ public interface StudentService {
      * @return
      */
     String sendSMS(String phone);
-    //todo 唯一性校验
+    //根据学生email，username，phone 分别查询学生
+    Student queryStudentByEmail(String email);
+    Student queryStudentByUsername(String username);
+    Student queryStudentByPhone(String phone);
 }

@@ -45,4 +45,19 @@ public class StudentServiceImpl implements StudentService {
         }
         return randomStr;
     }
+
+    @Override
+    public Student queryStudentByEmail(String email) {
+        return studentDao.queryStudentByEmail(email);
+    }
+
+    @Override
+    public Student queryStudentByUsername(String username) {
+        return studentDao.queryStudentByUsername(username);
+    }
+
+    @Override
+    public Student queryStudentByPhone(String phone) {
+        return studentDao.queryStudentByPhone(phone);
+    }
 }

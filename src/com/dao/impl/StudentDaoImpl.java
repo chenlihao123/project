@@ -48,6 +48,9 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 //    public static void main(String[] args) {
 //        StudentDaoImpl studentDao = new StudentDaoImpl();
 ////        System.out.println(new StudentDaoImpl().queryByUserNameAndPassword("123456", "123456"));
-//        System.out.println(studentDao.addStudent(new Student("", "", "", "", "", "", "", "", 1)));
+////        System.out.println(studentDao.addStudent(new Student("", "", "", "", "", "", "", "", 1)));
+////        System.out.println(studentDao.queryStudentByPhone("123456"));
+////        System.out.println(studentDao.queryStudentByEmail("123456"));
+////        System.out.println(studentDao.queryStudentByUsername("123456"));
 //    }
 }
