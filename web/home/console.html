@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-image: url("../static/images/bg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .box-hd {
+            height: 58px;
+        }
+
+        .box-hd .title {
+            line-height: 58px;
+            font-size: 22px;
+            color: #333;
+            font-weight: 200;
+        }
+
+        .clearfix:after,
+        .clearfix:before {
+            content: " ";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .list {
+            width: 100%;
+        }
+
+        .list ul {
+            width: 100%;
+
+            /* flex-wrap: wrap; */
+            /* display: flex; */
+            /* justify-content: space-between; */
+        }
+
+        ul li {
+            float: left;
+
+            width: 280px;
+            height: 300px;
+            background-color: #FFFFfA;
+            margin-right: 40px;
+            margin-bottom: 30px;
+        }
+
+        li h3 {
+            margin: 8px 10px 2px;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 20px;
+            font-weight: 400;
+            color: #333;
+        }
+
+        .desc {
+            margin: 0 10px 10px;
+            height: 18px;
+            font-size: 16px;
+            color: #b0b0b0;
+            text-align: center;
+            /* text-overflow: ellipsis; */
+            /* white-space: nowrap; */
+            /* overflow: hidden; */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box-hd">
+        <h2 class="title">我教的课</h2>
+    </div>
+    <div class="list">
+        <ul class="clearfix" id="list">
+            <!--					<li>-->
+            <!--						<img src="../static/images/picture1.png" width="100%" >-->
+            <!--						<h3>共产党宣言</h3>-->
+            <!--						<p class="desc">课程介绍:本课程简介马克思和恩格斯为共产主义者同盟起草的纲领，全文贯穿马克思主义的历史观，马克思主义诞生的重要标志</p>-->
+            <!--					</li>-->
+            <!--<li>-->
+            <!---->
+            <!--</li>-->
+            <!--<li>-->
+            <!---->
+            <!--</li>-->
+            <!--<li>-->
+            <!---->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../static/js/jquery-3.4.1.js"></script>
+<script>
+    function init() {
+        $.ajax({
+            url: "http://localhost:8080/onlinelearning/teacher.do",
+            type: "POST",
+            data: {
+                action: "init"
+            },
+            dataType: "JSON",
+            success: function (result) {
+                // var jsonObj = JSON.parse(result);
+                console.log(result);
+                for (let i = 0; i < result.length; i++) {
+                    let imgPath = result[i].imgPath;
+                    imgPath = imgPath.substring(2);
+                    imgPath = imgPath.replaceAll("\\", "/");
+                    imgPath = "http://localhost:8080" + imgPath;
+                    let str = `<li>
+				<img src="${imgPath}" width="100%" >
+				<h3>${result[i].courseName}</h3>
+				<p class="desc">${result[i].courseInfo}</p>
+				</li>`;
+                    $("#list").append(str);
+                }
+            }
+
+        })
+    }
+
+    $(function () {
+        init();
+    })
+</script>
+</html>

@@ -68,4 +68,40 @@ public class Teacher {
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
 }

@@ -8,11 +8,12 @@ package com.entity;
 public class Course {
     private Integer id;
     private String courseName;
-    private String teacherId;
+    private Integer teacherId;
     private String school;
     private String department;//系别
     private Integer isFree;//0付费1免费
     private String imgPath;//课程封面路径
+    private String courseInfo;//课程说明
 
     public Course() {
     }
@@ -27,7 +28,16 @@ public class Course {
                 ", department='" + department + '\'' +
                 ", isFree=" + isFree +
                 ", imgPath='" + imgPath + '\'' +
+                ", courseInfo='" + courseInfo + '\'' +
                 '}';
+    }
+
+    public String getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(String courseInfo) {
+        this.courseInfo = courseInfo;
     }
 
     public Integer getId() {
@@ -46,11 +56,11 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String getTeacherId() {
+    public Integer getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(String teacherId) {
+    public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
 

@@ -50,7 +50,6 @@ public class StudentServlet extends BaseServlet {
         String code = request.getParameter("code");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-//        String phone = request.getParameter("phone");
         String sms = (String) request.getSession().getAttribute("sendSMS");
         String phone = (String) request.getSession().getAttribute("phone");
         String codeMsg = "验证码错误";//返回客户端验证码是否成功信息
@@ -76,7 +75,6 @@ public class StudentServlet extends BaseServlet {
     //发送验证码
     public void sendCode(HttpServletRequest request, HttpServletResponse response) {
         String phone = request.getParameter("phone");
-        System.out.println(phone);
         String sendSMS = studentService.sendSMS(phone);
         request.getSession().setAttribute("phone",phone);
         request.getSession().setAttribute("sendSMS", sendSMS);//将验证码放到session域当中
@@ -103,4 +101,15 @@ public class StudentServlet extends BaseServlet {
         }
         response.getWriter().write(checkMsg);
     }
+
+    //注销
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().invalidate();
+        response.sendRedirect("/onlinelearning/index.html");//重定向到home首页
+    }
+
+
+
 }
+
+

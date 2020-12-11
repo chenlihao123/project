@@ -12,6 +12,7 @@ public class CourseVideo {
     private String videoName;//视频名称
     private String imgPath;//封面路径
     private String videoPath;//视频路径
+    private String videoInfo;//视频说明
     private Integer isFinish;//是否完成 0没完成1完成
 
     public CourseVideo() {
@@ -26,8 +27,17 @@ public class CourseVideo {
                 ", videoName='" + videoName + '\'' +
                 ", imgPath='" + imgPath + '\'' +
                 ", videoPath='" + videoPath + '\'' +
+                ", videoInfo='" + videoInfo + '\'' +
                 ", isFinish=" + isFinish +
                 '}';
+    }
+
+    public String getVideoInfo() {
+        return videoInfo;
+    }
+
+    public void setVideoInfo(String videoInfo) {
+        this.videoInfo = videoInfo;
     }
 
     public Integer getId() {

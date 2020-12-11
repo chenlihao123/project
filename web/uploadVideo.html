@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>给课程添加视频</h3><br/>
+<form action="/onlinelearning/teacher.do" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="uploadVideo">
+    视频名称:<input type="text" name="videoName"/><br/>
+    视频封面:<input type="file" name="imgPath"/><br/>
+    视频上传:<input type="file" name="videoPath"/><br/>
+    视频说明:<input type="text" name="videoInfo"/><br/>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>

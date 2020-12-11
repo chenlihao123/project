@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FileUtils {
-    public static Map<String, String> singleUpload(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    public static Map<String, String> singleUpload(HttpServletRequest request, HttpServletResponse response,List<FileItem> list) throws UnsupportedEncodingException {
         StringBuilder fileName = new StringBuilder();
         //金句：防止中文乱码
         response.setContentType("text/html;charset=utf-8");
@@ -28,17 +28,18 @@ public class FileUtils {
         ServletFileUpload servletFileUpload = new ServletFileUpload(fileItemFactory);
         try {
             //解析上传的数据 得到每一个表单项FileItem
-            List<FileItem> list = servletFileUpload.parseRequest(request);
+//            List<FileItem> list = servletFileUpload.parseRequest(request);
             //循环判断，每一个表单项 是普通类型 还是上传的文件
             for (FileItem fileItem :
                     list) {
-                //上传的文件
-                StringBuilder sb = new StringBuilder("E:\\upload\\");
-                fileName.append(new Date().getTime());
-                fileName.append(fileItem.getName());
-                sb.append(fileName);
-                imagePath = sb.toString();
-                fileItem.write(new File(imagePath));
+                if (!fileItem.isFormField()){//上传的文件
+                    StringBuilder sb = new StringBuilder("E:\\file\\");
+                    fileName.append(new Date().getTime());
+                    fileName.append(fileItem.getName());
+                    sb.append(fileName);
+                    imagePath = sb.toString();
+                    fileItem.write(new File(imagePath));
+                }
             }
         } catch (FileUploadException e) {
             e.printStackTrace();
