@@ -70,6 +70,13 @@ public class TeacherServlet extends BaseServlet {
                     case "courseInfo":
                         course.setCourseInfo(value);
                         break;
+                    case "teacherType":
+                        course.setTeacherType(value);
+                        break;
+                    case "isFree":
+                        int i=value.equals("1")?1:0;
+                        course.setIsFree(i);
+                        break;
                 }
             }else {
                 File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
@@ -79,11 +86,10 @@ public class TeacherServlet extends BaseServlet {
                 course.setImgPath(path);
             }
         }
-//        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-//        course.setDepartment(teacher.getDepartment());
-//        course.setSchool(teacher.getSchool());
-//        course.setTeacherId(teacher.getId());
-        course.setIsFree(1);
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        course.setDepartment(teacher.getDepartment());
+        course.setSchool(teacher.getSchool());
+        course.setTeacherId(teacher.getId());
         //添加课程
         boolean b = courseService.uploadCourse(course);
         String uploadMsg="0";//0代表上传失败
@@ -91,8 +97,8 @@ public class TeacherServlet extends BaseServlet {
             uploadMsg="1";
         }
         System.out.println(uploadMsg.equals("1")?"上传成功":"上传失败");
-//        response.getWriter().write(uploadMsg);
-        response.sendRedirect("/onlinelearning/uploadVideo.html");
+//        String json = new Gson().toJson(uploadMsg);
+        response.getWriter().write(uploadMsg);
     }
 
     //添加视频

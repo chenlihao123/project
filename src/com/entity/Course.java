@@ -14,6 +14,9 @@ public class Course {
     private Integer isFree;//0付费1免费
     private String imgPath;//课程封面路径
     private String courseInfo;//课程说明
+    private Double cost;//课程费用
+    private String type;//课程类型
+    private String teacherType;//教师类型
 
     public Course() {
     }
@@ -23,13 +26,40 @@ public class Course {
         return "Course{" +
                 "id=" + id +
                 ", courseName='" + courseName + '\'' +
-                ", teacherId='" + teacherId + '\'' +
+                ", teacherId=" + teacherId +
                 ", school='" + school + '\'' +
                 ", department='" + department + '\'' +
                 ", isFree=" + isFree +
                 ", imgPath='" + imgPath + '\'' +
                 ", courseInfo='" + courseInfo + '\'' +
+                ", cost=" + cost +
+                ", type='" + type + '\'' +
+                ", teacherType='" + teacherType + '\'' +
                 '}';
+    }
+
+    public String getTeacherType() {
+        return teacherType;
+    }
+
+    public void setTeacherType(String teacherType) {
+        this.teacherType = teacherType;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
     }
 
     public String getCourseInfo() {
