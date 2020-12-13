@@ -41,7 +41,6 @@ public class TeacherServlet extends BaseServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Teacher teacher = teacherService.login(username, password);
-        System.out.println(teacher);
         String loginMsg="0";//0代表登录失败
         if(teacher!=null){
             loginMsg="1";//1登陆成功
@@ -77,8 +76,12 @@ public class TeacherServlet extends BaseServlet {
                         int i=value.equals("1")?1:0;
                         course.setIsFree(i);
                         break;
+                    case "cost":
+                        course.setCost(Double.valueOf(value));
+                        break;
                 }
             }else {
+                System.out.println(fileItem.getName());
                 File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
                 fileItem.write(file);
                 String path = file.getAbsolutePath();
@@ -140,7 +143,6 @@ public class TeacherServlet extends BaseServlet {
 
     //初始化教师课程界面
     public void init(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("teacher init");
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         List<Course> list = courseService.queryCourseByTeacherId(teacher.getId());
         Gson gson = new Gson();

@@ -13,7 +13,7 @@ import java.util.List;
 public class CourseDaoImpl extends BaseDao implements CourseDao {
     @Override
     public boolean addCourse(Course course) {
-        String sql="insert into course (courseName,teacherId,department,school,isFree,imgPath,courseInfo,cost,type,teacherType) values (?,?,?,?,?,?,?,?,?)";
+        String sql="insert into course (courseName,teacherId,department,school,isFree,imgPath,courseInfo,cost,type,teacherType) values (?,?,?,?,?,?,?,?,?,?)";
         int b = update(sql, course.getCourseName(), course.getTeacherId(), course.getDepartment(), course.getSchool(), course.getIsFree(), course.getImgPath(), course.getCourseInfo(),course.getCost(),course.getType(),course.getTeacherType());
         return b>=0?true:false;
     }

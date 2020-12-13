@@ -60,18 +60,18 @@
     </div>
     <div class="viedo-info">
         <div class="site-text site-block">
-            <form class="layui-form" action="" method="post" id="form1">
-<!--                <input type="hidden" name="action" value="uploadCourse">-->
+            <form class="layui-form" action="" method="post" id="form1" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="uploadCourse">
                 <div class="layui-form-item type">
 
                     <!-- 课程类型 -->
                     <label class="layui-form-label"><font size="4" color="red">*</font>课程类型</label>
                     <div class="layui-input-block">
-                        <input class="courseType" type="radio" name="type" value="1" title="免费课程" checked="">
+                        <input class="courseType" type="radio" name="isFree" value="1" title="免费课程" checked="">
                         <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
                             <div>免费课程</div>
                         </div>
-                        <input type="radio" name="type" value="0" title="付费课程">
+                        <input type="radio" name="isFree" value="0" title="付费课程">
                         <div class="layui-unselect layui-form-radio layui-form-radioed"><i
                                 class="layui-anim layui-icon"></i>
                             <div>付费课程</div>
@@ -112,10 +112,10 @@
                         <div class="layui-input-block">
                             <select name="teacherType" lay-verify="required" class="teacherType" >
                                 <option value=""></option>
-                                <option value="0">助教</option>
-                                <option value="1">讲师</option>
-                                <option value="2">副教授</option>
-                                <option value="3">教授</option>
+                                <option value="助教">助教</option>
+                                <option value="讲师">讲师</option>
+                                <option value="副教授">副教授</option>
+                                <option value="教授">教授</option>
                             </select>
                         </div>
                     </div>
@@ -363,31 +363,34 @@
 
     });
 </script>
-<script>
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript">
     $(function () {
         $("#submit").on("click",function () {
             // $.getJSON("http://localhost:8080/onlinelearning/teacher.do","action=uploadCourse&"+$("#form1").serialize(),function (data) {
             //     // console.log(data)
             // })
 
-           let formData = new FormData();
-           formData.append("imgPath",document.getElementById("image1").files[0]);
-           formData.append("type",$(".courseType").val());
-           formData.append("courseName",$(".courseName").val());
-           formData.append("courseInfo",$(".courseInfo").val());
-           formData.append("cost",$(".cost").val());
-           formData.append("teacherType",$(".teacherType").val());
-           formData.append("action","uploadCourse");
+           let formData = new FormData(document.getElementById("form1"));
+           // formData.append("imgPath",document.getElementById("image1").files[0]);
+           // formData.append("type",$(".courseType").val());
+           // formData.append("courseName",$(".courseName").val());
+           // formData.append("courseInfo",$(".courseInfo").val());
+           // formData.append("cost",$(".cost").val());
+           // formData.append("teacherType",$(".teacherType").val());
+           // formData.append("action","uploadCourse");
            $.ajax({
                url:"http://localhost:8080/onlinelearning/teacher.do",
                type:"POST",
                datatype:"text",
                data:formData,
+               processData:false,
+               contentType:false,
                success:function (data) {
-                   alert(data)
+                   // alert(data)
                }
-           })
-
+           });
+            // get();
         })
     })
 </script>
