@@ -13,4 +13,6 @@ public interface CourseService {
     boolean uploadCourse(Course course);
     //根据教师id查询课程
     List<Course> queryCourseByTeacherId(int id);
+    //根据教师id和课程名
+    Course queryCourseByTeacherIdAndCourseName(String courseName,int id);
 }

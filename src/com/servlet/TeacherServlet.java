@@ -2,10 +2,12 @@ package com.servlet;
 
 import com.entity.Course;
 import com.entity.CourseVideo;
+import com.entity.Homework;
 import com.entity.Teacher;
 import com.google.gson.Gson;
 import com.service.impl.CourseServiceImpl;
 import com.service.impl.CourseVideoServiceImpl;
+import com.service.impl.HomeworkServiceImpl;
 import com.service.impl.TeacherServiceImpl;
 import org.apache.commons.fileupload.FileItem;
 
@@ -18,7 +20,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author chenlihao
@@ -29,6 +33,7 @@ public class TeacherServlet extends BaseServlet {
     private CourseServiceImpl courseService=new CourseServiceImpl();
     private TeacherServiceImpl teacherService=new TeacherServiceImpl();
     private CourseVideoServiceImpl courseVideoService=new CourseVideoServiceImpl();
+    private HomeworkServiceImpl homeworkService=new HomeworkServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request,response);
     }
@@ -141,8 +146,84 @@ public class TeacherServlet extends BaseServlet {
         System.out.println(addVideoMsg);
     }
 
+
+    //添加附件22
+    public void uploadAttach(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String fieldName="";
+        for (FileItem fileItem : list) {
+
+                 fieldName = fileItem.getFieldName();
+                File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
+                fileItem.write(file);
+                String path = file.getAbsolutePath();
+                System.out.println("path="+path);
+
+
+        }
+
+        Map<String,Object> map=new HashMap<>();
+        Map<String ,String> data=new HashMap<>();
+        data.put("data",fieldName);
+
+        Gson gson = new Gson();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",data);
+        String json=gson.toJson(map);
+        System.out.println(json);
+        response.getWriter().write(json);
+
+    }
+
     //初始化教师课程界面
     public void init(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        List<Course> list = courseService.queryCourseByTeacherId(teacher.getId());
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        response.getWriter().write(json);
+    }
+
+    //发布作业
+    public void addHomework(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Homework homework = new Homework();
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        for (FileItem fileItem : list) {
+            if(fileItem.isFormField()){
+                String fieldName = fileItem.getFieldName();
+                String value = fileItem.getString("UTF-8");
+                switch (fieldName){
+                    case "courseName":
+                        Course course = courseService.queryCourseByTeacherIdAndCourseName(value, teacher.getId());
+                        homework.setCourseId(course.getId());
+                        homework.setTeacherId(teacher.getId());
+                        break;
+                    case "title":
+                        homework.setTitle(value);
+                        break;
+                    case "content":
+                        homework.setContent(value);
+                        break;
+                    case "endTime":
+                        homework.setEndTime(value);
+                        break;
+
+                }
+            }else {
+                File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
+                fileItem.write(file);
+                String path = file.getAbsolutePath();
+                homework.setFile(path);
+            }
+        }
+        boolean b = homeworkService.addHomework(homework);
+        String homeworkMsg=b==true?"1":"0";
+        System.out.println(homeworkMsg);
+        response.getWriter().write(homeworkMsg);
+    }
+
+    //
+    public void getTeacherCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         List<Course> list = courseService.queryCourseByTeacherId(teacher.getId());
         Gson gson = new Gson();

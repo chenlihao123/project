@@ -23,4 +23,10 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
         String sql="select * from course where teacherId = ?";
         return queryForList(Course.class, sql, id);
     }
+
+    @Override
+    public Course queryCourseByTeacherIdAndCourseName(String courseName, int teacherId) {
+        String sql="select * from course where teacherId = ? and courseName = ?";
+        return queryForOne(Course.class,sql,teacherId,courseName);
+    }
 }

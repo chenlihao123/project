@@ -1,224 +1,286 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="../static/layuiadmin/layui/css/layui.css" />
-		<link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css"/>
-		<script src="../static/js/jquery-3.4.1.js"></script>
-		<script src="../static/js/bootstrap.min.js"></script>
-		<style type="text/css">
-			html {
-				width: 100%;
-				height: 100%;
-			}
-		
-			* {
-				margin: 0;
-				padding: 0;
-				list-style: none;
-			}
-		
-			body {
-				background-image: url("../static/images/bg.jpg");
-				/* background-color: #F5F5F5; */
-				background-repeat: no-repeat;
-				/* background-size: 100% 100%; */
-			}
-		
-			.container {
-				width: 80%;
-				margin: 30px auto;
-				padding-bottom: 30px;
-			}
-		
-			.box-hd {
-				height: 58px;
-			}
-		
-			.box-hd .title {
-				line-height: 58px;
-				font-size: 22px;
-				color: #333;
-				font-weight: 200;
-			}
-		
-			.homework-info {
-				background-color: #FFFFFF;
-				overflow: hidden;
-			}
-		
-			.explain {
-				color: #878890;
-			}
-		
-			.type {
-				margin-top: 30px;
-			}
-			</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="box-hd">
-				<h2 class="title">布置作业</h2>
-			</div>
-			<div class="homework-info">
-				<div class="site-text site-block">
-					<form class="layui-form" action="" method="post">
-						<div class="layui-form-item type">
-		
-		
-		
-		
-		
-							<div class="layui-form-item" style="margin-right: 50%;">
-								<label class="layui-form-label" style="width: 100px;">接收对象</label>
-								<div class="layui-input-block">
-									<select name="city" lay-verify="required">
-										<option value=""></option>
-										<option value="0">助教</option>
-										<option value="1">讲师</option>
-										<option value="2">副教授</option>
-										<option value="3">教授</option>
-									</select>
-								</div>
-							</div>
-							<div class="" style="margin-top: 15px;">
-															<label class="layui-form-label" style="width: 100px;"><font size="4" color="red">*</font>作业名称</label>
-							<div class="layui-input-block">
-							  <input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" style="width: 44%;">
-							</div>
-							</div>
-							
-							<div class="" style="margin-top: 15px;">
-															<label class="layui-form-label" style="width: 100px;"><font size="4" color="red">*</font>作业内容</label>
-							<div class="layui-input-block" style="width: 70%;">
-							    <textarea name="demo" id="demo" class="layui-hide">
-							      <p><span>一个范围具有两个边界点，即一个开始点和一个结束点。每个边界点由一个节点和那个节点的偏移量指定。该节点通常是&nbsp;</span><a href="http://www.w3school.com.cn/xmldom/dom_element.asp" title="XML DOM - Element 对象">Element 节点</a><span>、</span><a href="http://www.w3school.com.cn/xmldom/dom_document.asp" title="XML DOM - Document 对象">Document 节点</a><span>或&nbsp;</span><a href="http://www.w3school.com.cn/xmldom/dom_text.asp" title="XML DOM - Text 对象">Text 节点</a><span>。对于 Element 节点和 Document 节点，偏移量指该节点的子节点。偏移量为 0，说明边界点位于该节点的第一个子节点之前。偏移量为 1，说明边界点位于该节点的第一个子节点之后，第二个子节点之前。但如果边界节点是 Text 节点，偏移量则指的是文本中两个字符之间的位置。</span></p>
-							        </textarea>
-							      </div>
-							</div>
-<!-- 							<div class="layui-upload">
-							  <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button><input class="layui-upload-file" type="file" accept="" name="file"><span class="layui-inline layui-upload-choose">新建 DOC 文档 (5).doc</span>
-							  <button type="button" class="layui-btn" id="test9">开始上传</button>
-							</div> -->
-							<div class="" style="margin-top: 15px;">
-															<label class="layui-form-label" style="width: 100px;">添加附件</label>
-							<div class="layui-upload">
-							  <button type="button" class="layui-btn layui-btn-normal" id="test8" style="margin-left: 8px;">选择文件</button><input class="layui-upload-file" type="file" accept name="file" multiple>
-							  <!-- <button type="button" class="layui-btn" id="test9">开始上传</button> -->
-							</div>
-							</div>
-							
-							<div class="" style="margin-top: 15px;">
-															<label class="layui-form-label" style="width: 100px;">提交时间</label>
-								<div class="layui-inline">
-								  <input type="text" class="layui-input" id="test2" style="margin-left: 8px;">
-								</div>
-							</div>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../static/layuiadmin/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css"/>
+    <script src="../static/js/jquery-3.4.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        html {
+            width: 100%;
+            height: 100%;
+        }
 
-				
-							
-							
-							
-							
-							</div>
-							
-							
-							
-							
-							
-	
-						</div>
-							<button class="layui-btn layui-btn-normal" style="margin-left: 40%; margin-bottom: 30px; float: left; background-color: #77DD60;">发布</button>
-							<button class="layui-btn layui-btn-normal" style="margin-left: 2%; margin-bottom: 30px; float: left; background-color: #8a8c8e;" type="reset">重置</button>
-						</form>
-						
-						<table id="test" lay-filter="test"></table>
-				</div>
-			</div>
-		</div>
-	</body>
-	<script src="../static/layuiadmin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-	<script>
-		//Demo
-		layui.use('form', function() {
-			var form = layui.form;
-	
-			//监听提交
-			form.on('submit(formDemo)', function(data) {
-				layer.msg(JSON.stringify(data.field));
-				return false;
-			});
-		});
-	</script>
-	<script>
-	layui.use('layedit', function(){
-	  var layedit = layui.layedit;
-	  
-	  var index = layedit.build('demo', {
-	    //hideTool: ['image']
-	    uploadImage: {
-	      url: 'json/upload/demoLayEdit.json'
-	      ,type: 'get'
-	    }
-	    //,tool: []
-	    //,height: 100
-	  });
-	  
-	  getChoose.onclick = function(){
-	    alert(layedit.getSelection(index));
-	  };
-	  
-	});
-	</script>
-	<script>
-		layui.use('upload', function(){
-	  var $ = layui.jquery
-	  ,upload = layui.upload;
-	  
-	  
-	  upload.render({
-	    elem: '#test8'
-	    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
-	    ,auto: false
-		,accept: 'file' //视频
-	    ,multiple: true
-	    ,bindAction: '#test9'
-	    ,done: function(res){
-	      layer.msg('上传成功');
-	      console.log(res)
-	    }
-	  });
-	 
-	});
-	</script>
-	<script>
-	layui.use('laydate', function(){
-	  var laydate = layui.laydate;
-	  
-	  
-	  //单控件
-  laydate.render({
-    elem: '#test2'
-    //,format: 'yyyy年MM月dd日'
-    //,value: new Date(1989,9,14)
-    ,isInitValue: false
-    ,format: 'yyyyMMdd'
-    ,value: '20170910'
-   
-    //,max: 0
-    //,min: '2016-10-14'
-    //,max: -1
-    //,value: '1989年10月14日'
-    ,ready: function(date){
-      console.log(date);
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-image: url(../static/images/bg.jpg);
+            /* background-color: #F5F5F5; */
+            background-repeat: no-repeat;
+            /* background-size: 100% 100%; */
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            padding-bottom: 30px;
+        }
+
+        .box-hd {
+            height: 58px;
+        }
+
+        .box-hd .title {
+            line-height: 58px;
+            font-size: 22px;
+            color: #333;
+            font-weight: 200;
+        }
+
+        .homework-info {
+            background-color: #FFFFFF;
+            overflow: hidden;
+        }
+
+        .explain {
+            color: #878890;
+        }
+
+        .type {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box-hd">
+        <h2 class="title">布置作业</h2>
+    </div>
+    <div class="homework-info">
+        <div class="site-text site-block">
+            <form id="homeworkForm" class="layui-form" action="" method="post">
+                <div class="layui-form-item type">
+
+
+                    <div class="layui-form-item" style="margin-right: 50%;">
+                        <input type="hidden" name="action" value="addHomework"/>
+                        <label class="layui-form-label" style="width: 100px;">课程</label>
+                        <div class="layui-input-block">
+                            <select name="courseName" lay-verify="required" id="courseName">
+                                <option value=""></option>
+                                <!--<option value="0">助教</option>-->
+                                <!--<option value="1">讲师</option>-->
+                                <!--<option value="2">副教授</option>-->
+                                <!--<option value="3">教授</option>-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="" style="margin-top: 15px;">
+                        <label class="layui-form-label" style="width: 100px;"><font size="4"
+                                                                                    color="red">*</font>作业名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题"
+                                   autocomplete="off" class="layui-input" style="width: 44%;">
+                        </div>
+                    </div>
+
+                    <div class="" style="margin-top: 15px;">
+                        <label class="layui-form-label" style="width: 100px;"><font size="4"
+                                                                                    color="red">*</font>作业内容</label>
+                        <div class="layui-input-block" style="width: 70%;">
+							    <textarea name="content" class="layui-textarea" style="width: 480px; height: 200px"></textarea>
+                        </div>
+                    </div>
+                    <!-- 							<div class="layui-upload">
+                                                  <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button><input class="layui-upload-file" type="file" accept="" name="file"><span class="layui-inline layui-upload-choose">新建 DOC 文档 (5).doc</span>
+                                                  <button type="button" class="layui-btn" id="test9">开始上传</button>
+                                                </div> -->
+                    <div class="" style="margin-top: 15px;">
+                        <label class="layui-form-label" style="width: 100px;">添加附件</label>
+                        <div class="layui-upload">
+                            <button  type="button" class="layui-btn layui-btn-normal" id="test8"
+                                    style="margin-left: 8px;">选择文件
+                            </button>
+                            <input class="layui-upload-file" type="file" accept name="file" id="homeworkFile" multiple>
+                            <!-- <button type="button" class="layui-btn" id="test9">开始上传</button> -->
+                        </div>
+                    </div>
+
+                    <div class="" style="margin-top: 15px;">
+                        <label class="layui-form-label" style="width: 100px;">提交时间</label>
+                        <div class="layui-inline">
+                            <input name="endTime" type="text" class="layui-input" id="test2" style="margin-left: 8px;">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+<!--        </div>-->
+        <button class="layui-btn layui-btn-normal"
+                style="margin-left: 40%; margin-bottom: 30px; float: left; background-color: #77DD60;" id="fabu" type="submit" lay-submit="" >发布
+        </button>
+        <button class="layui-btn layui-btn-normal"
+                style="margin-left: 2%; margin-bottom: 30px; float: left; background-color: #8a8c8e;" type="reset">重置
+        </button>
+        </form>
+
+        <table id="test" lay-filter="test"></table>
+    </div>
+</div>
+</div>
+</body>
+<!--<script src="../static/js/jquery.min.js"></script>-->
+<script src="../static/js/jquery-3.4.1.js"></script>
+<script src="../static/layuiadmin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    var layedit,index;
+    layui.use('layedit', function () {
+        layedit = layui.layedit;
+        // var form = layui.form() ;
+
+         index = layedit.build('demo', {
+            //hideTool: ['image']
+            uploadImage: {
+                url: 'json/upload/demoLayEdit.json'
+                , type: 'get'
+            }
+            //,tool: []
+            //,height: 100
+        });
+
+        // getChoose.onclick = function () {
+        //     alert(layedit.getSelection(index));
+        // };
+        // $("#fabu").click(function () {
+        //     // alert($("#demo").val())
+        //     // console.log($("#demo").val())
+        //     alert(layedit.getSelection(index));
+        // })
+        // form.veritfy
+        // content:function (value) {
+        //     return layedit.sync(index)
+        //
+        // }
+
+    });
+</script>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+        form.verify({
+            demo: function(value) {
+                return layedit.sync(index);
+            }
+        });
+        form.on("submit(formSubmit)", function (data) {
+            console.log(data.field);
+                // formData.append("action",data.field.action);
+                // formData.append("content",data.field.content);
+                // formData.append("courseName",data.field.courseName);
+                // formData.append("endTime",data.field.endTime);
+                // formData.append("file",document.getElementById("homeworkFile").files[0]);
+                // formData.append("title",data.field.title);
+
+            // $.post("http://localhost:8080/onlinelearning/teacher.do", data.field, function(result){
+            //     // layer.msg(result.msg,{offset:'rb'});
+            //     alert(result);
+            // },"JSON");
+            return false;
+        })
+    });
+</script>
+<script>
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+
+
+        upload.render({
+            elem: '#test8'
+            , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            , auto: false
+            , accept: 'file' //视频
+            , multiple: true
+            , bindAction: '#test9'
+            , done: function (res) {
+                layer.msg('上传成功');
+                console.log(res)
+            }
+        });
+
+    });
+</script>
+<script>
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+
+        //单控件
+        laydate.render({
+            elem: '#test2'
+            //,format: 'yyyy年MM月dd日'
+            //,value: new Date(1989,9,14)
+            , isInitValue: false
+            , format: 'yyyyMMdd'
+            , value: '20170910'
+
+            //,max: 0
+            //,min: '2016-10-14'
+            //,max: -1
+            //,value: '1989年10月14日'
+            , ready: function (date) {
+                console.log(date);
+            }
+            , done: function (value, date, endDate) {
+                console.log(value, date, endDate);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        init();
+        $("#fabu").click(function () {
+            let formData=new FormData(document.getElementById("homeworkForm"));
+            $.ajax({
+                url:"http://localhost:8080/onlinelearning/teacher.do",
+                type:"POST",
+                datatype:"text",
+                data:formData,
+                processData:false,
+                contentType:false,
+                success:function (data) {
+                    alert(data)
+                }
+            });
+        })
+
+    });
+
+    function init() {
+        $.getJSON("http://localhost:8080/onlinelearning/teacher.do","action=getTeacherCourse",function (data) {
+            for (let i = 0; i < data.length; i++) {
+                let str=`<option value=${data[i].courseName}>${data[i].courseName}</option>`;
+                $("#courseName").append(str);
+            }
+        })
     }
-    ,done: function(value, date, endDate){
-      console.log(value, date, endDate);
-    }
-  });
-   });
-	  </script>
-	
+</script>
 </html>
