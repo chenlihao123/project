@@ -3,8 +3,923 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="../static/layuiadmin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css"/>
+		<script src="../static/js/jquery-3.4.1.js"></script>
+		<script src="../static/js/bootstrap.min.js"></script>
+		
+		<style type="text/css">
+			html {
+				width: 100%;
+				height: 100%;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			body {
+				background-image: url("../static/images/bg.jpg");
+				/* background-color: #F5F5F5; */
+				background-repeat: no-repeat;
+				/* background-size: 100% 100%; */
+			}
+
+			.container {
+				width: 80%;
+				margin: 30px auto;
+				padding-bottom: 30px;
+			}
+
+			.box-hd {
+				height: 58px;
+			}
+
+			.box-hd .title {
+				line-height: 58px;
+				font-size: 22px;
+				color: #333;
+				font-weight: 200;
+			}
+
+			.add-info {
+				background-color: #FFFFFF;
+				overflow: hidden;
+			}
+
+			.explain {
+				color: #878890;
+			}
+
+			.type {
+				margin-top: 30px;
+			}
+		</style>
 	</head>
 	<body>
-		hello java
+		<div class="container">
+			<div class="box-hd">
+				<h2 class="title">添加视频</h2>
+			</div>
+			<div class="add-info">
+				<div class="site-text site-block">
+					<form class="layui-form" action="" method="post">
+						<div class="layui-form-item type">
+
+
+
+
+
+							<div class="layui-form-item" style="margin-right: 50%;">
+								<label class="layui-form-label">选择课程</label>
+								<div class="layui-input-block">
+									<select name="city" lay-verify="required">
+										<option value=""></option>
+										<option value="0">助教</option>
+										<option value="1">讲师</option>
+										<option value="2">副教授</option>
+										<option value="3">教授</option>
+									</select>
+									<div class="layui-unselect layui-form-select">
+										<div class="layui-select-title" style="width:500px;"><input type="text" placeholder="请选择" value="" readonly=""
+											 class="layui-input layui-unselect" style="width: 60%;"><i class="layui-edge"></i></div>
+										<dl class="layui-anim layui-anim-upbit">
+											<dd lay-value="" class="layui-select-tips">请选择</dd>
+											<dd lay-value="0" class="">北京</dd>
+											<dd lay-value="1" class="">上海</dd>
+											<dd lay-value="2" class="">广州</dd>
+											<dd lay-value="3" class="">深圳</dd>
+											<dd lay-value="4" class="">杭州</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						</form>
+						
+						<table id="test" lay-filter="test"></table>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+				
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					
+				</div>
+			</div>
+		</div>
+	
+	
+	
+	<!-- 按钮触发模态框 -->
+<!-- 	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	   开始演示模态框
+	</button> -->
+	
+	
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal"
+	               aria-hidden="true">×
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+	               模态框（Modal）标题
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+	            按下 ESC 按钮退出。
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default"
+	               data-dismiss="modal">关闭
+	            </button>
+	            <button type="button" class="btn btn-primary">
+	               提交更改
+	            </button>
+	         </div>
+	      </div><!-- /.modal-content -->
+	   </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<script>
+	   // $(function () { $('#myModal').modal({
+	   //    keyboard: true
+	   // })});
+	</script>
+	
+	
+	
+	
+	
 	</body>
+	<script src="../static/layuiadmin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		//Demo
+		layui.use('form', function() {
+			var form = layui.form;
+
+			//监听提交
+			form.on('submit(formDemo)', function(data) {
+				layer.msg(JSON.stringify(data.field));
+				return false;
+			});
+		});
+	</script>
+	<script>
+		layui.use('upload', function() {
+			var $ = layui.jquery,
+				upload = layui.upload;
+
+			//普通图片上传
+			var uploadInst = upload.render({
+				elem: '#test1',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				before: function(obj) {
+					//预读本地文件示例，不支持ie8
+					obj.preview(function(index, file, result) {
+						$('#demo1').attr('src', result); //图片链接（base64）
+					});
+				},
+				done: function(res) {
+					//如果上传失败
+					if (res.code > 0) {
+						return layer.msg('上传失败');
+					}
+					//上传成功
+				},
+				error: function() {
+					//演示失败状态，并实现重传
+					var demoText = $('#demoText');
+					demoText.html(
+						'<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+					demoText.find('.demo-reload').on('click', function() {
+						uploadInst.upload();
+					});
+				}
+			});
+
+			//多图片上传
+			upload.render({
+				elem: '#test2',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				multiple: true,
+				before: function(obj) {
+					//预读本地文件示例，不支持ie8
+					obj.preview(function(index, file, result) {
+						$('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+					});
+				},
+				done: function(res) {
+					//上传完毕
+				}
+			});
+
+			//指定允许上传的文件类型
+			upload.render({
+				elem: '#test3',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				accept: 'file' //普通文件
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res);
+				}
+			});
+			upload.render({ //允许上传的文件后缀
+				elem: '#test4',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				accept: 'file' //普通文件
+					,
+				exts: 'zip|rar|7z' //只允许上传压缩文件
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res)
+				}
+			});
+			upload.render({
+				elem: '#test5',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				accept: 'video' //视频
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res)
+				}
+			});
+			upload.render({
+				elem: '#test6',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				accept: 'audio' //音频
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res)
+				}
+			});
+
+			//设定文件大小限制
+			upload.render({
+				elem: '#test7',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				size: 60 //限制文件大小，单位 KB
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res)
+				}
+			});
+
+			//同时绑定多个元素，并将属性设定在元素上
+			upload.render({
+				elem: '.demoMore',
+				before: function() {
+					layer.tips('接口地址：' + this.url, this.item, {
+						tips: 1
+					});
+				},
+				done: function(res, index, upload) {
+					var item = this.item;
+					console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
+				}
+			})
+
+			//选完文件后不自动上传
+			upload.render({
+				elem: '#test8',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				auto: false
+					//,multiple: true
+					,
+				bindAction: '#test9',
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res)
+				}
+			});
+
+			//拖拽上传
+			upload.render({
+				elem: '#test10',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+					console.log(res)
+				}
+			});
+
+			//多文件列表示例
+			var demoListView = $('#demoList'),
+				uploadListIns = upload.render({
+					elem: '#testList',
+					url: 'https://httpbin.org/post' //改成您自己的上传接口
+						,
+					accept: 'file',
+					multiple: true,
+					auto: false,
+					bindAction: '#testListAction',
+					choose: function(obj) {
+						var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+						//读取本地文件
+						obj.preview(function(index, file, result) {
+							var tr = $(['<tr id="upload-' + index + '">', '<td>' + file.name + '</td>', '<td>' + (file.size / 1024).toFixed(
+									1) + 'kb</td>', '<td>等待上传</td>', '<td>',
+								'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>',
+								'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>', '</td>', '</tr>'
+							].join(''));
+
+							//单个重传
+							tr.find('.demo-reload').on('click', function() {
+								obj.upload(index, file);
+							});
+
+							//删除
+							tr.find('.demo-delete').on('click', function() {
+								delete files[index]; //删除对应的文件
+								tr.remove();
+								uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+							});
+
+							demoListView.append(tr);
+						});
+					},
+					done: function(res, index, upload) {
+						if (res.files.file) { //上传成功
+							var tr = demoListView.find('tr#upload-' + index),
+								tds = tr.children();
+							tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+							tds.eq(3).html(''); //清空操作
+							return delete this.files[index]; //删除文件队列已经上传成功的文件
+						}
+						this.error(index, upload);
+					},
+					error: function(index, upload) {
+						var tr = demoListView.find('tr#upload-' + index),
+							tds = tr.children();
+						tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+						tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+					}
+				});
+
+			//绑定原始文件域
+			upload.render({
+				elem: '#test20',
+				url: 'https://httpbin.org/post' //改成您自己的上传接口
+					,
+				done: function(res) {
+					layer.msg('上传成功');
+					console.log(res)
+				}
+			});
+
+		});
+	</script>
+
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    <button class="layui-btn layui-btn-sm" lay-event="reload">重载</button>
+    <button class="layui-btn layui-btn-sm"  data-toggle="modal" data-target="#myModal"  >添加视频</button>
+  </div>
+</script>
+
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  //return;
+  
+  //渲染
+  window.ins1 = table.render({
+    elem: '#test'
+    ,height: 400
+    //,width: 600
+    ,title: '用户数据表'
+    //,size: 'lg'
+	,url:"test.json"
+    ,page: {
+      
+    }
+    
+    ,autoSort: false
+    //,loading: false
+    ,totalRow: true
+    ,limit: 30
+    ,toolbar: '#toolbarDemo'
+    ,defaultToolbar: ['filter', 'exports', 'print', {
+      title: '帮助'
+      ,layEvent: 'LAYTABLE_TIPS'
+      ,icon: 'layui-icon-tips'
+    }]
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：'}
+      ,{field:'videoName', title:'视频名称', width:250, edit: 'text', templet: '#usernameTpl'}
+      ,{field:'email', title:'视频简介', hide: 0, width:250, edit: 'text', templet: function(d){
+        return '<em>'+ d.email +'</em>'
+      }}
+      // ,{field:'sex', title:'视频状态', width:80, edit: 'text', sort: true}
+      ,{field:'city', title:'视频状态', width:200, templet: '#cityTpl1'}
+      // ,{field:'sign', title:'签名'}
+      // ,{field:'experience', title:'积分', width:80, sort: true, totalRow: true, templet: '<div>{{ d.experience }} 分</div>'}
+      // ,{field:'ip', title:'IP', width:120}
+      // ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
+      // ,{field:'joinTime', title:'加入时间', width:120}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+    ]]
+	// ,data: [{
+ //      "id": "10001"
+ //      ,"username": "杜甫"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "116"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "108"
+ //      ,"joinTime": "2016-10-14"
+ //    }, {
+ //      "id": "10002"
+ //      ,"username": "李白"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "12"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //      ,"LAY_CHECKED": true
+ //    }, {
+ //      "id": "10003"
+ //      ,"username": "王勃"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "65"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //    }, {
+ //      "id": "10004"
+ //      ,"username": "贤心"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "666"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //    }, {
+ //      "id": "10005"
+ //      ,"username": "贤心"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "86"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //    }, {
+ //      "id": "10006"
+ //      ,"username": "贤心"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "12"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //    }, {
+ //      "id": "10007"
+ //      ,"username": "贤心"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "16"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //    }, {
+ //      "id": "10008"
+ //      ,"username": "贤心"
+ //      ,"email": "xianxin@layui.com"
+ //      ,"sex": "男"
+ //      ,"city": "浙江杭州"
+ //      ,"sign": "人生恰似一场修行"
+ //      ,"experience": "106"
+ //      ,"ip": "192.168.0.8"
+ //      ,"logins": "106"
+ //      ,"joinTime": "2016-10-14"
+ //    }]
+
+    ,skin: 'row' //表格风格
+    ,even: true
+    //,size: 'lg' //尺寸
+    
+    ,page: true //是否显示分页
+    ,limits: [3,5,10]
+    ,limit: 3 //每页默认显示的数量
+    //,loading: false //请求数据时，是否显示loading
+	
+    
+    ,initSort: {
+      field: 'experience' //排序字段，对应 cols 设定的各字段名
+      ,type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+    }
+
+    
+    /*
+    ,response: {
+      statusName: 'status'
+      ,statusCode: 200
+    }
+    ,parseData: function(res){
+      return {
+        "status": res.status
+        ,"msg": res.message
+        ,"count": res.total
+        ,"data": res.data.list
+      };
+    }
+    */
+  });
+  
+  //工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'add':
+        layer.msg('添加');
+      break;
+      case 'update':
+        layer.msg('编辑');
+      break;
+      case 'delete':
+        layer.msg('删除');
+      break;
+      case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选')
+      break;
+      case 'LAYTABLE_TIPS':
+        layer.alert('Table for layui-v'+ layui.v);
+      break;
+      case 'reload':
+        table.reload('test', {
+          page: {curr: 5}
+          //,height: 300
+          //,url: 'x'
+        }, 'data');
+      break;
+    };
+  });
+
+  table.on('row(test)', function(obj){
+    console.log(obj);
+    //layer.closeAll('tips');
+  });
+  
+  
+  
+  table.render({
+    elem: '#test2'
+    ,url: 'json/table/demo1.json'
+    ,contentType: 'application/json'
+    ,page: { //详细参数可参考 laypage 组件文档
+      curr: 5
+      ,groups: 1
+      ,first: false
+      ,last: false
+      ,layout: ['limit', 'prev', 'page', 'next', 'count'] //自定义分页布局
+    }
+    //,height: 300
+    ,cellMinWidth: 80
+    //,skin: 'line'
+    ,toolbar: true
+    ,cols: [[
+      {field: 'id', hide: true}
+      ,{field: 'username', title: '用户名'}
+      ,{field: 'email', title: '邮箱'}
+      ,{title:'操作', align:'center', toolbar: '#barDemo'}
+      /*
+      {type:'numbers'}
+      ,{field:'id', title:'ID', unresize: true, sort: true}
+      ,{field:'username', title:'用户名', templet: '#usernameTpl'}
+      ,{field:'email', title:'邮箱'}
+      ,{xfield:'sex', title:'性别', templet: '#switchTpl', minWidth: 85, align:'center'}
+      ,{field:'lock', title:'是否锁定', templet: '#checkboxTpl', minWidth: 110, align:'center'}
+      ,{field:'city', title:'城市'}
+      */
+    ]]
+  });
+
+  //监听表格行点击
+  table.on('tr', function(obj){
+    console.log(obj)
+  });
+
+  //监听表格复选框选择
+  table.on('checkbox(test)', function(obj){
+    console.log(obj)
+  });
+
+  //监听表格单选框选择
+  table.on('radio(test)', function(obj){
+    console.log(obj)
+  });
+  
+  //监听表格单选框选择
+  table.on('rowDouble(test)', function(obj){
+    console.log(obj);
+  });
+  
+  //监听单元格编辑
+  table.on('edit(test)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data = obj.data //得到所在行所有键值
+    ,field = obj.field; //得到字段
+    
+    console.log(obj)
+  });
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        obj.del();
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      layer.prompt({
+        formType: 2
+        ,value: data.email
+      }, function(value, index){
+        obj.update({
+          email: value
+        });
+        layer.close(index);
+      });
+    }
+  });
+  
+  //监听排序
+  table.on('sort(test)', function(obj){
+    console.log(this)
+    
+    //return;
+    layer.msg('服务端排序。order by '+ obj.field + ' ' + obj.type);
+    //服务端排序
+    table.reload('test', {
+      initSort: obj
+      //,page: {curr: 1} //重新从第一页开始
+      ,where: { //重新请求服务端
+        key: obj.field //排序字段
+        ,order: obj.type //排序方式
+      }
+    });
+  });
+  
+  //return;
+  
+  //直接赋值数据
+  table.render({
+    elem: '#demo'
+    //,width: 900
+    //,height: 274
+    ,cols: [[ //标题栏
+      {type: 'checkbox', LAY_CHECKED: true}
+      ,{field: 'id', title: 'ID', width: 80, sort: true}
+      ,{type: 'space', width: 100} //空列
+      ,{field: 'username', title: '用户名', width: 120}
+      ,{field: 'email', title: '邮箱', width: 150}
+      ,{field: 'sign', title: '签名', width: 150}
+      ,{field: 'sex', title: '性别', width: 80}
+      ,{field: 'city', title: '城市', width: 100}
+      ,{field: 'experience', title: '积分', width: 80, sort: true}
+    ]]
+    ,data: [{
+      "id": "10001"
+      ,"username": "杜甫"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "116"
+      ,"ip": "192.168.0.8"
+      ,"logins": "108"
+      ,"joinTime": "2016-10-14"
+    }, {
+      "id": "10002"
+      ,"username": "李白"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "12"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+      ,"LAY_CHECKED": true
+    }, {
+      "id": "10003"
+      ,"username": "王勃"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "65"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+    }, {
+      "id": "10004"
+      ,"username": "贤心"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "666"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+    }, {
+      "id": "10005"
+      ,"username": "贤心"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "86"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+    }, {
+      "id": "10006"
+      ,"username": "贤心"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "12"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+    }, {
+      "id": "10007"
+      ,"username": "贤心"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "16"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+    }, {
+      "id": "10008"
+      ,"username": "贤心"
+      ,"email": "xianxin@layui.com"
+      ,"sex": "男"
+      ,"city": "浙江杭州"
+      ,"sign": "人生恰似一场修行"
+      ,"experience": "106"
+      ,"ip": "192.168.0.8"
+      ,"logins": "106"
+      ,"joinTime": "2016-10-14"
+    }]
+
+    ,skin: 'row' //表格风格
+    ,even: true
+    //,size: 'lg' //尺寸
+    
+    ,page: true //是否显示分页
+    ,limits: [3,5,10]
+    ,limit: 3 //每页默认显示的数量
+    //,loading: false //请求数据时，是否显示loading
+  });
+  
+  
+  var $ = layui.jquery, active = {
+    parseTable: function(){
+      table.init('parse-table-demo', {
+        limit: 3
+      });
+    }
+    ,add: function(){
+      table.addRow('test')
+    }
+  };
+  $('i').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+  $('.layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+</script>
+
+
+
 </html>
