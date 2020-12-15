@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../static/layuiadmin/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css" />
+		<script src="../static/js/jquery-3.4.1.js"></script>
+		<script src="../static/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			html {
+				width: 100%;
+				height: 100%;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			body {
+				background-image: url("../static/images/bg.jpg");
+				/* background-color: #F5F5F5; */
+				background-repeat: no-repeat;
+				/* background-size: 100% 100%; */
+			}
+
+			.container {
+				width: 80%;
+				margin: 30px auto;
+				padding-bottom: 30px;
+			}
+
+			.box-hd {
+				height: 58px;
+			}
+
+			.box-hd .title {
+				line-height: 58px;
+				font-size: 22px;
+				color: #333;
+				font-weight: 200;
+			}
+
+			.manage {
+				background-color: #FFFFFF;
+				overflow: hidden;
+			}
+
+			.explain {
+				color: #878890;
+			}
+
+			.type {
+				margin-top: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="box-hd">
+				<h2 class="title">管理作业</h2>
+			</div>
+			<div class="manage">
+				<div class="site-text site-block">
+					<form class="layui-form" action="" method="post">
+						<div class="" style="margin-top: 15px;">
+							<label class="layui-form-label" style="width: 100px;">
+								选择课程
+							</label>
+							<div class="layui-input-inline" >
+								<div class="layui-input-inline">
+									<select name="city" lay-verify="required">
+										<option value=""></option>
+										<option value="0">已批阅</option>
+										<option value="1">批阅中</option>
+										<option value="2">未批阅</option>
+									</select>
+								</div>
+
+							</div>
+							<label class="layui-form-label" style="width: 100px; float: none; display: inline-block;">
+								课程名称
+							</label>
+							<!-- <div class="layui-input-inline">
+								<input type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+							</div> -->
+							 <div class="layui-form-item" style="position: relative; left: 390px; bottom: 42px; width: 216px"  >
+
+								 <input style="margin-left: 30px" type="text" name="title" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+
+
+
+							 </div>
+							
+							
+						</div>
+
+
+
+
+					</form>
+					<button class="layui-btn" style="position: relative; bottom: 95px; left: 650px; background-color: #4DD172;">筛选</button>
+				</div>
+				<div class="" style="position: relative; bottom: 50px;">
+					<table id="test2" lay-filter="test2" ></table>
+				</div>
+				<button class="layui-btn" style="position: relative; bottom: 30px; left: 45%" data-toggle="modal" data-target="#myModal">上传视频</button>
+			</div>
+		</div>
+
+
+		<!--&lt;!&ndash; 按钮触发模态框 &ndash;&gt;-->
+		<!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
+			<!--开始演示模态框-->
+		<!--</button>-->
+
+
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			 aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">×
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							添加视频
+						</h4>
+					</div>
+					<div class="modal-body">
+						<!--按下 ESC 按钮退出。-->
+						<!--<div>-->
+							<!--<label class="layui-form-label" style="width: 100px">视频名称</label>-->
+							<!--<input class="layui-input-block" style="margin-left: 50px">-->
+						<!--</div>-->
+						<!--<div>-->
+							<!--<label class="layui-form-label" style="width: 100px">视频简介</label>-->
+							<!--<input class="layui-input-block" style="margin-left: 50px">-->
+						<!--</div>-->
+
+						<!--<div>-->
+							<!--<button class="layui-btn" id="choiseVideo">选择视频</button>-->
+						<!--</div>-->
+						<!--<div class="layui-form-item">-->
+						<form>
+
+
+
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width: 100px;">视频名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="title" lay-verify="required|title" lay-reqText="标题不能为空" required placeholder="请输入视频名称" autocomplete="off" class="layui-input" >
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label"  style="width: 100px;">视频简介</label>
+							<div class="layui-input-block">
+								<input type="tel" name="phone" lay-verify="required|number" lay-verType="tips" placeholder="请输入视频简介" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-upload">
+							<button style="margin-left: 10px" type="button" class="layui-btn" id="test1" name="123">上传图片</button>
+
+							<div class="layui-upload-list">
+								<img class="layui-upload-img" src="" id="demo1">
+								<p id="demoText"></p>
+							</div>
+						</div>
+						<button type="file" class="layui-btn" id="test4"><i class="layui-icon">&#xe67c;</i>上传视频</button>
+						<!--<input class="layui-input" type="file">-->
+
+
+						</form>
+
+
+
+					<!--</div>-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default"
+								data-dismiss="modal">关闭
+						</button>
+						<button type="button" class="btn btn-primary">
+							提交更改
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+
+
+	</body>
+	<script src="../static/js/jquery-3.4.1.js"></script>
+	<script src="../static/layuiadmin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		//Demo
+		layui.use('form', function() {
+			var form = layui.form;
+	
+			//监听提交
+			form.on('submit(formDemo)', function(data) {
+				layer.msg(JSON.stringify(data.field));
+				return false;
+			});
+		});
+	</script>
+	<script type="text/html" id="toolbarDemo">
+		<div class="layui-btn-container">
+			<button onclick="addvideo();" class="layui-btn layui-btn-sm addvideo" lay-event="reload">添加视频</button>
+		</div>
+	</script>
+	<script type="text/html" id="barDemo">
+	  <!--<a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>-->
+	  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<script>
+	layui.use('table', function(){
+	  var table = layui.table;
+	  //return;
+	  
+	  //渲染
+	  window.ins1 = table.render({
+	    elem: '#test'
+	    ,height: 400
+	    //,width: 600
+	    ,title: '用户数据表'
+	    ,url: 'json/table/demo1.json'
+	    //,size: 'lg'
+	    ,page: {
+	      
+	    }
+	    
+	    ,autoSort: false
+	    //,loading: false
+	    ,totalRow: true
+	    ,limit: 30
+	    // ,toolbar: '#toolbarDemo'
+	    ,defaultToolbar: ['filter', 'exports', 'print', {
+	      title: '帮助'
+	      ,layEvent: 'LAYTABLE_TIPS'
+	      ,icon: 'layui-icon-tips'
+	    }]
+	    ,cols: [[
+	      {type: 'checkbox', fixed: 'left'}
+	      ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：'}
+	      ,{field:'username', title:'用户名', width:120, edit: 'text', templet: '#usernameTpl'}
+	      ,{field:'email', title:'邮箱', hide: 0, width:150, edit: 'text', templet: function(d){
+	        return '<em>'+ d.email +'</em>'
+	      }}
+	      ,{field:'sex', title:'性别', width:80, edit: 'text', sort: true}
+	      ,{field:'city', title:'城市', width:120, templet: '#cityTpl1'}
+	      ,{field:'sign', title:'签名'}
+	      ,{field:'experience', title:'积分', width:80, sort: true, totalRow: true, templet: '<div>{{ d.experience }} 分</div>'}
+	      ,{field:'ip', title:'IP', width:120}
+	      ,{field:'logins', title:'登入次数', width:100, sort: true, totalRow: true}
+	      ,{field:'joinTime', title:'加入时间', width:120}
+	      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+	    ]]
+	    
+	    ,initSort: {
+	      field: 'experience' //排序字段，对应 cols 设定的各字段名
+	      ,type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+	    }
+	
+	    
+	    /*
+	    ,response: {
+	      statusName: 'status'
+	      ,statusCode: 200
+	    }
+	    ,parseData: function(res){
+	      return {
+	        "status": res.status
+	        ,"msg": res.message
+	        ,"count": res.total
+	        ,"data": res.data.list
+	      };
+	    }
+	    */
+	  });
+	  
+	  //工具栏事件
+	  table.on('toolbar(test)', function(obj){
+	    var checkStatus = table.checkStatus(obj.config.id);
+	    switch(obj.event){
+	      case 'add':
+	        layer.msg('添加');
+	      break;
+	      case 'update':
+	        layer.msg('编辑');
+	        layer.msg('编辑');
+	      break;
+	      case 'delete':
+	        layer.msg('删除');
+	      break;
+	      case 'getCheckData':
+	        var data = checkStatus.data;
+	        layer.alert(JSON.stringify(data));
+	      break;
+	      case 'getCheckLength':
+	        var data = checkStatus.data;
+	        layer.msg('选中了：'+ data.length + ' 个');
+	      break;
+	      case 'isAll':
+	        layer.msg(checkStatus.isAll ? '全选': '未全选')
+	      break;
+	      case 'LAYTABLE_TIPS':
+	        layer.alert('Table for layui-v'+ layui.v);
+	      break;
+	      case 'reload':
+	        table.reload('test', {
+	          page: {curr: 5}
+	          //,height: 300
+	          //,url: 'x'
+	        }, 'data');
+	      break;
+	    };
+	  });
+	
+	  table.on('row(test)', function(obj){
+	    console.log(obj);
+	    //layer.closeAll('tips');
+	  });
+	  
+	  
+	  
+	  table.render({
+	    elem: '#test2'
+	    // ,url: 'json/table/demo1.json'
+	    ,contentType: 'application/json'
+	    ,page: { //详细参数可参考 laypage 组件文档
+	      curr: 5
+	      ,groups: 1
+	      ,first: false
+	      ,last: false
+	      ,layout: ['limit', 'prev', 'page', 'next', 'count'] //自定义分页布局
+	    }
+	    //,height: 300
+	    ,cellMinWidth: 80
+	    //,skin: 'line'
+	    // ,toolbar: true
+         //  ,toolbar: '#toolbarDemo'
+	    ,cols: [[
+	      {field: 'id', hide: true}
+	      ,{field: 'username',align:'center',  title: '视频名称'}
+	      ,{field: 'email',align:'center', title: '视频介绍'}
+	      ,{field: 'count',align:'center', title: '视频封面'}
+	      // ,{field: 'view',align:'center', title: '批阅进度'}
+	      ,{title:'操作', align:'center', toolbar: '#barDemo'}
+	      /*
+	      {type:'numbers'}
+	      ,{field:'id', title:'ID', unresize: true, sort: true}
+	      ,{field:'username', title:'用户名', templet: '#usernameTpl'}
+	      ,{field:'email', title:'邮箱'}
+	      ,{xfield:'sex', title:'性别', templet: '#switchTpl', minWidth: 85, align:'center'}
+	      ,{field:'lock', title:'是否锁定', templet: '#checkboxTpl', minWidth: 110, align:'center'}
+	      ,{field:'city', title:'城市'}
+	      */
+	    ]],
+		data:[{
+			"id":"1",
+			"username":"20201220",
+			"email":"sdfsfd",
+			"count":"sdfsfd",
+			"view":"sdfsfd"
+			
+		}]
+		    ,skin: 'row' //表格风格
+		    ,even: true
+		    //,size: 'lg' //尺寸
+		    
+		    ,page: true //是否显示分页
+		    ,limits: [3,5,10]
+		    ,limit: 3 //每页默认显示的数量
+		    //,loading: false //请求数据时，是否显示loading
+	  });
+	  });
+	  </script>
+
+	<script>
+        layui.use(['upload', 'element'], function(){
+            var $ = layui.jquery
+                ,upload = layui.upload
+                ,element = layui.element;
+
+            var uploadInst = upload.render({
+                elem: '#test1'
+                ,url: 'http://httpbin.org/post'
+                //,size: 2000 //限制文件大小，单位 KB
+                //,accept: 'file'
+                ,method: 'get'
+                ,fileAccept: 'image/*'
+                ,exts: "jpg|png|gif|bmp|jpeg|pdf"
+                ,data: { //额外参数
+                    a: 1
+                    ,b: function(){
+                        return 2
+                    }
+                }
+                ,choose: function(){
+
+                }
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,done: function(res){
+
+                    //如果上传失败
+                    if(res.code > 0){
+                        return layer.msg('上传失败');
+                    }
+                    //上传成功
+                    console.log(res);
+                }
+                ,error: function(){
+                    this.item.html('重选上传');
+
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+
+                    element.progress('demo', '0%');
+                }
+                ,progress: function(n, index, e){
+                    console.log(n + '%', index, e); //获取进度百分比
+                    element.progress('demo', n + '%'); //可配合 layui 进度条元素使用
+                }
+            });
+
+            //重置上述 upload 实例
+            uploadInst.reload({
+                name:'avatar'
+                ,accept: 'images' //只允许上传图片
+                ,acceptMime: 'image/*' //只筛选图片
+                //,size: 2
+            });
+
+            upload.render({
+                elem: '#test2'
+                ,url: ''
+                ,multiple: true
+                ,number: 3
+                ,size: 1024
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    });
+                }
+                ,done: function(res){
+                    //上传完毕
+                }
+                ,allDone: function(obj){
+                    console.log(obj)
+                }
+            });
+
+            //演示多文件列表
+            var demoListView = $('#demoList');
+            var uploadListIns = upload.render({
+                elem: '#testList'
+                ,url: ''
+                ,accept: 'file'
+                ,multiple: true
+                ,number: 3
+                ,auto: false
+                ,bindAction: '#testListAction'
+                ,choose: function(obj){
+                    var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+
+                    //读取本地文件
+                    obj.preview(function(index, file, result){
+                        var tr = $(['<tr id="upload-'+ index +'">'
+                            ,'<td>'+ file.name +'</td>'
+                            ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+                            ,'<td>等待上传</td>'
+                            ,'<td>'
+                            ,'<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>'
+                            ,'<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>'
+                            ,'</td>'
+                            ,'</tr>'].join(''));
+
+                        //单个重传
+                        tr.find('.demo-reload').on('click', function(){
+                            obj.upload(index, file);
+                        });
+
+                        //删除
+                        tr.find('.demo-delete').on('click', function(){
+                            delete files[index]; //删除对应的文件
+                            tr.remove();
+                            uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                        });
+
+                        demoListView.append(tr);
+                    });
+                }
+                ,done: function(res, index, upload){
+                    if(res.code == 0){ //上传成功
+                        var tr = demoListView.find('tr#upload-'+ index)
+                            ,tds = tr.children();
+                        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                        tds.eq(3).html(''); //清空操作
+                        delete this.files[index]; //删除文件队列已经上传成功的文件
+                        return;
+                    }
+                    this.error(index, upload);
+                }
+                ,allDone: function(obj){
+                    console.log(obj)
+                }
+                ,error: function(index, upload){
+                    var tr = demoListView.find('tr#upload-'+ index)
+                        ,tds = tr.children();
+                    tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                    tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+                }
+            });
+
+
+            upload.render({
+                elem: '.test333'
+                ,url: 'a'
+                ,accept: 'file'
+                ,before: function(obj){
+                    console.log(this.item);
+                }
+                ,done: function(res){
+                    console.log(res)
+                }
+            });
+
+            upload.render({
+                elem: '.testm'
+                ,done: function(res, index, upload){
+                    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
+                    var item = this.item;
+                }
+            })
+
+            /*
+            upload.render({
+              elem: '#test33'
+              ,url: ''
+              ,accept: 'file'
+              ,done: function(res){
+                console.log(res)
+              }
+            });*/
+
+            upload.render({
+                elem: '#test4'
+                ,url: ''
+                ,auto: false
+                ,accept: 'video'
+                ,done: function(res){
+                    console.log(res)
+                }
+            });
+
+            upload.render({
+                elem: '#test5'
+                ,url: ''
+                ,accept: 'audio'
+                ,done: function(res){
+                    console.log(res)
+                }
+            });
+
+
+            //手动上传
+            upload.render({
+                elem: '#test6'
+                ,url: ''
+                ,auto: false
+                //,multiple: true
+                ,bindAction: '#test7'
+                ,choose: function(obj){
+                    var that = this;
+                    obj.preview(function(index, file){
+                        console.log(file.name)
+                        obj.resetFile(index, file, '123.jpg');
+                    });
+                }
+                ,before: function(){
+                    console.log(345);
+                }
+                ,done: function(res){
+                    console.log(res);
+                }
+            });
+
+            upload.render({
+                elem: '#test8'
+                ,url: ''
+                ,done: function(res){
+                    console.log(res);
+                }
+            });
+
+            upload.render({
+                elem: '#test9'
+                ,url: 'http://httpbin.org/post'
+                ,done: function(res){
+                    console.log(res);
+                }
+            });
+
+        });
+	</script>
+
+
+
+
+
+
+</html>

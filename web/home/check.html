@@ -57,7 +57,7 @@
 			}
 			.homework-ul{
 				width: 100%;
-				height: 500px;
+				/*height: 500px;*/
 				margin: 0;
 				
 			}
@@ -138,6 +138,7 @@
 				color: black;
 				font-size: 18px;
 				font-weight: 500;
+				margin-left: 30px;
 			}
 			.check{
 				padding: 20px;
@@ -149,6 +150,15 @@
 				margin-bottom: 25px;
 			}
 			.homework-score{
+				margin-bottom: 25px;
+			}
+			.homework{
+				padding: 20px;
+			}
+			.stu-homework{
+				color: #000000;
+				font-weight: 600;
+				font-size: 18px;
 				margin-bottom: 25px;
 			}
 			</style>
@@ -215,7 +225,7 @@
 								<div id="" style="margin-bottom: 5px;">
 									作业评分
 								</div>
-								<input type="" class="layui-input" name="" id="" value="" />
+								<input type="" class="layui-input" name="" id="" value="" placeholder="0-100" />
 							</div>
 							
 							<div class="homework-score">
@@ -229,18 +239,57 @@
 							  <i class="layui-icon"></i>
 							  <p>点击上传，或将文件拖拽到此处</p>
 							</div>
-						<p>点击上传，或将文件拖拽到此处</p>
+						<div>
+							<button class="layui-btn layui-btn-normal" style="background-color: #4DD172;margin-left: 0px;margin-top: 50px">提交点评</button>
+						</div>
 						
 					</li>
-					<li class="homework"></li>
+					<li class="homework">
+						<div class="stu-homework">
+							xx的作业,提交时间:xxxxxx
+						</div>
+						<div class="homework-content" style="margin-bottom: 5px">
+							作业内容
+						</div>
+						<div class="homework-editor" style="margin-bottom: 25px">
+							    <textarea name="demo" id="demo" class="layui-hide">
+
+							        </textarea>
+						</div>
+						<p>作业附件</p>
+						<div class="homework-file">
+							作业的附件
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</body>
+	<script src="../static/layuiadmin/layui/layui.js"></script>
 	<script src="../static/js/jquery-3.4.1.js"></script>
 	<script>
 		$(".student-ul li").click(function(){
 			$(this).css("background","#DBE5F6").siblings().css("background","#ffffff");
 		})
+	</script>
+	<script>
+        layui.use('layedit', function () {
+            var layedit = layui.layedit;
+
+            var index = layedit.build('demo', {
+                //hideTool: ['image']
+                uploadImage: {
+                    url: 'json/upload/demoLayEdit.json'
+                    , type: 'get'
+                }
+                //,tool: []
+                ,height: 180
+            });
+
+            getChoose.onclick = function () {
+                alert(layedit.getSelection(index));
+            };
+
+        });
 	</script>
 </html>
