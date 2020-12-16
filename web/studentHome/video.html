@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <!--<link rel="stylesheet" href="./css/swiper.min.css">-->
+    <!--<link rel="stylesheet" href="./css/test.css">-->
+    <link rel="stylesheet" href="../static/css/videoplayer.css">
+    <link rel="stylesheet" href="../static/css/danmu.css">
+    <style>
+
+        #swiper1{
+            background-color: black;
+            height:550px;
+            position: relative;
+        }
+        #courseVideo{
+            height: 100%;
+            width: 100%;
+        }
+        .swiper-button-prev{
+            right: 0;
+            position: absolute;
+            border: 0;
+        }
+        .nav-wrapper{
+            display: none;
+        }
+
+
+  
+    </style>
+</head>
+<body>
+
+
+    <div id="app">
+
+            <div class="header">
+                <div id="J_topbarBannerWrapper">
+                    <!-- <div class="topbar-banner-Wrapper">
+                        <a class="link-block" style="background-image:url(../xiaomi/images/topbanner.jpg)" href="javascript:void(0);" >
+                        </a>
+                    </div> -->
+                </div> 
+                <div class="site-topbar">
+                    <div class="container">
+                        <div class="topbar-nav">
+                            <a href="">学习平台</a>
+                            <span class="sep">|</span>
+                            <a href="">精品</a>
+                            <span class="sep">|</span>
+                            <a href="">智课堂</a>
+                            <span class="sep">|</span>
+                            <a href="">云服务</a>
+                            <span class="sep">|</span>
+                            <a href="">学生团购</a>
+                            <span class="sep">|</span>
+                            <a href="">名师课程</a>
+                            <span class="sep">|</span>
+                            <a href="">协议规则</a>
+                            <span class="sep">|</span>
+                            <a href="" class="download ">下载app
+                                <span class="appcode">
+                                    <img src="./images/download.png" alt="">
+                                    在线学习APP
+                                </span>
+                            </a>
+                            <span class="sep">|</span>
+                            <a href="">智能生活</a>
+                            <span class="sep">|</span>
+                            <a href="">Select Location</a>
+                        </div>
+                        <div class="topbar-cart">
+                            <div class="cart-min">
+                                <img src="./images/shoppingcar.png" alt="">
+                                <span>购物车</span>
+                                <span>(0)</span>
+                            </div>
+                            
+                            <div class="cart-menu">
+                                <span>购物车中还没有商品，赶紧选购吧！</span>
+                            </div>
+                        </div>
+                        <div class="topbar-info">
+                            <a href="">登录</a>
+                            <span>|</span>
+                            <a href="">注册</a>
+                            <span>|</span>
+                            <a href="">消息通知</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="site-header">
+                    <div class="container">
+                        <div class="header-logo">
+                            <a href="" class="logo"></a>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="site-header">
+                    <div class="container">
+                        <div class="header-logo">
+                            <a class="logo-home"></a>
+                            <a href="" class="logo"></a>
+                        </div>
+                        <div class="nav-list">
+                            <ul>
+                                <li class="nav-item-blank"></li>
+                                    <li class="nav-item">
+                                        <a href="">免费课程</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/free1.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">java零基础速成,限时免费!</div>
+                                                        <p class="price">0元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/free2.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">C语言零基础速成,限时免费!</div>
+                                                        <p class="price">0元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/free3.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">java工程师速成,限时免费!</div>
+                                                        <p class="price">0元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/weijifen.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">微分方程与级数</div>
+                                                        <p class="price">0元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/free4.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">2021考研心理学</div>
+                                                        <p class="price">0元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/free5.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">秦陵：帝国与梦想</div>
+                                                        <p class="price">0元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="">精品课程</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/top1.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">C语言程序设计进阶</div>
+                                                        <p class="price">1999元</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/top2.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">民族声乐进阶密码</div>
+                                                        <p class="price">999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/top3.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">Python语言程序设计</div>
+                                                        <p class="price">1399元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/top4.jpeg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">高等数学（一）</div>
+                                                        <p class="price">999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/top5.jfif" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">模拟电子技术</div>
+                                                        <p class="price">899元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/top6.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">金融学（二）</div>
+                                                        <p class="price">799元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="">外语</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/english1.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">雅思冲7全程班（旗舰版）20期</div>
+                                                        <p class="price">999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/english2.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">陈正康22考研英语一领学班</div>
+                                                        <p class="price">599元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/english3.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">四六级小白课堂</div>
+                                                        <p class="price">199元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/english4.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">翻译导论</div>
+                                                        <p class="price">599元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/english5.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">大学日语 发展篇</div>
+                                                        <p class="price">999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/english6.jpeg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">法语入门</div>
+                                                        <p class="price">1499元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="">经济管理</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/jinji1.jpeg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">公司重组“对对论”</div>
+                                                        <p class="price">999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/jinji2.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">营销管理（双语）</div>
+                                                        <p class="price">1999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/jinji3.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">经济学的思维方式</div>
+                                                        <p class="price">3999元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/jinji4.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">财务管理</div>
+                                                        <p class="price">899元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/jinji5.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">中级宏观经济学</div>
+                                                        <p class="price">4699元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/jinji6.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">审计学</div>
+                                                        <p class="price">1199元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="">艺术设计</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/art1.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">数字雕塑基础</div>
+                                                        <p class="price">99元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/art2.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">传统绘画语言与设计</div>
+                                                        <p class="price">199元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/art3.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">数字媒体制作原理</div>
+                                                        <p class="price">849元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/art4.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">影视鉴赏</div>
+                                                        <p class="price">59元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/art5.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">敦煌文化</div>
+                                                        <p class="price">149元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/art6.jfif" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">中国古代建筑艺术</div>
+                                                        <p class="price">899元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="">理学</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/lixue1.jpg" alt=""  width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">大学物理</div>
+                                                        <p class="price">399元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/lixue2.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">数学建模</div>
+                                                        <p class="price">249元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/lixue3.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">无机与分析化学</div>
+                                                        <p class="price">329元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/lixue4.jfif" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">世界地理</div>
+                                                        <p class="price">599元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/lixue5.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">宇宙简史</div>
+                                                        <p class="price">169元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/lixue6.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">分子生物学</div>
+                                                        <p class="price">229元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="">法学</a>
+                                        <div class="children-list">
+                                            <div class="container">
+                                                <ul>
+                                                    <li class="first-item">
+                                                        <div>
+                                                            <img src="./images/faxue1.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">犯罪现象：原因与对策</div>
+                                                        <p class="price">189元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/faxue2.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">刑法分则疑难案件分析</div>
+                                                        <p class="price">499元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/faxue3.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">财税法</div>
+                                                        <p class="price">1299元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/faxue4.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">刑事诉讼法</div>
+                                                        <p class="price">349元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/faxue5.png" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">商法</div>
+                                                        <p class="price">199元起</p>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <img src="./images/faxue6.jpg" alt="" width="160px" height="110px">
+                                                        </div>
+                                                        <div class="title">债券法</div>
+                                                        <p class="price">79元起</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item1">
+                                        <a href="">服务</a>
+                                        
+                                    </li>
+                                    <li class="nav-item1">
+                                        <a href="">社区</a>
+                                    </li>
+                            </ul>
+                           
+                        </div>
+                        <div class="header-search">
+                            <input type="text" name="" id="" class="search-text" placeholder="考研名师刘晓艳">
+                            <div class="search-button"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+    </div>
+
+    <!-- 轮播图+导航栏 -->
+    <div class="dwo-wrap">
+        <div class="swiper-container" id="swiper1">
+            <video src="./images/My all.mp4" id="courseVideo" controls></video>
+            <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+            <!-- <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="javascript:">
+                        <img src="images/swiper1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:">
+                        <img src="images/swiper2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:">
+                        <img src="images/swiper3.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:">
+                        <img src="images/swiper4.jpg" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:">
+                        <img src="images/swiper5.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+
+
+
+
+
+        </div>
+        <div class="nav-wrapper" >
+            <ul class="nav">
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">IT 互联网</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">外语</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">理学</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">工学</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">设计学类</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">法学 法考</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">职业 考证</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">经济 管理</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">升学 考研</a>
+
+                </li>
+                <li class="nav-items">
+                    <a class="nav-item-link" href="javascript:">兴趣 生活</a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="width:800px; height: 300px;background-color: white; position: relative;" id="container">
+
+    </div>
+    <button id="btn">发送弹幕</button>
+    <input type="text" name="" id="text">
+<div class="mi-media">
+    <div class="mi-dialong">
+        <div class="media-head">
+            <span>
+                x
+            </span>
+        </div>
+    </div>
+</div>
+    
+</body>
+<script src="../static/js/jquery-3.4.1.js"></script>
+<script src="../static/js/danmu.js"></script>
+<script>
+
+    $(".swiper-flashsale-prev").click(function(){
+        $(".swiper2-button-prev").trigger("click");
+    })
+    $(".swiper-flashsale-next").click(function(){
+        $(".swiper2-button-next").trigger("click");
+    })
+
+
+    $(".nav-item-link").hover(function(){
+        $(this).parent().addClass("nav-active")
+        $(".nav-active .children").css("display","block");
+    },function(){
+        $(this).parent().removeClass("nav-active")
+        $(".children").css("display","none");
+
+
+    });
+    $(".children").hover(function(){
+        $(this).css("display","block");
+    },function(){
+        $(this).hide()
+    });
+
+
+    $(".download").hover(function(){
+        $(this).addClass("active")
+        $(".appcode").animate({height:148},10)
+    },function(){
+        $(this).removeClass("active")
+        $(".appcode").animate({height:0},10)
+    })
+
+    $(".topbar-cart").hover(function(){
+        $(".cart-min").css("background","#fff")
+        $(".cart-min span").css("color","#ff6700")
+        // $(".cart-menu").css("color","#424242")
+        $(".cart-menu").animate({height:100},300)
+    },function(){
+        $(".cart-min").css("background","#424242")
+        $(".cart-min span").css("color","#b0b0b0")
+        $(".cart-menu").animate({height:0},300)
+        // $(".cart-menu").css("color","#424242")
+    })
+
+    $(".header-logo").hover(function(){
+        $(".header-logo .logo").animate({left:55},150)
+        $(".header-logo .logo-home").animate({left:0},150)
+    },function(){
+        $(".header-logo .logo").animate({left:0},150)
+        $(".header-logo .logo-home").animate({left:-55},150)
+    })
+
+    //搜索框hover
+    $(".search-text").hover(function(){
+        $(".search-button").css("border-color","#b0b0b0")
+    },function(){
+        $(".search-button").css("border-color","#e0e0e0")
+    })
+    //搜索button hover
+    $(".search-button").hover(function(){
+        $(".search-text").css("border-color","#b0b0b0")
+    },function(){
+        $(".search-text").css("border-color","#e0e0e0")
+    })
+
+    //headbar
+    $(".nav-item").hover(function(){
+        // $(this).removeClass("nav-item")
+        $(".children-list").css("display","none")
+        $(this).addClass("nav-item-active")
+        $(".children-list").css({"box-shadow":"0 3px 4px rgba(0, 0, 0,.18)","border-top":" 1px solid #e0e0e0"})
+        $(".nav-item-active .children-list").css("display","block")
+        // $(".nav-item .children-list").css("height",0)
+        $(" .children-list").stop().animate({height:230},200)
+    },function(){
+        // $(this).addClass("nav-item")
+        // $(".nav-item .children-list").css("display","none")
+        $(this).removeClass("nav-item-active")
+        $(".children-list").stop().animate({height:0},200,function(){
+            // console.log(12)
+            $(".children-list").css({"box-shadow":"none","border-top":"0px"})
+            
+        })
+    })
+
+
+
+       //headbar
+    //    $(".brick-item").hover(function(){
+    //        console
+    //        alert(22)
+    //     $(this).animate({top:"100px"},200)
+    //     },function(){
+    //         $(this).animate({top:"0px"},200)
+    //     })
+    // $(".brick-item1").hover(function(){
+    //     // alert(22)
+    //     $(this).animate({marginTop:"-2px"},200)
+    //     // console.log(dfsaf)
+    // },function(){
+    //     $(this).animate({marginTop:"0px"},200)
+    // })
+
+    // more
+    $(".tab-list li").hover(function(){
+        $(this).addClass("tab-active").siblings().removeClass("tab-active");
+        // console.log($(this).index()) 
+        $(".span10 ul").eq($(this).index()).removeClass("hide").siblings().addClass("hide");
+    })
+
+    $(".home-video-box .container ul li").click(function(){
+        $(".mi-media").css("display","block")
+        // alert(11)
+    })
+    $(".mi-media .mi-dialong .media-head span").click(function(){
+        $(".mi-media").css("display","none")
+        // alert(11)
+    })
+    $(".swiper-button-prev").hover(function(){
+        // alert(123)
+        $(".nav-wrapper").show(500);
+        $(this).hide();
+    })
+    $(".nav-wrapper").hover(function(){
+        // alert(123)
+       
+    },function(){
+         $(".swiper-button-prev").show(500);
+        $(this).hide(200);
+    })
+</script>
+
+
+<script type="text/javascript">
+    $("#btn").click(function () {
+        // alert(111)
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////// 注意：///////////////////////////////////////////
+        // 1，一定要限制用户输入的文字长度，尽量避免用户输入的内容长度超过屏幕的宽度/////////////////////////
+        // 2，如果不需要用户的头像和id，可以在js中去掉 elem 的img标签和用户名，本人因项目需要，所以就保留了 //
+        // 3，实际使用时，最少应该加上 特殊字符替换 和 发送成功后清除input的内容，现在 你就当我懒吧~/////////
+        /////////////////////////////////////////////////////////////////////////////////////////
+        var vla = $("#text").val().replace(/(^\s*)|(\s*$)/g, "");
+        if (vla) {
+            barrageWall.upWall("./images/13.webp", "胡歌", vla);//初始化弹幕墙
+        }
+    })
+
+    $(function () {
+        //////////////////////////////////////////////////////////////////////
+        ////////////////// 注意：请尽量少的使用js去处理css样式！//////////////////
+        ///////////////// 尤其是当用户量大时，页面的性能的尤为重要 ////////////////
+        ///////////////// 所以，请将你需要的各种动效交个css去实现 ////////////////
+        ////////////////////// 注意页面重绘带来的性能影响 //////////////////////
+        ////////////////////////////////////////////////////////////////////
+
+        var option = {
+            container: "#swiper1",//弹幕墙的id
+            barrageLen: 15//弹幕的行数
+        }
+        barrageWall.init(option);//初始化弹幕墙
+
+        //////////////////////////////////////////////////////////////////////
+        /////// 实际调用时必须设置你的 弹幕墙id 和 弹幕的行数 并 初始化弹幕墙，///////
+        // 然后调用 barrageWall.upWall("用户头像url","用户昵称","用户输入的内容")//
+        /////////////////////////////////////////////////////////////////////
+
+        barrageWall.upWall("images/aq.png", "我是说话人", "我说的话");//初始化弹幕墙
+
+        //////////////////////////////////////////////////////////////////////
+        ////////// 以下注释掉的部分为测试弹幕效果的各种定时器，模拟用户输入 //////////
+        //////////////////////////////////////////////////////////////////////
+
+        // var num=0,timer =setInterval(function(){
+        //     num++;
+        //     if(num>50){clearInterval(timer)}
+        //     barrageWall.upWall("images/aq.png","我是说话人"+num,"我说的我说的话我说的话我说的话我说的话我说的话话");
+        // },500);
+
+    })
+</script>
+<script>
+    // 获取url参数 函数名(参数名)
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) { return pair[1]; }
+            }
+            return (false);
+        }
+
+        var courseId = getQueryVariable("courseId");
+        function init(courseId){
+            $.ajax({
+                url:"http://localhost:8080/onlinelearning/stu.do",
+                type:"POST",
+                dataType:"JSON",
+                data:{
+                    courseId:courseId,
+                    action:"initVideo"
+                },
+                success:function(data){
+
+                }
+            })
+        }
+</script>
+</html>

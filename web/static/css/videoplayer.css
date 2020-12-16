@@ -434,6 +434,84 @@ a {
   left: auto;
   width: auto;
 }
+
+
+
+
+.dwo-wrap .nav-wrapper .nav .nav-items .nav-item-link {
+  height: 42px;
+  color: #fff;
+  line-height: 42px;
+  font-size: 14px;
+  padding-left: 30px;
+  display: block;
+  background-image: url(../images/arraw.png);
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: 200px;
+}
+.dwo-wrap .nav-wrapper .nav .nav-items .nav-item-link:hover {
+  background-color: #ff6700;
+}
+.dwo-wrap .nav-wrapper .nav .nav-items .children {
+  position: absolute;
+  top: 0;
+  left: 234px;
+  height: 460px;
+  border: 1px solid #e0e0e0;
+  border-left: 0;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+}
+.dwo-wrap .nav-wrapper .nav .nav-items .children .nav-children-list {
+  float: left;
+  width: 150px;
+  padding: 1px 0;
+  font-size: 14px;
+}
+.dwo-wrap .nav-wrapper .nav .nav-items .children .nav-children-list li {
+  height: 40px;
+  line-height: 40px;
+  padding: 18px 20px;
+  color: #333;
+  font-size: 12px;
+}
+.nav-items .children .nav-children-list li a {
+  color: #333;
+}
+.nav-items .children .nav-children-list li a img {
+  width: 40px;
+  height: 40px;
+  padding-right: 10px;
+  float: left;
+}
+.nav-items .children .nav-children-list li a span {
+  line-height: 40px;
+  font-size: 14px;
+  display: block;
+  width: 158px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nav-items .children .nav-children-list li a:hover {
+  color: #ff6700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .dwo-wrap .swiper-container .swiper-pagination .swiper-pagination-bullet {
   width: 6px;
   height: 6px;
