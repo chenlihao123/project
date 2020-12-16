@@ -137,6 +137,35 @@
 </div>
 </div>
 </body>
+<script type="text/javascript">
+    $(function () {
+        init();
+        $("#fabu").click(function () {
+            let formData=new FormData(document.getElementById("homeworkForm"));
+            $.ajax({
+                url:"http://localhost:8080/onlinelearning/teacher.do",
+                type:"POST",
+                datatype:"text",
+                data:formData,
+                processData:false,
+                contentType:false,
+                success:function (data) {
+                    alert(data)
+                }
+            });
+        })
+
+    });
+
+    function init() {
+        $.getJSON("http://localhost:8080/onlinelearning/teacher.do","action=getTeacherCourse",function (data) {
+            for (let i = 0; i < data.length; i++) {
+                let str=`<option value=${data[i].courseName}>${data[i].courseName}</option>`;
+                $("#courseName").append(str);
+            }
+        })
+    }
+</script>
 <!--<script src="../static/js/jquery.min.js"></script>-->
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script src="../static/layuiadmin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
@@ -254,33 +283,5 @@
     });
 </script>
 
-<script type="text/javascript">
-    $(function () {
-        init();
-        $("#fabu").click(function () {
-            let formData=new FormData(document.getElementById("homeworkForm"));
-            $.ajax({
-                url:"http://localhost:8080/onlinelearning/teacher.do",
-                type:"POST",
-                datatype:"text",
-                data:formData,
-                processData:false,
-                contentType:false,
-                success:function (data) {
-                    alert(data)
-                }
-            });
-        })
 
-    });
-
-    function init() {
-        $.getJSON("http://localhost:8080/onlinelearning/teacher.do","action=getTeacherCourse",function (data) {
-            for (let i = 0; i < data.length; i++) {
-                let str=`<option value=${data[i].courseName}>${data[i].courseName}</option>`;
-                $("#courseName").append(str);
-            }
-        })
-    }
-</script>
 </html>

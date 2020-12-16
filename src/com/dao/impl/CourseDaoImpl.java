@@ -13,8 +13,8 @@ import java.util.List;
 public class CourseDaoImpl extends BaseDao implements CourseDao {
     @Override
     public boolean addCourse(Course course) {
-        String sql="insert into course (courseName,teacherId,department,school,isFree,imgPath,courseInfo,cost,type,teacherType) values (?,?,?,?,?,?,?,?,?,?)";
-        int b = update(sql, course.getCourseName(), course.getTeacherId(), course.getDepartment(), course.getSchool(), course.getIsFree(), course.getImgPath(), course.getCourseInfo(),course.getCost(),course.getType(),course.getTeacherType());
+        String sql="insert into course (courseName,teacherId,department,school,isFree,imgPath,courseInfo,cost,type,teacherType,teacherName) values (?,?,?,?,?,?,?,?,?,?,?)";
+        int b = update(sql, course.getCourseName(), course.getTeacherId(), course.getDepartment(), course.getSchool(), course.getIsFree(), course.getImgPath(), course.getCourseInfo(),course.getCost(),course.getType(),course.getTeacherType(),course.getTeacherName());
         return b>=0?true:false;
     }
 
@@ -28,5 +28,11 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
     public Course queryCourseByTeacherIdAndCourseName(String courseName, int teacherId) {
         String sql="select * from course where teacherId = ? and courseName = ?";
         return queryForOne(Course.class,sql,teacherId,courseName);
+    }
+
+    @Override
+    public Course queryCourseById(int id) {
+        String sql="select * from course where id = ?";
+        return queryForOne(Course.class,sql,id);
     }
 }

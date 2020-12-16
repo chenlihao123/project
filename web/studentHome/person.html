@@ -538,14 +538,14 @@
                         </div>
                         <div class="span16">
                             <div class="mi-uc-box uc-main-box">
-                                <ul class="courseList clearfix">
-                                    <li>
-                                        <div>
-                                            <img src="../static/images/weijifen.jpg" alt="" width="200px" height="140px">
-                                        </div>
-                                        <div class="title">微分方程与级数</div>
-                                        <p class="price">0元起</p>
-                                    </li>
+                                <ul class="courseList clearfix" id="courseUl">
+<!--                                    <li>-->
+<!--                                        <div>-->
+<!--                                            <img src="../static/images/weijifen.jpg" alt="" width="200px" height="140px">-->
+<!--                                        </div>-->
+<!--                                        <div class="title">微分方程与级数</div>-->
+<!--                                        <p class="price">0元起</p>-->
+<!--                                    </li>-->
                                 </ul>
                             </div>
                         </div>
@@ -648,6 +648,29 @@
 </body>
 <!-- <script src="./js/swiper.js"></script> -->
 <script src="../static/js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        init()
+    });
+    function init() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=initCourse",function (data) {
+            for (let i = 0; i < data.length; i++) {
+                let imgPath=data[i].imgPath;
+                imgPath=imgPath.substring(2);
+                imgPath="http://localhost:8080"+imgPath;
+                let str=`<a href="video.html?courseId=${data[i].id}&courseName=${data[i].courseName}"><li>
+                                        <div>
+                                            <img src=${imgPath} alt="" width="200px" height="140px">
+                                        </div>
+                                        <div class="title">${data[i].courseName}</div>
+                                        <p class="price">${data[i].teacherName}</p>
+                                        <p class="price">${data[i].courseInfo}</p>
+                                    </li></a>`;
+                $("#courseUl").append(str);
+            }
+        })
+    }
+</script>
 <script src="../static/js/danmu.js"></script>
 <script>
 

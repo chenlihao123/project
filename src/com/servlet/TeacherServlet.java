@@ -16,13 +16,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author chenlihao
@@ -86,7 +84,7 @@ public class TeacherServlet extends BaseServlet {
                         break;
                 }
             }else {
-                System.out.println(fileItem.getName());
+                System.out.println("filename:"+fileItem.getName());
                 File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
                 fileItem.write(file);
                 String path = file.getAbsolutePath();
@@ -98,6 +96,7 @@ public class TeacherServlet extends BaseServlet {
         course.setDepartment(teacher.getDepartment());
         course.setSchool(teacher.getSchool());
         course.setTeacherId(teacher.getId());
+        course.setTeacherName(teacher.getRealName());
         //添加课程
         boolean b = courseService.uploadCourse(course);
         String uploadMsg="0";//0代表上传失败
@@ -112,7 +111,7 @@ public class TeacherServlet extends BaseServlet {
     //添加视频
     public void uploadVideo(HttpServletRequest request, HttpServletResponse response) throws Exception {
         CourseVideo courseVideo = new CourseVideo();
-        String courseId = request.getParameter("courseId");
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         for (FileItem fileItem : list) {
             if(fileItem.isFormField()){
                 String fieldName = fileItem.getFieldName();
@@ -123,6 +122,10 @@ public class TeacherServlet extends BaseServlet {
                         break;
                     case "videoInfo":
                         courseVideo.setVideoInfo(value);
+                        break;
+                    case "courseName":
+                        Course course = courseService.queryCourseByTeacherIdAndCourseName(value, teacher.getId());
+                        courseVideo.setCourseId(course.getId());
                         break;
                 }
             }else {
@@ -141,38 +144,10 @@ public class TeacherServlet extends BaseServlet {
                 }
             }
         }
+
         boolean b = courseVideoService.addCourseVideo(courseVideo);
         String addVideoMsg=b?"1":"0";//0代表失败,1代表成功
         System.out.println(addVideoMsg);
-    }
-
-
-    //添加附件22
-    public void uploadAttach(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String fieldName="";
-        for (FileItem fileItem : list) {
-
-                 fieldName = fileItem.getFieldName();
-                File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
-                fileItem.write(file);
-                String path = file.getAbsolutePath();
-                System.out.println("path="+path);
-
-
-        }
-
-        Map<String,Object> map=new HashMap<>();
-        Map<String ,String> data=new HashMap<>();
-        data.put("data",fieldName);
-
-        Gson gson = new Gson();
-        map.put("code",0);
-        map.put("msg","");
-        map.put("data",data);
-        String json=gson.toJson(map);
-        System.out.println(json);
-        response.getWriter().write(json);
-
     }
 
     //初始化教师课程界面
@@ -222,12 +197,29 @@ public class TeacherServlet extends BaseServlet {
         response.getWriter().write(homeworkMsg);
     }
 
-    //
+    //回填老师课程信息
     public void getTeacherCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         List<Course> list = courseService.queryCourseByTeacherId(teacher.getId());
         Gson gson = new Gson();
         String json = gson.toJson(list);
+        response.getWriter().write(json);
+    }
+
+    //回填课程视频信息
+    public void getCourseVideo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String courseName = request.getParameter("courseName");//获取课程名称
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        Course course = courseService.queryCourseByTeacherIdAndCourseName(courseName, teacher.getId());
+        List<CourseVideo> courseVideos = courseVideoService.queryVideoByCourseId(course.getId());
+        String videoName = request.getParameter("videoName");
+        Gson gson = new Gson();
+        if(videoName!=null&&!"".equals(videoName)){//如果有传回来videoName且不是空字符串
+            CourseVideo courseVideo = courseVideoService.queryVideoFromList(videoName, courseVideos);//获取课程
+            courseVideos=new ArrayList<>();
+            courseVideos.add(courseVideo);
+        }
+        String json = gson.toJson(courseVideos);
         response.getWriter().write(json);
     }
 }

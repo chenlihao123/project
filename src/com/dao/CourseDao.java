@@ -15,4 +15,6 @@ public interface CourseDao {
     List<Course> queryCourseByTeacherId(int id);
     //根据教师id和课程名查找课程
     Course queryCourseByTeacherIdAndCourseName(String courseName,int teacherId);
+    //根据id查找课程
+    Course queryCourseById(int id);
 }

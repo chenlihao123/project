@@ -17,6 +17,7 @@ public class Course {
     private Double cost;//课程费用
     private String type;//课程类型
     private String teacherType;//教师类型
+    private String teacherName;//教师姓名
 
     public Course() {
     }
@@ -35,7 +36,16 @@ public class Course {
                 ", cost=" + cost +
                 ", type='" + type + '\'' +
                 ", teacherType='" + teacherType + '\'' +
+                ", teacherName='" + teacherName + '\'' +
                 '}';
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public String getTeacherType() {

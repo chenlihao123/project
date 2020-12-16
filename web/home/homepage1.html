@@ -371,7 +371,7 @@
             //     // console.log(data)
             // })
 
-           let formData = new FormData(document.getElementById("form1"));
+           let formData1 = new FormData(document.getElementById("form1"));
            // formData.append("imgPath",document.getElementById("image1").files[0]);
            // formData.append("type",$(".courseType").val());
            // formData.append("courseName",$(".courseName").val());
@@ -383,7 +383,7 @@
                url:"http://localhost:8080/onlinelearning/teacher.do",
                type:"POST",
                datatype:"text",
-               data:formData,
+               data:formData1,
                processData:false,
                contentType:false,
                success:function (data) {

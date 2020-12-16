@@ -492,47 +492,12 @@
         <div class="swiper-container" id="swiper1">
             <video src="./images/My all.mp4" id="courseVideo" controls></video>
             <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
-            <!-- <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href="javascript:">
-                        <img src="images/swiper1.jpg" alt="">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="javascript:">
-                        <img src="images/swiper2.jpg" alt="">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="javascript:">
-                        <img src="images/swiper3.jpg" alt="">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="javascript:">
-                        <img src="images/swiper4.jpg" alt="">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="javascript:">
-                        <img src="images/swiper5.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div> -->
-
-
-
-
 
         </div>
         <div class="nav-wrapper" >
             <ul class="nav">
                 <li class="nav-items">
                     <a class="nav-item-link" href="javascript:">IT 互联网</a>
-
                 </li>
                 <li class="nav-items">
                     <a class="nav-item-link" href="javascript:">外语</a>
@@ -776,6 +741,9 @@
     })
 </script>
 <script>
+    $(function () {
+        init(courseId);
+    });
     // 获取url参数 函数名(参数名)
         function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
@@ -787,7 +755,7 @@
             return (false);
         }
 
-        var courseId = getQueryVariable("courseId");
+        let courseId = getQueryVariable("courseId");
         function init(courseId){
             $.ajax({
                 url:"http://localhost:8080/onlinelearning/stu.do",
@@ -798,7 +766,13 @@
                     action:"initVideo"
                 },
                 success:function(data){
-
+                    console.log(data);
+                    let videoPath=data[0].videoPath;
+                    videoPath=videoPath.substring(2);
+                    videoPath="http://localhost:8080"+videoPath;
+                    // let str='<video src="" id="courseVideo" controls></video>';
+                    $("video").attr("src",videoPath);
+                    // $("#swiper1").append(str);
                 }
             })
         }
