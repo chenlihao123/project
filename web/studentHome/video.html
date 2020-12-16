@@ -530,47 +530,47 @@
 
     </div>
     <div class="nav-wrapper" >
-        <ul class="nav">
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">IT 互联网</a>
+        <ul class="nav" id="videoUl">
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">IT 互联网</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">外语</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">外语</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">理学</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">理学</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">工学</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">工学</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">设计学类</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">设计学类</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">法学 法考</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">法学 法考</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">职业 考证</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">职业 考证</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">经济 管理</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">经济 管理</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">升学 考研</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">升学 考研</a>-->
 
-            </li>
-            <li class="nav-items">
-                <a class="nav-item-link" href="javascript:">兴趣 生活</a>
+<!--            </li>-->
+<!--            <li class="nav-items">-->
+<!--                <a class="nav-item-link" href="javascript:">兴趣 生活</a>-->
 
-            </li>
+<!--            </li>-->
         </ul>
     </div>
 </div>
@@ -792,6 +792,10 @@
     }
 
     let courseId = getQueryVariable("courseId");
+    function initVideoName(videoPath) {
+        alert(1);
+        $("video").attr("src",videoPath);
+    }
     function init(courseId){
         $.ajax({
             url:"http://localhost:8080/onlinelearning/stu.do",
@@ -806,9 +810,24 @@
                 let videoPath=data[0].videoPath;
                 videoPath=videoPath.substring(2);
                 videoPath="http://localhost:8080"+videoPath;
-                // let str='<video src="" id="courseVideo" controls></video>';
-                $("video").attr("src",videoPath);
-                // $("#swiper1").append(str);
+                $("video").attr("src",videoPath);//添加视频
+                //添加导航栏内容
+                for (let i = 0; i < data.length; i++) {
+                    let videoName=`            <li class="nav-items" onclick="initVideoName(${videoPath})">
+                <a class="nav-item-link" href="javascript:">${data[i].videoName}</a>
+
+            </li>`;
+                   $("#videoUl").append(videoName) ;
+                }
+                // for (let i = 0; i < data.length; i++) {
+                //     $("#videoUl li:nth-child(i+1)").on("click",function () {
+                //         alert(1)
+                //         let videoPath=data[i].videoPath;
+                //         videoPath=videoPath.substring(2);
+                //         videoPath="http://localhost:8080"+videoPath;
+                //         initVideoName(videoPath)
+                //     })
+                // }
             }
         })
     }
