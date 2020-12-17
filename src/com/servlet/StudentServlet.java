@@ -1,12 +1,11 @@
 package com.servlet;
 
 import com.entity.Course;
+import com.entity.CourseGrade;
 import com.entity.CourseVideo;
 import com.entity.Student;
 import com.google.gson.Gson;
-import com.service.impl.CourseVideoServiceImpl;
-import com.service.impl.StuCourseServiceImpl;
-import com.service.impl.StudentServiceImpl;
+import com.service.impl.*;
 import org.apache.commons.fileupload.FileItem;
 
 import javax.servlet.ServletException;
@@ -28,6 +27,8 @@ public class StudentServlet extends BaseServlet {
     private StudentServiceImpl studentService = new StudentServiceImpl();
     private CourseVideoServiceImpl courseVideoService=new CourseVideoServiceImpl();
     private StuCourseServiceImpl stuCourseService=new StuCourseServiceImpl();
+    private CourseServiceImpl courseService=new CourseServiceImpl();
+    private CourseGradeServiceImpl courseGradeService=new CourseGradeServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request, response);
@@ -115,7 +116,7 @@ public class StudentServlet extends BaseServlet {
         response.sendRedirect("/onlinelearning/index.html");//重定向到home首页
     }
 
-    //回填课程
+    //回填学生所选课程
     public void initCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Student student = (Student) request.getSession().getAttribute("student");
         List<Course> courseList = stuCourseService.queryCourseByStudentId(student.getId());
@@ -131,6 +132,36 @@ public class StudentServlet extends BaseServlet {
         List<CourseVideo> courseVideos = courseVideoService.queryVideoByCourseIdAndStudentId(courseId, student.getId());
         Gson gson = new Gson();
         String json = gson.toJson(courseVideos);
+        response.getWriter().write(json);
+    }
+
+    //回填所有课程
+    public void initAllCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<Course> courses = courseService.queryAllCourse();
+        Gson gson = new Gson();
+        String json = gson.toJson(courses);
+        response.getWriter().write(json);
+    }
+
+    //回填所选课程信息
+    public void getChoiceCourseInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
+        Course course = courseService.queryCourseById(courseId);
+        List<CourseGrade> courseGrades = courseGradeService.queryCourseGradeByCourseId(courseId);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("courseMsg",course);
+        map.put("courseGradeMsg",courseGrades);
+        Gson gson = new Gson();
+        String json = gson.toJson(map);
+        response.getWriter().write(json);
+    }
+
+    //回填所选课程的评价信息
+    public void getChoseCourseGrade(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
+        List<CourseGrade> courseGrades = courseGradeService.queryCourseGradeByCourseId(courseId);
+        Gson gson = new Gson();
+        String json = gson.toJson(courseGrades);
         response.getWriter().write(json);
     }
 

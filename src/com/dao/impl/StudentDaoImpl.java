@@ -18,8 +18,8 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 
     @Override
     public boolean addStudent(Student student) {
-        String sql="insert into student (`username`,`password`,`realName`,`gender`,`phone`,`email`,`school`,`department`,`classId`) values (?,?,?,?,?,?,?,?,?)";
-        int i = update(sql, student.getUsername(), student.getPassword(), student.getRealName(), student.getGender(), student.getPhone(), student.getEmail(), student.getSchool(), student.getDepartment(), student.getClassId());
+        String sql="insert into student (`username`,`password`,`realName`,`gender`,`phone`,`email`,`school`,`department`,`classId`,imgPath) values (?,?,?,?,?,?,?,?,?,?)";
+        int i = update(sql, student.getUsername(), student.getPassword(), student.getRealName(), student.getGender(), student.getPhone(), student.getEmail(), student.getSchool(), student.getDepartment(), student.getClassId(),student.getImgPath());
         if(i>=0){
             return true;
         }

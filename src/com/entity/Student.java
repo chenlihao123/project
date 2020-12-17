@@ -15,11 +15,13 @@ public class Student {
     private String school;
     private String department;//系别
     private Integer classId;//所在班级
+    private String imgPath;//学生头像
 
     public Student() {
     }
 
-    public Student(String username, String password, String realName, String gender, String phone, String email, String school, String department, Integer classId) {
+    public Student(Integer id, String username, String password, String realName, String gender, String phone, String email, String school, String department, Integer classId, String imgPath) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.realName = realName;
@@ -29,6 +31,7 @@ public class Student {
         this.school = school;
         this.department = department;
         this.classId = classId;
+        this.imgPath = imgPath;
     }
 
     public Student(String username, String password, String phone) {
@@ -51,6 +54,14 @@ public class Student {
                 ", department='" + department + '\'' +
                 ", classId='" + classId + '\'' +
                 '}';
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public Integer getId() {

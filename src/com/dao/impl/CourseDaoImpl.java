@@ -35,4 +35,10 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
         String sql="select * from course where id = ?";
         return queryForOne(Course.class,sql,id);
     }
+
+    @Override
+    public List<Course> queryAllCourse() {
+        String sql="select * from course";
+        return queryForList(Course.class,sql);
+    }
 }

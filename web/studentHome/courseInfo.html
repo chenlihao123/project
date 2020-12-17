@@ -695,42 +695,7 @@
             </div>
         </div>
     </div>
-    <div class="xm-product-box">
-        <div class="nav-bar">
-            <div class="container">
-                <h2>Java高级教程</h2>
-            </div>
-        </div>
-    </div>
-    <div class="container clearfix">
-        <div class="courseImg">
-            <img src="../static/images/weijifen.jpg" width="450px">
-        </div>
-        <div class="courseInfo">
-            <div class="course-title">
-                <h2>Java高级教程</h2>
-            </div>
-            <div class="course-from">
-                <p style="color: #333; font-size: 18px">福建师范大学&nbsp;&nbsp;&nbsp;&nbsp;软件工程院</p>
-                <p style="color: #333; font-size: 18px">副教授</p>
-                <p style="color: #333; font-size: 18px">张三</p>
-            </div>
-            <div data-v-70283663="" class="info-box">
-                <div class="product-info">
-                    <div>
-                        <p style="font-size: 18px;color: #666; font-weight: lighter">
-                            简介:福建师范大学爱上的看法哈利的时刻解放拉萨的会计法雷克萨到解封了斯柯达积分拉萨的会计法拉三等奖了束带结发来得快离开家三点了开发见识到了发</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="join">
-                <p>立即参加</p>
-            </div>
-
-        </div>
-
-    </div>
+    <div class="xm-product-box" id="courseInfoDiv"></div>
     <div data-v-eb8da102="" data-v-70283663="" class="product-detail page-main"><!---->
         <div data-v-eb8da102="" class="detail-box">
             <div data-v-eb8da102="" class="detail-item">
@@ -794,28 +759,28 @@
 
                                     <!--Regular if861-->
                                 </div>
-                                <ul style="width: 100%" class="clearfix comment-list">
-                                    <li class="clearfix">
-                                        <div class=stu-headPic>
-                                            <img src="../static/images/bg.jpg">
-                                        </div>
-                                        <div style="float: left" class="comment-right">
-                                            <div class="comment-name">
-                                                <p class=>张三</p>
-                                            </div>
-                                            <div class="comment-content">
-                                                <p class=>好难啊好难啊啊啊啊啊啊啊啊啊啊啊啊</p>
-                                            </div>
-                                            <div class="comment-time clearfix">
-                                                <p>发表于2020年12月5日</p>
-                                                <div>
-                                                    <img src="../static/images/dianzan-gray.png">
-                                                    <span class="good-count">10</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <ul style="width: 100%" class="clearfix comment-list" id="courseGradeUl">
+<!--                                    <li class="clearfix">-->
+<!--                                        <div class=stu-headPic>-->
+<!--                                            <img src="../static/images/bg.jpg">-->
+<!--                                        </div>-->
+<!--                                        <div style="float: left" class="comment-right">-->
+<!--                                            <div class="comment-name">-->
+<!--                                                <p class=>张三</p>-->
+<!--                                            </div>-->
+<!--                                            <div class="comment-content">-->
+<!--                                                <p class=>好难啊好难啊啊啊啊啊啊啊啊啊啊啊啊</p>-->
+<!--                                            </div>-->
+<!--                                            <div class="comment-time clearfix">-->
+<!--                                                <p>发表于2020年12月5日</p>-->
+<!--                                                <div>-->
+<!--                                                    <img src="../static/images/dianzan-gray.png">-->
+<!--                                                    <span class="good-count">10</span>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
-                                    </li>
+<!--                                    </li>-->
                                 </ul>
                             </div>
                         </div>
@@ -842,26 +807,98 @@
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
     $(function () {
-        init()
+        initCourse();
+        initCourseGrade()
     });
+    function getQueryVariable(variable) {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+    let courseId=getQueryVariable("courseId");
+    function initCourse() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getChoiceCourseInfo&courseId="+courseId,function (result) {
+            let courseData=result.courseMsg;
+            let imgPath=courseData.imgPath;
+            imgPath=imgPath.substring(2);
+            imgPath="http://localhost:8080"+imgPath;
+            let courseMsg=`
+        <div class="nav-bar">
+            <div class="container">
+                <h2>${courseData.courseName}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container clearfix">
+        <div class="courseImg">
+            <img src=${imgPath} width="450px">
+        </div>
+        <div class="courseInfo">
+            <div class="course-title">
+                <h2>${courseData.courseName}</h2>
+            </div>
+            <div class="course-from">
+                <p style="color: #333; font-size: 18px">${courseData.school}&nbsp;&nbsp;&nbsp;&nbsp;${courseData.department}</p>
+                <p style="color: #333; font-size: 18px">${courseData.teacherType}</p>
+                <p style="color: #333; font-size: 18px">${courseData.teacherName}</p>
+            </div>
+            <div data-v-70283663="" class="info-box">
+                <div class="product-info">
+                    <div>
+                        <p style="font-size: 18px;color: #666; font-weight: lighter">
+                            简介:${courseData.courseInfo}</p>
 
-    function init() {
-        $.getJSON("http://localhost:8080/onlinelearning/stu.do", "action=initCourse", function (data) {
-            for (let i = 0; i < data.length; i++) {
-                let imgPath = data[i].imgPath;
-                imgPath = imgPath.substring(2);
-                imgPath = "http://localhost:8080" + imgPath;
-                let str = `<a href="video.html?courseId=${data[i].id}&courseName=${data[i].courseName}"><li>
-                                        <div>
-                                            <img src=${imgPath} alt="" width="200px" height="140px">
+                    </div>
+                </div>
+            </div>
+            <div class="join">
+                <p>立即参加</p>
+            </div>
+
+        </div>
+
+    `;
+            $("#courseInfoDiv").append(courseMsg);
+        })
+    }
+    function initCourseGrade() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getChoseCourseGrade&courseId="+courseId,function (result) {
+            for (let i = 0; i < result.length; i++) {
+                    let stuImg=result[i].studentImg;
+                    console.log(stuImg);
+                    stuImg=stuImg.substring(2);
+                    stuImg="http://localhost:8080"+stuImg;
+                    console.log(stuImg)
+                    let courseGradeMsg=`                                    <li class="clearfix">
+                                        <div class=stu-headPic>
+                                            <img src=${stuImg}>
                                         </div>
-                                        <div class="title">${data[i].courseName}</div>
-                                        <p class="price">${data[i].teacherName}</p>
-                                        <p class="price">${data[i].courseInfo}</p>
-                                    </li></a>`;
-                $("#courseUl").append(str);
+                                        <div style="float: left" class="comment-right">
+                                            <div class="comment-name">
+                                                <p class=>${result[i].studentName}</p>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p class=>${result[i].content}</p>
+                                            </div>
+                                            <div class="comment-time clearfix">
+                                                <p>${result[i].createTime}</p>
+                                                <div>
+                                                    <img src="../static/images/dianzan-gray.png">
+                                                    <span class="good-count">10</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </li>`;
+                    $("#courseGradeUl").append(courseGradeMsg);
+
             }
         })
+
     }
 </script>
 <script src="../static/js/danmu.js"></script>

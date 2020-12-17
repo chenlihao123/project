@@ -26,4 +26,14 @@ public class CourseServiceImpl implements CourseService {
     public Course queryCourseByTeacherIdAndCourseName(String courseName, int id) {
         return courseDao.queryCourseByTeacherIdAndCourseName(courseName,id);
     }
+
+    @Override
+    public List<Course> queryAllCourse() {
+        return courseDao.queryAllCourse();
+    }
+
+    @Override
+    public Course queryCourseById(int id) {
+        return courseDao.queryCourseById(id);
+    }
 }
