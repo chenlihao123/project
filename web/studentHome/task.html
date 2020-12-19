@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!--<link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css"/>-->
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
     <link rel="stylesheet" href="../static/css/videoplayer.css">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
+    <!-- <link href="//s02.mifile.cn/assets/css/home.3a641ff4.css" rel="stylesheet"> -->
+    <!-- <link href="//s02.mifile.cn/assets/css/home.3a641ff4.css" rel="preload" as="style"> -->
+    <!-- <link rel="stylesheet" href="./css/home.1dccc6f7.css"> -->
+    <!-- <link rel="stylesheet" href="./css/sojson.com_.css"> -->
     <link rel="stylesheet" href="../static/css/test.css">
     <link rel="stylesheet" href="../static/js/danmu.css">
-
-    <!--<script src="../static/js/jquery-3.4.1.js"></script>-->
-    <!--<script src="../static/js/bootstrap.min.js"></script>-->
+    <!--<link rel="stylesheet" href="../static/css/person.css">-->
     <style>
 
         .uc-main-box {
@@ -139,9 +141,7 @@
         .span4 {
             width: 234px;
         }
-        .span40 {
-            width: 234px;
-        }
+
         .user-address-menu li a {
             color: #757575;
         }
@@ -154,7 +154,7 @@
             width: 978px;
         }
 
-        .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16, .span17, .span18, .span19, .span20, .span40 {
+        .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16, .span17, .span18, .span19, .span20 {
             float: left;
             margin-left: 14px;
             min-height: 1px;
@@ -230,114 +230,6 @@
             text-align: center;
             color: #b0b0b0;
         }
-
-
-
-
-        /*修改学生信息css*/
-        .main_l {
-            float: left;
-            width: 300px;
-        }
-        .naInfoImgBox {
-            padding: 80px 20px 0;
-        }
-        .t_c {
-            text-align: center;
-        }
-        .uinfo {
-            font-size: 14px;
-        }
-        .na-img-area {
-            width: 80px;
-            height: 80px;
-            border: 2px solid #e3e3e3;
-            border-radius: 50%;
-            padding: 4px;
-            background: #fff;
-            position: relative;
-            z-index: 4;
-            cursor: pointer;
-        }
-        .na-img-bg-area {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        .color4a9 {
-            color: #4a90e3;
-        }
-        .na-img-area img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
-        img {
-            vertical-align: middle;
-        }
-        .naImgLink {
-            padding-top: 15px;
-        }
-        .marauto {
-            margin: 0 auto;
-        }
-        .naImgLink {
-            font-size: 14px;
-        }
-        .main-r {
-            width: 490px;
-            float: left;
-
-        }
-        .baseInfo{
-            margin-top: 15px;
-        }
-        .base-title{
-            height: 40px;
-        }
-        .base-title p {
-            line-height: 40px;
-            padding-left: 20px;
-            color: #333;
-            font-size: 16px;
-            font-weight: 700;
-        }
-        .base-username {
-            color: #666;
-            font-size: 14px;
-            height: 40px;
-            padding-left: 20px;
-        }
-        .base-username span{
-            line-height: 40px;
-        }
-        .iconpencil{
-            background-image: url("../static/images/pencil.png");
-            width: 14px;
-            height: 14px;
-            margin-right: 2px;
-            margin-top: -5px;
-            *margin-top: 0;
-            *cursor: pointer;
-            overflow: hidden;
-            display: inline-block;
-            vertical-align:middle;
-        }
-        .editor{
-            cursor: pointer;
-        }
-        .editor span{
-            line-height: 40px;
-            font-size: 14px;
-            color: #4a90e3;
-        }
-        .editor i{
-            position: relative;
-            /*left: 3px;*/
-        }
-
 
     </style>
 </head>
@@ -798,95 +690,43 @@
     <div class="mi-user-portal page-main">
         <div class="container ">
             <div class="row">
-                <div class="span40">
+                <div class="span4">
                     <div id="J_userMenu" class="user-address-menu">
                         <a href="person.html"><div class="menu-box">
                             <h3 class="title">我的课程</h3>
                         </div></a>
-                        <a href="task.html"><div class="menu-box">
-                            <h3 class="title">课程任务</h3>
+                        <a href="task.html"><div class="menu-box" style="background-color: black; opacity: 0.3">
+                            <h3 class="title" style="color: #FFFFFF">课程任务</h3>
                         </div></a>
                         <a href="notice.html"><div class="menu-box">
                             <h3 class="title">消息通知</h3>
                         </div></a>
-                        <a href="modify.html"><div class="menu-box" style="background-color: black; opacity: 0.3">
-                            <h3 class="title" style="color: #FFFFFF">个人信息</h3>
+                        <a href="modify.html"><div class="menu-box">
+                            <h3 class="title">个人信息</h3>
                         </div></a>
                     </div>
                 </div>
                 <div class="span16">
                     <div class="mi-uc-box uc-main-box">
-                        <div class="main_l">
-                            <div class="naInfoImgBox t_c">
-                                <div class="na-img-area marauto">
-                                    <!--na-img-bg-area不能插入任何子元素-->
-                                    <div class="na-img-bg-area"><img src="https://cdn.cnbj1.fds.api.mi-img.com/user-avatar/p01KopZQ9o19/AGPJwGz4WR5G2A.jpg"></div>
-                                    <em class="na-edit"></em>
-                                </div>
-                                <div class="naImgLink">
-
-                                    <a class="color4a9" href="" title="修改头像">修改头像</a>
-
-                                </div>
+                        <div class="box-hd"><h1 class="notice">课程任务</h1>
+                            <div class="more clearfix">
+                                <ul class="filter-list J_addrType">
+                                    <li class="first active"><a href="?category=all" stat_exposure="true">课程任务</a><span
+                                            class="m-num"></span></li>
+                                    <li class=""><a href="?category=express" stat_exposure="true">系统消息</a></li>
+                                    <li class=""><a href="?category=activity" stat_exposure="true">课程消息</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="main-r">
-                            <div class="baseInfo">
-                                <div class="base-title">
-                                    <p style="float: left;" >基础资料</p>
-                                    <div style="float: right;" class="editor">
-                                        <i class="iconpencil"></i>
-                                        <span>编辑</span>
-                                    </div>
-                                </div>
-                                <div class="base-username">
-                                    <span>姓名： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>性别： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>学校： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                            </div>
-                            <div class="baseInfo">
-                                <div class="base-title">
-                                    <p style="float: left;">账号资料</p>
-                                    <div style="float: right;" class="editor">
-                                        <i class="iconpencil"></i>
-                                        <span>编辑</span>
-                                    </div>
-                                </div>
-                                <div class="base-username">
-                                    <span>手机： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>邮箱： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>用户名： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>密码： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                            </div>
-                        </div>
+                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
+                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
+                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-
 
 <div class="mi-media">
     <div class="mi-dialong">
@@ -1062,7 +902,7 @@
     // more
     $(".tab-list li").hover(function () {
         $(this).addClass("tab-active").siblings().removeClass("tab-active");
-        // console.log($(this).index()) 
+        // console.log($(this).index())
         $(".span10 ul").eq($(this).index()).removeClass("hide").siblings().addClass("hide");
     })
 

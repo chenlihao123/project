@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../static/css/test.css">
     <link rel="stylesheet" href="../static/js/danmu.css">
     <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/layuiadmin/layui/css/layui.css">
+    <script src="../static/layuiadmin/layui/layui.js"></script>
     <!--<link rel="stylesheet" href="../static/css/person.css">-->
     <style>
         .xm-product-box {
@@ -242,6 +244,10 @@
             position: relative;
             bottom: 7px;
             left: 10px;
+        }
+        #test4 {
+            position: relative;
+            bottom: 8px;
         }
     </style>
 </head>
@@ -727,28 +733,29 @@
                                                 <div class="star-point">
                                                     <!--Regular list-->
                                                     <!--Regular if856-->
-                                                    <i class="star ux-icon-custom-rating-favorite" data-index="0" style="font-size: 20px; width: 20px;">
-                                                    </i>
+                                                    <!--<i class="star ux-icon-custom-rating-favorite" data-index="0" style="font-size: 20px; width: 20px;">-->
+                                                    <!--</i>-->
 
 
-                                                    <!--Regular if857-->
-                                                    <i class="star ux-icon-custom-rating-favorite" data-index="1" style="font-size: 20px; width: 20px;">
-                                                    </i>
+                                                    <!--&lt;!&ndash;Regular if857&ndash;&gt;-->
+                                                    <!--<i class="star ux-icon-custom-rating-favorite" data-index="1" style="font-size: 20px; width: 20px;">-->
+                                                    <!--</i>-->
 
 
-                                                    <!--Regular if858-->
-                                                    <i class="star ux-icon-custom-rating-favorite" data-index="2" style="font-size: 20px; width: 20px;">
-                                                    </i>
+                                                    <!--&lt;!&ndash;Regular if858&ndash;&gt;-->
+                                                    <!--<i class="star ux-icon-custom-rating-favorite" data-index="2" style="font-size: 20px; width: 20px;">-->
+                                                    <!--</i>-->
 
 
-                                                    <!--Regular if859-->
-                                                    <i class="star ux-icon-custom-rating-favorite" data-index="3" style="font-size: 20px; width: 20px;">
-                                                    </i>
+                                                    <!--&lt;!&ndash;Regular if859&ndash;&gt;-->
+                                                    <!--<i class="star ux-icon-custom-rating-favorite" data-index="3" style="font-size: 20px; width: 20px;">-->
+                                                    <!--</i>-->
 
 
-                                                    <!--Regular if860-->
-                                                    <i class="star ux-icon-custom-rating-favorite" data-index="4" style="font-size: 20px; width: 11.4286px;">
-                                                    </i>
+                                                    <!--&lt;!&ndash;Regular if860&ndash;&gt;-->
+                                                    <!--<i class="star ux-icon-custom-rating-favorite" data-index="4" style="font-size: 20px; width: 11.4286px;">-->
+                                                    <!--</i>-->
+                                                    <div id="test4"></div>
 
 
                                                 </div>
@@ -790,7 +797,7 @@
         </div>
     </div>
 </div>
-
+<button id="btn">sadfsdfsfdsdf</button>
 
 <div class="mi-media">
     <div class="mi-dialong">
@@ -1006,6 +1013,62 @@
     })
 
 </script>
+<script>
+    // var value = 3;
+    // layui.use(['rate'], function(){
+    //     var rate = layui.rate;
+    //
+    //
+    //     rate.render({
+    //         elem: '#test4'
+    //         ,value: value
+    //         ,half: true
+    //         ,readonly: true
+    //     })
+    // });
+    $("#btn").click(function () {
+        // let value = 3;
+        // layui.use(['rate'], function(){
+        //     var rate = layui.rate;
+        //
+        //
+        //     rate.render({
+        //         elem: '#test4'
+        //         ,value: value
+        //         ,half: true
+        //         ,readonly: true
+        //     })
+        // });
+        $.ajax({
+            url: "sdf",
+            data:{das: "sdf"},
+            type: "post",
+            success:function(){
 
+            },
+            error:function () {
+                for (let i = 0; i < 5; i++) {
+                    $("#btn").append(`<div id = "${"id"+i}"></div>`);
+                    layui.use(['rate'], function(){
+                        var rate = layui.rate;
+
+
+                        rate.render({
+                            elem: `${"#id"+i}`
+                            ,value: 4
+                            ,half: true
+                            ,readonly: true
+                        })
+                    });
+                }
+
+
+
+            }
+        })
+    });
+
+
+</script>
 
 </html>

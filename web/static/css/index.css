@@ -192,14 +192,14 @@ a {
   width: 55px;
   height: 55px;
   overflow: hidden;
-  background: url(../images/mi-logo.png) no-repeat 50% 50%;
-  background-color: #ff6700;
+  /*background: url(../images/header.jpg) no-repeat 50% 50%;*/
+  /*background-color: #ff6700;*/
 }
 .header .site-header .container .header-logo .logo-home {
   display: block;
   width: 55px;
   height: 55px;
-  background-color: #ff6700;
+  background-color: #333333;
   background: url(../images/mi-home.png) no-repeat 50% 50%;
   position: absolute;
   top: 0;
