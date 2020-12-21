@@ -13,6 +13,7 @@
     <!-- <link rel="stylesheet" href="./css/sojson.com_.css"> -->
     <link rel="stylesheet" href="../static/css/test.css">
     <link rel="stylesheet" href="../static/js/danmu.css">
+    <link rel="stylesheet" href="../static/layuiadmin/layui/css/layui.css">
     <!--<link rel="stylesheet" href="../static/css/person.css">-->
     <style>
 
@@ -227,9 +228,40 @@
         .empty {
             margin: 40px 0;
             font-size: 18px;
-            text-align: center;
+            /*text-align: center;*/
             color: #b0b0b0;
         }
+        .all-task ul {
+            width: 100%;
+
+        }
+        .all-task ul li {
+            position: relative;
+            width: 100%;
+            background-color: #F8F8F8;
+            height: 100px;
+            padding: 10px 10px;
+            color: #0C0015;
+        }
+        .course-name {
+            margin-bottom: 10px;
+            /*font-size: 16px;*/
+            color: #333;
+        }
+        .task-name{
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #00C758;
+        }
+        .endTime{
+            color: #999;
+            font-size: 14px;
+        }
+        .task-file{
+            font-size: 14px;
+            color: #333;
+        }
+
 
     </style>
 </head>
@@ -718,7 +750,20 @@
                                 </ul>
                             </div>
                         </div>
-                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
+                        <div data-v-61b083d8="" class="empty all-task" type="all">
+
+                            <ul>
+                                <li>
+                                    <p class="course-name">课程名称</p>
+                                    <div style="margin-bottom: 10px"><span class="task-name">作业名称</span><span class="endTime"> &nbsp;截止时间:2020年12月20日</span></div>
+
+                                    <p class="task-file">课程附件:</p>
+                                    <button  class="layui-btn" style="background-color: #00C758;position: absolute;right: 30px;bottom: 40px">提交作业</button>
+                                </li>
+                            </ul>
+
+
+                        </div>
                         <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
                         <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
                     </div>
