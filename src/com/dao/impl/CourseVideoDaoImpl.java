@@ -20,7 +20,7 @@ public class CourseVideoDaoImpl extends BaseDao implements CourseVideoDao {
 
     @Override
     public List<CourseVideo> queryVideoByCourseId(int id) {
-        String sql="select * from coursevideo where courseId = ?";
+        String sql="select * from coursevideo where courseId = ? and ISNULL(studentId)";
         return queryForList(CourseVideo.class,sql,id);
     }
 
@@ -28,6 +28,12 @@ public class CourseVideoDaoImpl extends BaseDao implements CourseVideoDao {
     public List<CourseVideo> queryVideoByCourseIdAndStudentId(int courseId, int studentId) {
         String sql="select * from coursevideo where courseId=? and studentId=?";
         return queryForList(CourseVideo.class,sql,courseId,studentId);
+    }
+
+    @Override
+    public boolean updateStudentVideoState(int id) {
+        String sql="update coursevideo set isFinish = 1 where id =?";
+        return update(sql,id)>=0?true:false;
     }
 
 

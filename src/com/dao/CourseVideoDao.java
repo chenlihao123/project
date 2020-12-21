@@ -15,4 +15,6 @@ public interface CourseVideoDao {
     List<CourseVideo> queryVideoByCourseId(int id);
     //根据课程id和学生id查找视频
     List<CourseVideo> queryVideoByCourseIdAndStudentId(int courseId,int studentId);
+    //根据视频id，更新学生完成情况
+    boolean updateStudentVideoState(int id);
 }

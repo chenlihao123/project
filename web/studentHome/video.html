@@ -491,7 +491,7 @@
 <!-- 轮播图+导航栏 -->
 <div class="dwo-wrap">
     <div>
-        <P class="courseName">课程名字</P>
+        <P class="courseName" id="courseNameP">课程名字</P>
     </div>
     <div class="swiper-container" id="swiper1">
         <video src="./images/My all.mp4" id="courseVideo" controls></video>
@@ -782,24 +782,31 @@
 <script>
     $(function () {
         init(courseId);
+        $("#courseNameP").text(getQueryVariable("courseName"));
     });
     // 获取url参数 函数名(参数名)
     function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=");
             if (pair[0] == variable) { return pair[1]; }
         }
         return (false);
     }
-
     let courseId = getQueryVariable("courseId");
-    function initVideoName(videoPath) {
-        console.log(videoPath);
-        $("video").attr("src",videoPath);
+    function initVideoName(a) {
+
+        // console.log($(a).data("id"));
+        // console.log($(a).data("path"));
+
+        $("video").attr("src",$(a).data("path"));
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=updateVideoFinish&videoId="+$(a).data("id"),function (data) {
+            console.log(data);
+        })
     }
     let videoPath;
+    let videoId;
     function init(courseId){
         $.ajax({
             url:"http://localhost:8080/onlinelearning/stu.do",
@@ -817,11 +824,16 @@
                 $("video").attr("src",videoPath);//添加视频
                 //添加导航栏内容
                 for (let i = 0; i < data.length; i++) {
-                    let videoName=`            <li class="nav-items" onclick="initVideoName(videoPath)">
+                    videoPath=data[0].videoPath;
+                    videoPath=videoPath.substring(2);
+                    videoPath="http://localhost:8080"+videoPath;
+                    videoId=data[i].id;
+                    console.log(videoId);
+                    let videoName=`            <li class="nav-items" data-id="${videoId}" data-path="${videoPath}" onclick="initVideoName(this)">
                 <a class="nav-item-link" href="javascript:">${data[i].videoName}</a>
 
             </li>`;
-                   $("#videoUl").append(videoName) ;
+                   $("#videoUl").append(videoName);
                 }
                 // for (let i = 0; i < data.length; i++) {
                 //     $("#videoUl li:nth-child(i+1)").on("click",function () {

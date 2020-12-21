@@ -18,4 +18,17 @@ public class StuCourseDaoImpl extends BaseDao implements StuCourseDao {
         String sql ="select * from stucourse where studentId =?";
         return queryForList(StuCourse.class,sql,id);
     }
+
+    @Override
+    public boolean addCourse(StuCourse stuCourse) {
+        String sql="insert into stucourse (studentId,courseId,totalScore,homeworkScore,videoScore,videoProgress,isPass) values (?,?,?,?,?,?,?)";
+        int i = update(sql, stuCourse.getStudentId(),stuCourse.getCourseId(), stuCourse.getTotalScore(), stuCourse.getHomeworkScore(), stuCourse.getVideoScore(), stuCourse.getVideoProgress(), stuCourse.getIsPass());
+        return i>=0?true:false;
+    }
+
+    @Override
+    public List<StuCourse> queryStuCourseByCourseId(int id) {
+        String sql ="select * from stucourse where courseId =?";
+        return queryForList(StuCourse.class,sql,id);
+    }
 }

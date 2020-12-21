@@ -8,4 +8,5 @@ import com.entity.Homework;
  */
 public interface HomeworkDao {
     boolean addHomework(Homework homework);
+    Homework queryHomeworkByCourseIdAndTitle(int id,String title);
 }

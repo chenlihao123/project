@@ -17,4 +17,6 @@ public interface CourseVideoService {
     CourseVideo queryVideoFromList(String videoName,List<CourseVideo> list);
     //根据课程id和学生id查找视频
     List<CourseVideo> queryVideoByCourseIdAndStudentId(int courseId,int studentId);
+    //根据视频id，更新学生完成情况
+    boolean updateStudentVideoState(int id);
 }

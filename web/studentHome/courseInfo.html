@@ -813,10 +813,22 @@
 <!-- <script src="./js/swiper.js"></script> -->
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+    let courseId=getQueryVariable("courseId");
     $(function () {
         initCourse();
-        initCourseGrade()
+        initCourseGrade();
     });
+    function joinCourse(courseId) {
+        alert(getQueryVariable("courseId"));
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=addCourse&courseId="+getQueryVariable("courseId"),function (data) {
+            console.log(data)
+            if(data=="1"){
+                window.location.href="person.html"
+            }else {
+                console.log("添加失败")
+            }
+        })
+    }
     function getQueryVariable(variable) {
         let query = window.location.search.substring(1);
         let vars = query.split("&");
@@ -826,7 +838,6 @@
         }
         return (false);
     }
-    let courseId=getQueryVariable("courseId");
     function initCourse() {
         $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getChoiceCourseInfo&courseId="+courseId,function (result) {
             let courseData=result.courseMsg;
@@ -862,8 +873,8 @@
                     </div>
                 </div>
             </div>
-            <div class="join">
-                <p>立即参加</p>
+            <div class="join" onclick="joinCourse(courseId)">
+                <p  >立即参加</p>
             </div>
 
         </div>
@@ -872,21 +883,57 @@
             $("#courseInfoDiv").append(courseMsg);
         })
     }
+    let totalStarValue=0;
+    let formatFloat = function(value, n) {
+        let f = Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+        let s = f.toString();
+        let rs = s.indexOf('.');
+        if (rs < 0) {
+            s += '.';
+        }
+        for(let i = s.length - s.indexOf('.'); i <= n; i++){
+            s += "0";
+        }
+        return s;
+    }
     function initCourseGrade() {
         $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getChoseCourseGrade&courseId="+courseId,function (result) {
+            //统计评价条数和评价总分
             for (let i = 0; i < result.length; i++) {
-                    let stuImg=result[i].studentImg;
-                    console.log(stuImg);
-                    stuImg=stuImg.substring(2);
-                    stuImg="http://localhost:8080"+stuImg;
-                    console.log(stuImg)
-                    let courseGradeMsg=`                                    <li class="clearfix">
+                totalStarValue+=result[i].grade;
+            }
+            if(result.length!=0){
+                totalStarValue/=result.length;
+            }
+            if(totalStarValue==0){
+                totalStarValue=formatFloat(0,1);
+            }else {
+                totalStarValue=formatFloat(totalStarValue,1);
+            }
+            $("#pingjia").text("共"+result.length+"条评价");
+            $("#totalGradeSpan").text(totalStarValue);
+            layui.use(['rate'], function(){
+                var rate = layui.rate;
+                rate.render({
+                    elem: '#total-star'
+                    ,value: totalStarValue
+                    ,half: true
+                    ,readonly: true
+                })
+            });
+            for (let i = 0; i < result.length; i++) {
+                let stuImg=result[i].studentImg;
+                console.log(stuImg);
+                stuImg=stuImg.substring(2);
+                stuImg="http://localhost:8080"+stuImg;
+                console.log(stuImg)
+                let courseGradeMsg=`                                    <li class="clearfix">
                                         <div class=stu-headPic>
                                             <img src=${stuImg}>
                                         </div>
                                         <div style="float: left" class="comment-right">
-                                            <div class="comment-name">
-                                                <p class=>${result[i].studentName}</p>
+                                            <div class="comment-name clearfix">
+                                                <p style="float: left" class=>${result[i].studentName}</p><div style="float: left;position: relative;bottom: 13px" id="${i}" ></div>
                                             </div>
                                             <div class="comment-content">
                                                 <p class=>${result[i].content}</p>
@@ -901,8 +948,16 @@
                                         </div>
 
                                     </li>`;
-                    $("#courseGradeUl").append(courseGradeMsg);
-
+                $("#courseGradeUl").append(courseGradeMsg);
+                layui.use(['rate'], function(){
+                    var rate = layui.rate;
+                    rate.render({
+                        elem: `${"#"+i}`
+                        ,value: `${result[i].grade}`
+                        ,half: true
+                        ,readonly: true
+                    })
+                });
             }
         })
 

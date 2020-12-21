@@ -1,9 +1,6 @@
 package com.servlet;
 
-import com.entity.Course;
-import com.entity.CourseGrade;
-import com.entity.CourseVideo;
-import com.entity.Student;
+import com.entity.*;
 import com.google.gson.Gson;
 import com.service.impl.*;
 import org.apache.commons.fileupload.FileItem;
@@ -14,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -165,6 +164,96 @@ public class StudentServlet extends BaseServlet {
         response.getWriter().write(json);
     }
 
+    //添加课程
+    public void addCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        StuCourse stuCourse = new StuCourse();
+        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
+        Course course = courseService.queryCourseById(courseId);
+        Student student = (Student) request.getSession().getAttribute("student");
+        stuCourse.setCourseId(courseId);
+        stuCourse.setStudentId(student.getId());
+        stuCourseService.addCourse(stuCourse);
+        List<CourseVideo> courseVideos = courseVideoService.queryVideoByCourseId(courseId);
+        CourseVideo courseVideo = new CourseVideo();
+        courseVideo.setStudentId(student.getId());
+        boolean b=false;
+        for (CourseVideo courseVideo1 : courseVideos) {
+            courseVideo.setCourseId(courseId);
+            courseVideo.setVideoName(courseVideo1.getVideoName());
+            courseVideo.setImgPath(courseVideo1.getImgPath());
+            courseVideo.setVideoPath(courseVideo1.getVideoPath());
+            courseVideo.setVideoInfo(courseVideo1.getVideoInfo());
+            b = courseVideoService.addCourseVideo(courseVideo);
+        }
+        String addMsg=b?"1":"0";
+        Gson gson = new Gson();
+        String json = gson.toJson(addMsg);
+        response.getWriter().write(json);
+
+    }
+
+    //更新视频完成情况
+    public void updateVideoFinish(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer videoId = Integer.valueOf(request.getParameter("videoId"));
+        System.out.println(videoId);
+        boolean b = courseVideoService.updateStudentVideoState(videoId);
+        String updateMsg=b?"1":"0";
+        String json = new Gson().toJson(updateMsg);
+        response.getWriter().write(json);
+    }
+
+    //回填学生个人信息
+    public void getStuInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Student student = (Student) request.getSession().getAttribute("student");
+        String json = new Gson().toJson(student);
+        response.getWriter().write(json);
+    }
+
+    //更新基础资料
+    public void updateBaseInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Student student = (Student) request.getSession().getAttribute("student");
+        String newName = request.getParameter("newName");
+        String newSchool = request.getParameter("newSchool");
+        String gender = request.getParameter("gender");
+        student.setSchool(newSchool);
+        student.setGender(gender);
+        student.setRealName(newName);
+        boolean b = studentService.updateStuInfo(student);
+        String updateMsg=b?"1":"0";
+        response.getWriter().write(updateMsg);
+    }
+
+    //更新用户资料
+    public void updateUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String newUsername = request.getParameter("newUsername");
+        String newPhone = request.getParameter("newPhone");
+        String newEmail = request.getParameter("newEmail");
+        String newPassword = request.getParameter("newPassword");
+        Student student = (Student) request.getSession().getAttribute("student");
+        student.setUsername(newUsername);
+        student.setPhone(newPhone);
+        student.setEmail(newEmail);
+        student.setPassword(newPassword);
+        boolean b = studentService.updateStuInfo(student);
+        String updateMsg=b?"1":"0";
+        response.getWriter().write(updateMsg);
+    }
+
+    //更新头像
+    public void updateImg(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Student student = (Student) request.getSession().getAttribute("student");
+        for (FileItem fileItem : list) {
+            if(!fileItem.isFormField()){
+                File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
+                fileItem.write(file);
+                String path = file.getAbsolutePath();
+                student.setImgPath(path);
+            }
+        }
+        boolean b = studentService.updateStuInfo(student);
+        String updateMsg=b?"1":"0";
+        response.getWriter().write(updateMsg);
+    }
 }
 
 

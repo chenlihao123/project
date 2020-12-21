@@ -9,4 +9,5 @@ import com.entity.Homework;
 public interface HomeworkService {
     //添加作业
     boolean addHomework(Homework homework);
+    Homework queryHomeworkByCourseIdAndTitle(int id, String title);
 }

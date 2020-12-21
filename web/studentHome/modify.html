@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!--<link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css"/>-->
+    <link rel="stylesheet" type="text/css" href="../static/layuiadmin/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/js/bootstrap.min.css"/>
     <link rel="stylesheet" href="../static/css/videoplayer.css">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
     <link rel="stylesheet" href="../static/css/test.css">
     <link rel="stylesheet" href="../static/js/danmu.css">
 
-    <!--<script src="../static/js/jquery-3.4.1.js"></script>-->
-    <!--<script src="../static/js/bootstrap.min.js"></script>-->
+    <script src="../static/js/jquery-3.4.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/layuiadmin/layui/layui.js"></script>
     <style>
 
         .uc-main-box {
@@ -139,9 +141,11 @@
         .span4 {
             width: 234px;
         }
+
         .span40 {
             width: 234px;
         }
+
         .user-address-menu li a {
             color: #757575;
         }
@@ -151,7 +155,7 @@
         }
 
         .span16 {
-            width: 978px;
+            width: 948px;
         }
 
         .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16, .span17, .span18, .span19, .span20, .span40 {
@@ -182,6 +186,7 @@
             content: " ";
             display: table;
         }
+
         .mi-uc-box .box-hd .notice {
             margin: 0;
             font-size: 30px;
@@ -189,9 +194,11 @@
             line-height: 68px;
             color: #757575;
         }
+
         .mi-uc-box .box-hd .more {
             border-bottom: 1px solid #e0e0e0;
         }
+
         .mi-uc-box .box-hd .filter-list {
             float: left;
             margin: 0;
@@ -200,19 +207,23 @@
             font-size: 16px;
             line-height: 1.25;
         }
+
         .mi-uc-box .box-hd .filter-list li.active, .mi-uc-box .box-hd .filter-list li.active a {
             color: #ff6700;
         }
+
         .mi-uc-box .box-hd .filter-list li.first {
             padding-left: 0;
             border-left: 0;
         }
+
         .mi-uc-box .box-hd .filter-list li {
             float: left;
             padding: 0 20px;
             border-left: 1px solid #e0e0e0;
             color: #757575;
         }
+
         .mi-uc-box .box-hd .filter-list {
             float: left;
             margin: 0;
@@ -221,9 +232,11 @@
             font-size: 16px;
             line-height: 1.25;
         }
-        .box-hd .notice{
+
+        .box-hd .notice {
             height: 68px;
         }
+
         .empty {
             margin: 40px 0;
             font-size: 18px;
@@ -231,23 +244,24 @@
             color: #b0b0b0;
         }
 
-
-
-
         /*修改学生信息css*/
         .main_l {
             float: left;
             width: 300px;
         }
+
         .naInfoImgBox {
             padding: 80px 20px 0;
         }
+
         .t_c {
             text-align: center;
         }
+
         .uinfo {
             font-size: 14px;
         }
+
         .na-img-area {
             width: 80px;
             height: 80px;
@@ -259,44 +273,55 @@
             z-index: 4;
             cursor: pointer;
         }
+
         .na-img-bg-area {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             overflow: hidden;
         }
+
         .color4a9 {
             color: #4a90e3;
         }
+
         .na-img-area img {
             display: block;
             width: 100%;
             height: 100%;
             border-radius: 50%;
         }
+
         img {
             vertical-align: middle;
         }
+
         .naImgLink {
             padding-top: 15px;
         }
+
         .marauto {
             margin: 0 auto;
         }
+
         .naImgLink {
             font-size: 14px;
         }
+
         .main-r {
             width: 490px;
             float: left;
 
         }
-        .baseInfo{
+
+        .baseInfo {
             margin-top: 15px;
         }
-        .base-title{
+
+        .base-title {
             height: 40px;
         }
+
         .base-title p {
             line-height: 40px;
             padding-left: 20px;
@@ -304,16 +329,19 @@
             font-size: 16px;
             font-weight: 700;
         }
+
         .base-username {
             color: #666;
             font-size: 14px;
             height: 40px;
             padding-left: 20px;
         }
-        .base-username span{
+
+        .base-username span {
             line-height: 40px;
         }
-        .iconpencil{
+
+        .iconpencil {
             background-image: url("../static/images/pencil.png");
             width: 14px;
             height: 14px;
@@ -323,21 +351,36 @@
             *cursor: pointer;
             overflow: hidden;
             display: inline-block;
-            vertical-align:middle;
+            vertical-align: middle;
         }
-        .editor{
+
+        .editor, .editor1 {
             cursor: pointer;
         }
-        .editor span{
+
+        .editor span, .editor1 span {
             line-height: 40px;
             font-size: 14px;
             color: #4a90e3;
         }
-        .editor i{
+
+        .editor i, .editor1 i {
             position: relative;
             /*left: 3px;*/
         }
 
+        .name-input {
+
+            font-size: 14px;
+        }
+
+        .name-input input {
+            float: left;
+        }
+
+        .name-input label {
+            float: left;
+        }
 
     </style>
 </head>
@@ -424,42 +467,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/free1.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/free1.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">java零基础速成,限时免费!</div>
                                             <p class="price">0元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/free2.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/free2.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">C语言零基础速成,限时免费!</div>
                                             <p class="price">0元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/free3.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/free3.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">java工程师速成,限时免费!</div>
                                             <p class="price">0元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/weijifen.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/weijifen.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">微分方程与级数</div>
                                             <p class="price">0元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/free4.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/free4.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">2021考研心理学</div>
                                             <p class="price">0元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/free5.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/free5.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">秦陵：帝国与梦想</div>
                                             <p class="price">0元起</p>
@@ -475,42 +524,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/top1.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/top1.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">C语言程序设计进阶</div>
                                             <p class="price">1999元</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/top2.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/top2.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">民族声乐进阶密码</div>
                                             <p class="price">999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/top3.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/top3.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">Python语言程序设计</div>
                                             <p class="price">1399元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/top4.jpeg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/top4.jpeg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">高等数学（一）</div>
                                             <p class="price">999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/top5.jfif" alt="" width="160px" height="110px">
+                                                <img src="../static/images/top5.jfif" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">模拟电子技术</div>
                                             <p class="price">899元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/top6.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/top6.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">金融学（二）</div>
                                             <p class="price">799元起</p>
@@ -526,42 +581,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/english1.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/english1.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">雅思冲7全程班（旗舰版）20期</div>
                                             <p class="price">999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/english2.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/english2.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">陈正康22考研英语一领学班</div>
                                             <p class="price">599元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/english3.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/english3.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">四六级小白课堂</div>
                                             <p class="price">199元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/english4.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/english4.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">翻译导论</div>
                                             <p class="price">599元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/english5.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/english5.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">大学日语 发展篇</div>
                                             <p class="price">999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/english6.jpeg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/english6.jpeg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">法语入门</div>
                                             <p class="price">1499元起</p>
@@ -577,42 +638,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/jinji1.jpeg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/jinji1.jpeg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">公司重组“对对论”</div>
                                             <p class="price">999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/jinji2.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/jinji2.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">营销管理（双语）</div>
                                             <p class="price">1999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/jinji3.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/jinji3.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">经济学的思维方式</div>
                                             <p class="price">3999元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/jinji4.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/jinji4.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">财务管理</div>
                                             <p class="price">899元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/jinji5.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/jinji5.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">中级宏观经济学</div>
                                             <p class="price">4699元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/jinji6.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/jinji6.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">审计学</div>
                                             <p class="price">1199元起</p>
@@ -628,42 +695,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/art1.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/art1.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">数字雕塑基础</div>
                                             <p class="price">99元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/art2.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/art2.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">传统绘画语言与设计</div>
                                             <p class="price">199元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/art3.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/art3.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">数字媒体制作原理</div>
                                             <p class="price">849元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/art4.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/art4.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">影视鉴赏</div>
                                             <p class="price">59元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/art5.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/art5.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">敦煌文化</div>
                                             <p class="price">149元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/art6.jfif" alt="" width="160px" height="110px">
+                                                <img src="../static/images/art6.jfif" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">中国古代建筑艺术</div>
                                             <p class="price">899元起</p>
@@ -679,42 +752,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/lixue1.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/lixue1.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">大学物理</div>
                                             <p class="price">399元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/lixue2.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/lixue2.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">数学建模</div>
                                             <p class="price">249元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/lixue3.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/lixue3.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">无机与分析化学</div>
                                             <p class="price">329元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/lixue4.jfif" alt="" width="160px" height="110px">
+                                                <img src="../static/images/lixue4.jfif" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">世界地理</div>
                                             <p class="price">599元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/lixue5.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/lixue5.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">宇宙简史</div>
                                             <p class="price">169元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/lixue6.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/lixue6.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">分子生物学</div>
                                             <p class="price">229元起</p>
@@ -730,42 +809,48 @@
                                     <ul>
                                         <li class="first-item">
                                             <div>
-                                                <img src="../static/images/faxue1.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/faxue1.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">犯罪现象：原因与对策</div>
                                             <p class="price">189元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/faxue2.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/faxue2.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">刑法分则疑难案件分析</div>
                                             <p class="price">499元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/faxue3.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/faxue3.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">财税法</div>
                                             <p class="price">1299元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/faxue4.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/faxue4.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">刑事诉讼法</div>
                                             <p class="price">349元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/faxue5.png" alt="" width="160px" height="110px">
+                                                <img src="../static/images/faxue5.png" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">商法</div>
                                             <p class="price">199元起</p>
                                         </li>
                                         <li>
                                             <div>
-                                                <img src="../static/images/faxue6.jpg" alt="" width="160px" height="110px">
+                                                <img src="../static/images/faxue6.jpg" alt="" width="160px"
+                                                     height="110px">
                                             </div>
                                             <div class="title">债券法</div>
                                             <p class="price">79元起</p>
@@ -800,18 +885,26 @@
             <div class="row">
                 <div class="span40">
                     <div id="J_userMenu" class="user-address-menu">
-                        <a href="person.html"><div class="menu-box">
-                            <h3 class="title">我的课程</h3>
-                        </div></a>
-                        <a href="task.html"><div class="menu-box">
-                            <h3 class="title">课程任务</h3>
-                        </div></a>
-                        <a href="notice.html"><div class="menu-box">
-                            <h3 class="title">消息通知</h3>
-                        </div></a>
-                        <a href="modify.html"><div class="menu-box" style="background-color: black; opacity: 0.3">
-                            <h3 class="title" style="color: #FFFFFF">个人信息</h3>
-                        </div></a>
+                        <a href="person.html">
+                            <div class="menu-box">
+                                <h3 class="title">我的课程</h3>
+                            </div>
+                        </a>
+                        <a href="task.html">
+                            <div class="menu-box">
+                                <h3 class="title">课程任务</h3>
+                            </div>
+                        </a>
+                        <a href="notice.html">
+                            <div class="menu-box">
+                                <h3 class="title">消息通知</h3>
+                            </div>
+                        </a>
+                        <a href="modify.html">
+                            <div class="menu-box" style="background-color: black; opacity: 0.3">
+                                <h3 class="title" style="color: #FFFFFF">个人信息</h3>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="span16">
@@ -820,61 +913,37 @@
                             <div class="naInfoImgBox t_c">
                                 <div class="na-img-area marauto">
                                     <!--na-img-bg-area不能插入任何子元素-->
-                                    <div class="na-img-bg-area"><img src="https://cdn.cnbj1.fds.api.mi-img.com/user-avatar/p01KopZQ9o19/AGPJwGz4WR5G2A.jpg"></div>
+                                    <div class="na-img-bg-area"><img
+                                            src="https://cdn.cnbj1.fds.api.mi-img.com/user-avatar/p01KopZQ9o19/AGPJwGz4WR5G2A.jpg"
+                                            id="stuImg">
+                                    </div>
                                     <em class="na-edit"></em>
                                 </div>
                                 <div class="naImgLink">
 
-                                    <a class="color4a9" href="" title="修改头像">修改头像</a>
+                                    <a class="color4a9 headerPic" style="cursor: pointer" title="修改头像">修改头像</a>
 
                                 </div>
                             </div>
                         </div>
                         <div class="main-r">
-                            <div class="baseInfo">
+                            <div class="baseInfo" id="baseInfo1">
                                 <div class="base-title">
-                                    <p style="float: left;" >基础资料</p>
+                                    <p style="float: left;">基础资料</p>
                                     <div style="float: right;" class="editor">
+                                        <!--<button  class="baseInfo-btn"  data-toggle="modal" data-target="#myModal">按钮</button>-->
                                         <i class="iconpencil"></i>
                                         <span>编辑</span>
                                     </div>
-                                </div>
-                                <div class="base-username">
-                                    <span>姓名： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>性别： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>学校： </span>
-                                    <span class="username-value"></span>
                                 </div>
                             </div>
-                            <div class="baseInfo">
+                            <div class="baseInfo" id="baseInfo2">
                                 <div class="base-title">
                                     <p style="float: left;">账号资料</p>
-                                    <div style="float: right;" class="editor">
+                                    <div style="float: right;" class="editor1">
                                         <i class="iconpencil"></i>
                                         <span>编辑</span>
                                     </div>
-                                </div>
-                                <div class="base-username">
-                                    <span>手机： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>邮箱： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>用户名： </span>
-                                    <span class="username-value"></span>
-                                </div>
-                                <div class="base-username">
-                                    <span>密码： </span>
-                                    <span class="username-value"></span>
                                 </div>
                             </div>
                         </div>
@@ -887,42 +956,266 @@
 
 </div>
 
+<!-- 基本信息模态框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改基本信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="layui-form" id="form1">
+                    <input type="hidden" name="action" value="updateBaseInfo">
+                    <div class="name-input clearfix">
+                        <label class="layui-form-label">姓名</label>
+                        <input class="layui-input" style="width: 80%" id="newName" name="newName" placeholder="请输入名字">
+                    </div>
+                    <div class="name-input clearfix">
+                        <label class="layui-form-label">学校</label>
+                        <input class="layui-input" style="width: 80%" id="newSchool" name="newSchool"
+                               placeholder="请输入所在学校">
+                    </div>
+                    <div class="layui-form-item" pane>
+                        <label class="layui-form-label" style="font-size: 14px">性别</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="gender" value="男" title="男" checked>
+                            <input type="radio" name="gender" value="女" title="女">
+                        </div>
+                    </div>
+                </form>
 
-<div class="mi-media">
-    <div class="mi-dialong">
-        <div class="media-head">
-            <span>
-                x
-            </span>
-        </div>
-    </div>
-</div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="updateBtn1">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--账号信息模态框-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    修改账号信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="layui-form" id="form2">
+                    <input type="hidden" name="action" value="updateUserInfo">
+                    <div class="name-input clearfix">
+                        <label class="layui-form-label">手机</label>
+                        <input class="layui-input" style="width: 80%" id="newPhone" name="newPhone" placeholder="请输入手机">
+                    </div>
+                    <div class="name-input clearfix">
+                        <label class="layui-form-label">邮箱</label>
+                        <input class="layui-input" style="width: 80%" id="newEmail" name="newEmail" placeholder="请输入邮箱">
+                    </div>
+                    <div class="name-input clearfix">
+                        <label class="layui-form-label">用户名</label>
+                        <input class="layui-input" style="width: 80%" id="newUsername" name="newUsername" placeholder="请输入用户名">
+                    </div>
+                    <div class="name-input clearfix">
+                        <label class="layui-form-label">密码</label>
+                        <input class="layui-input" style="width: 80%" id="newPassword" name="newPassword" placeholder="请输入密码">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="updateBtn2">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--修改头像-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel3">
+                    修改头像
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="form3">
+                    <input type="hidden" name="action" value="updateImg">
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="btn01" style="position: relative;left: 110px">上传图片
+                        </button>
+                        <input name="imgPath" id="imgFile" type="file" hidden accept="image/*"
+                               onchange="changepic(this)">
+                        <!--<input class="layui-upload-file" id="image1" type="file" accept="" name="imgPath">-->
+                        <div class="layui-upload-list" style="margin-left: 110px;">
+                            <img class="layui-upload-img" id="demo1" name="imgPath" width="160px" height="160px"
+                                 style="vertical-align: middle;">
+                            <p id="demoText" style="color:#878890; font-size: 14px; margin: 5px 0px;">建议尺寸160*
+                                160px，也可根据自己的实际情况做图片尺寸</p>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="updateBtn3">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 </body>
-<!-- <script src="./js/swiper.js"></script> -->
-<script src="../static/js/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-    $(function () {
-        init()
+<script>
+
+
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
     });
 
-    function init() {
-        $.getJSON("http://localhost:8080/onlinelearning/stu.do", "action=initCourse", function (data) {
-            for (let i = 0; i < data.length; i++) {
-                let imgPath = data[i].imgPath;
-                imgPath = imgPath.substring(2);
-                imgPath = "http://localhost:8080" + imgPath;
-                let str = `<a href="video.html?courseId=${data[i].id}&courseName=${data[i].courseName}"><li>
-                                        <div>
-                                            <img src=${imgPath} alt="" width="200px" height="140px">
-                                        </div>
-                                        <div class="title">${data[i].courseName}</div>
-                                        <p class="price">${data[i].teacherName}</p>
-                                        <p class="price">${data[i].courseInfo}</p>
-                                    </li></a>`;
-                $("#courseUl").append(str);
-            }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        initStuInfo();
+        $("#updateBtn1").on("click", function () {
+            updateBaseInfo();
+        });
+        $("#updateBtn2").on("click",function () {
+            updateUserInfo();
         })
+        $("#updateBtn3").on("click",function () {
+            updateImg();
+        })
+    });
+
+    //初始化回填学生信息
+    function initStuInfo() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do", "action=getStuInfo", function (data) {
+            let baseInfoStr1 = `<div class="base-username">
+                                    <span>姓名：${data.realName}</span>
+                                    <span class="username-value"></span>
+                                </div>
+                                <div class="base-username">
+                                    <span>性别：${data.gender}</span>
+                                    <span class="username-value"></span>
+                                </div>
+                                <div class="base-username">
+                                    <span>学校：${data.school}</span>
+                                    <span class="username-value"></span>
+                                </div>`;
+            $("#baseInfo1").append(baseInfoStr1);
+            let baseInfoStr2 = `<div class="base-username">
+                                    <span>手机：${data.phone}</span>
+                                    <span class="username-value"></span>
+                                </div>
+                                <div class="base-username">
+                                    <span>邮箱：${data.email}</span>
+                                    <span class="username-value"></span>
+                                </div>
+                                <div class="base-username">
+                                    <span>用户名：${data.username}</span>
+                                    <span class="username-value"></span>
+                                </div>
+                                <div class="base-username">
+                                    <span>密码：${data.password}</span>
+                                    <span class="username-value"></span>
+                                </div>`;
+            $("#baseInfo2").append(baseInfoStr2);
+            let imgPath = data.imgPath;
+            imgPath = imgPath.substring(2);
+            imgPath = "http://localhost:8080" + imgPath;
+            $("#stuImg").attr("src", imgPath);
+            $("#newName").val(data.realName);
+            $("#newSchool").val(data.school);
+            $("#newPhone").val(data.phone);
+            $("#newEmail").val(data.email);
+            $("#newUsername").val(data.username);
+            $("#newPassword").val(data.password);
+        })
+    }
+
+    //更新基础资料
+    function updateBaseInfo() {
+        $.ajax({
+            url: "http://localhost:8080/onlinelearning/stu.do",
+            type: "post",
+            datatype: "json",
+            data: $("#form1").serialize(),
+            success:function (data) {
+                if(data=="1"){
+                    window.location.href="modify.html";
+                }else {
+                    alert("修改失败")
+                }
+            }
+        });
+    }
+    //更新用户资料
+    function updateUserInfo() {
+        $.ajax({
+            url: "http://localhost:8080/onlinelearning/stu.do",
+            type: "post",
+            datatype: "json",
+            data: $("#form2").serialize(),
+            success:function (data) {
+                if(data=="1"){
+                    window.location.href="modify.html";
+                }else {
+                    alert("修改失败")
+                }
+            }
+        });
+    }
+    //更新头像
+    function updateImg() {
+        let form3=new FormData(document.getElementById("form3"));
+        $.ajax({
+            url: "http://localhost:8080/onlinelearning/stu.do",
+            type: "post",
+            datatype: "json",
+            data: form3,
+            processData:false,
+            contentType:false,
+            success:function (data) {
+                if(data=="1"){
+                    window.location.href="modify.html";
+                }else {
+                    alert("修改失败")
+                }
+            }
+        });
     }
 </script>
 <script src="../static/js/danmu.js"></script>
@@ -1076,6 +1369,40 @@
     })
 
 </script>
+<script>
+    $(".editor").click(function () {
+        $('#myModal').modal({show: true, backdrop: 'static'});
+    });
+    $(".editor1").click(function () {
+        $('#myModal1').modal({show: true, backdrop: 'static'});
+    });
+    $(".headerPic").click(function () {
+        $('#myModal2').modal({show: true, backdrop: 'static'});
+
+    })
 
 
+</script>
+<script>
+    $("#imgFile").hide();
+    $("#btn01").click(function () {
+        $("#imgFile").trigger("click");
+    });
+
+    function changepic() {
+
+        var reads = new FileReader();
+
+        let f = document.getElementById('imgFile').files[0];
+
+        reads.readAsDataURL(f);
+
+        reads.onload = function (e) {
+
+            document.getElementById('demo1').src = this.result;
+
+        };
+
+    }
+</script>
 </html>

@@ -36,4 +36,9 @@ public class CourseVideoServiceImpl implements CourseVideoService {
     public List<CourseVideo> queryVideoByCourseIdAndStudentId(int courseId, int studentId) {
         return courseVideoDao.queryVideoByCourseIdAndStudentId(courseId,studentId);
     }
+
+    @Override
+    public boolean updateStudentVideoState(int id) {
+        return courseVideoDao.updateStudentVideoState(id);
+    }
 }

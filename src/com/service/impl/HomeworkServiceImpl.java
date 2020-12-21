@@ -14,4 +14,9 @@ public class HomeworkServiceImpl implements HomeworkService {
     public boolean addHomework(Homework homework) {
         return homeworkDao.addHomework(homework);
     }
+
+    @Override
+    public Homework queryHomeworkByCourseIdAndTitle(int id, String title) {
+        return homeworkDao.queryHomeworkByCourseIdAndTitle(id,title);
+    }
 }

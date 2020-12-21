@@ -32,4 +32,6 @@ public interface StudentService {
     Student queryStudentByEmail(String email);
     Student queryStudentByUsername(String username);
     Student queryStudentByPhone(String phone);
+    //更新学生信息
+    boolean updateStuInfo(Student student);
 }

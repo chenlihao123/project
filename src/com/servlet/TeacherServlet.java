@@ -1,14 +1,8 @@
 package com.servlet;
 
-import com.entity.Course;
-import com.entity.CourseVideo;
-import com.entity.Homework;
-import com.entity.Teacher;
+import com.entity.*;
 import com.google.gson.Gson;
-import com.service.impl.CourseServiceImpl;
-import com.service.impl.CourseVideoServiceImpl;
-import com.service.impl.HomeworkServiceImpl;
-import com.service.impl.TeacherServiceImpl;
+import com.service.impl.*;
 import org.apache.commons.fileupload.FileItem;
 
 import javax.servlet.ServletException;
@@ -32,6 +26,9 @@ public class TeacherServlet extends BaseServlet {
     private TeacherServiceImpl teacherService=new TeacherServiceImpl();
     private CourseVideoServiceImpl courseVideoService=new CourseVideoServiceImpl();
     private HomeworkServiceImpl homeworkService=new HomeworkServiceImpl();
+    private StudentServiceImpl studentService=new StudentServiceImpl();
+    private StuCourseServiceImpl stuCourseService=new StuCourseServiceImpl();
+    private StuHomeworkServiceImpl stuHomeworkService=new StuHomeworkServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request,response);
     }
@@ -192,9 +189,25 @@ public class TeacherServlet extends BaseServlet {
             }
         }
         boolean b = homeworkService.addHomework(homework);
+        if(b){
+            addHomeworkToStu(homeworkService.queryHomeworkByCourseIdAndTitle(homework.getCourseId(),homework.getTitle()));
+        }
         String homeworkMsg=b==true?"1":"0";
+
         System.out.println(homeworkMsg);
         response.getWriter().write(homeworkMsg);
+    }
+
+    //将作业分布到每个学生
+    private void addHomeworkToStu(Homework homework){
+        List<StuCourse> stuCourses = stuCourseService.queryStuCourseByCourseId(homework.getCourseId());
+        StuHomework stuHomework = new StuHomework();
+        for (StuCourse stuCourse : stuCourses) {
+            stuHomework.setStudentId(stuCourse.getStudentId());
+            stuHomework.setHomeworkId(homework.getId());
+            stuHomework.setCourseId(homework.getCourseId());
+            stuHomeworkService.addStuHomework(stuHomework);
+        }
     }
 
     //回填老师课程信息

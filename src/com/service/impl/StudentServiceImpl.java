@@ -60,4 +60,9 @@ public class StudentServiceImpl implements StudentService {
     public Student queryStudentByPhone(String phone) {
         return studentDao.queryStudentByPhone(phone);
     }
+
+    @Override
+    public boolean updateStuInfo(Student student) {
+        return studentDao.updateStuInfo(student);
+    }
 }

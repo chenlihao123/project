@@ -19,4 +19,6 @@ public interface StudentDao {
     Student queryStudentByEmail(String email);
     //根据用户名（学号）查询学生
     Student queryStudentByUsername(String username);
+    //更新学生信息
+    boolean updateStuInfo(Student student);
 }

@@ -27,4 +27,14 @@ public class StuCourseServiceImpl implements StuCourseService {
         }
         return list1;
     }
+
+    @Override
+    public boolean addCourse(StuCourse stuCourse) {
+        return stuCourseDao.addCourse(stuCourse);
+    }
+
+    @Override
+    public List<StuCourse> queryStuCourseByCourseId(int id) {
+        return stuCourseDao.queryStuCourseByCourseId(id);
+    }
 }
