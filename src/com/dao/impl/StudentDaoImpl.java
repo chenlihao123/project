@@ -4,6 +4,8 @@ import com.dao.BaseDao;
 import com.dao.StudentDao;
 import com.entity.Student;
 
+import java.util.List;
+
 /**
  * @author chenlihao
  * @create 2020-12-09 15:21
@@ -45,11 +47,24 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
     }
 
     @Override
+    public List<Student> queryAllStudent() {
+        String sql = "SELECT * FROM `student`";
+        return queryForList(Student.class,sql);
+    }
+
+    @Override
+    public int delectStudentById(int id) {
+        String sql = "DELETE FROM `student` WHERE id = ?";
+        return update(sql,id);
+    }
+
+    @Override
     public boolean updateStuInfo(Student s) {
         String sql="update student set username=?,password=?,realName=?,gender=?,phone=?,email=?,school=?,department=?,classId=?,imgPath=? where id=?";
         int i = update(sql, s.getUsername(), s.getPassword(), s.getRealName(), s.getGender(), s.getPhone(), s.getEmail(), s.getSchool(), s.getDepartment(), s.getClassId(), s.getImgPath(),s.getId());
         return i>=0?true:false;
     }
+
 
 //    测试sql语句是否正确
 //    public static void main(String[] args) {

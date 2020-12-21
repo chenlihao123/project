@@ -2,6 +2,8 @@ package com.dao;
 
 import com.entity.Student;
 
+import java.util.List;
+
 /**
  * @author chenlihao
  * @create 2020-12-09 15:20
@@ -19,6 +21,11 @@ public interface StudentDao {
     Student queryStudentByEmail(String email);
     //根据用户名（学号）查询学生
     Student queryStudentByUsername(String username);
+    //返回所以用户信息
+    List<Student> queryAllStudent();
+
+    //通过id删除学生
+    int delectStudentById(int id);
     //更新学生信息
     boolean updateStuInfo(Student student);
 }

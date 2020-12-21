@@ -6,6 +6,7 @@ import com.entity.Student;
 import com.service.StudentService;
 import com.utils.SmsUtil;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -59,6 +60,16 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student queryStudentByPhone(String phone) {
         return studentDao.queryStudentByPhone(phone);
+    }
+
+    @Override
+    public List<Student> queryAllStudent() {
+        return studentDao.queryAllStudent();
+    }
+
+    @Override
+    public int deleteStudentById(int id) {
+        return studentDao.delectStudentById(id);
     }
 
     @Override

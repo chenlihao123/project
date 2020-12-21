@@ -11,6 +11,54 @@
     <!-- <link rel="stylesheet" href="./css/home.1dccc6f7.css"> -->
     <!-- <link rel="stylesheet" href="./css/sojson.com_.css"> -->
     <link rel="stylesheet" href="../static/css/test.css">
+    <style>
+        .right-tab{
+            width: 84px;
+            height: 497px;
+
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            z-index: 99;
+
+        }
+        .right-tab ul{
+            background-color: white;
+            border:1px solid #f5f5f5;
+        }
+        .right-tab ul li {
+            width: 100%;
+            height: 92px;
+            border-bottom: 1px solid #f5f5f5;
+            text-align: center;
+            color: #757575;
+            font-size: 14px;
+
+        }
+        .right-tab ul li img {
+            margin-top: 20px;
+            width: 30px;
+            height: 30px;
+
+        }
+        .retrun-top{
+            display: none;
+            margin-top: 30px;
+            width: 84px;
+            height: 92px;
+            text-align: center;
+            color: #757575;
+            font-size: 14px;
+            border-bottom: 1px solid #f5f5f5;
+            background-color: white;
+        }
+        .retrun-top img{
+            margin-top: 20px;
+            width: 30px;
+            height: 30px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -43,12 +91,12 @@
                             <span class="sep">|</span>
                             <a href="" class="download ">下载app
                                 <span class="appcode">
-                                    <img src="./../static/images/download.png" alt="">
+                                    <img src="./../static/images/appload.png" alt="">
                                     在线学习APP
                                 </span>
                             </a>
                             <span class="sep">|</span>
-                            <a href="">智能生活</a>
+                            <a href="">专栏</a>
                             <span class="sep">|</span>
                             <a href="">Select Location</a>
                         </div>
@@ -82,8 +130,8 @@
                 <div class="site-header">
                     <div class="container">
                         <div class="header-logo">
-                            <a class="logo-home"></a>
-                            <a href="" class="logo"><img width="100%" height="100%" src="../static/images/header1.jpg"></a>
+                            <a href="person.html" class="logo-home"></a>
+                            <a href="person.html" class="logo"><img width="100%" height="100%" src="../static/images/header1.jpg"></a>
                         </div>
                         <div class="nav-list">
                             <ul>
@@ -1633,13 +1681,13 @@
                     <li>
                         <a href="">
                             <img src="./../static/images/miaosha.png" alt="">
-                            小米秒杀
+                            限时秒杀
                         </a>
                     </li>
                     <li>
                         <a href="">
                             <img src="./../static/images/qiye.png" alt="">
-                            企业团购
+                            学生团购
                         </a>
                     </li>
                     <li>
@@ -1651,19 +1699,19 @@
                     <li>
                         <a href="">
                             <img src="./../static/images/mifenka.png" alt="">
-                            米粉卡
+                            vip服务
                         </a>
                     </li>
                     <li>
                         <a href="">
                             <img src="./../static/images/yijiuhuanxin.png" alt="">
-                            以旧换新
+                            售后服务
                         </a>
                     </li>
                     <li>
                         <a href="">
                             <img src="./../static/images/huafeichongzhi.png" alt="">
-                            话费充值
+                            账号充值
                         </a>
                     </li>
                 </ul>
@@ -1687,7 +1735,7 @@
     <div class="home-flashsale">
         <div class="container">
             <div class="box-hd">
-                <h2 class="title">小米闪购</h2>
+                <h2 class="title">限时抢购</h2>
             </div>
             <div class="box-bd clearfix">
                 <div class="flashsale-countdown">
@@ -1703,10 +1751,12 @@
                                 <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/xiaoailaoshi.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s1.webp">
                                         </div>
-                                        <h3 class="title">小爱老师 4G版 白色</h3>
-                                        <p class="desc">英语提分利器</p>
+                                        <h3 class="title">C++程序设计</h3>
+                                        <p class="desc" style="color: #666">西北工业大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">魏英</p>
                                         <p class="price">
                                             <span>799</span>
                                             元
@@ -1714,45 +1764,132 @@
                                         </p>
                                     </div>
                                 </li>
-                                <li class="rainbow-item-2">
+
+
+                            </ul>
+                            <!--<li class="rainbow-item-2">-->
+                            <!--<div class="content">-->
+                            <!--<div class="thumb">-->
+                            <!--<img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/17pin.jpg">-->
+                            <!--</div>-->
+                            <!--<h3 class="title">17PIN 星果杯 樱花粉</h3>-->
+                            <!--<p class="desc">随心随行，悦饮随心</p>-->
+                            <!--<p class="price">-->
+                            <!--<span>99</span>-->
+                            <!--元-->
+                            <!--<del>139元</del>-->
+                            <!--</p>-->
+                            <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="rainbow-item-3">-->
+                            <!--<div class="content">-->
+                            <!--<div class="thumb">-->
+                            <!--<img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/chouzhi.webp">-->
+                            <!--</div>-->
+                            <!--<h3 class="title">日常元素抽纸 青春版 24包/箱</h3>-->
+                            <!--<p class="desc">精选原生竹浆，健康环保</p>-->
+                            <!--<p class="price">-->
+                            <!--<span>27.9</span>-->
+                            <!--元-->
+                            <!--<del>32.9元</del>-->
+                            <!--</p>-->
+                            <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="rainbow-item-4">-->
+                            <!--<div class="content">-->
+                            <!--<div class="thumb">-->
+                            <!--<img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/youxiben.jpg">-->
+                            <!--</div>-->
+                            <!--<h3 class="title">Redmi G i5/16GB/512GB PCIe/GTX 1650 </h3>-->
+                            <!--<p class="desc">不满足一种突破，也不安于被视野束缚</p>-->
+                            <!--<p class="price">-->
+                            <!--<span>4999</span>-->
+                            <!--元-->
+                            <!--<del>5299元</del>-->
+                            <!--</p>-->
+                            <!--</div>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/17pin.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s3.webp">
                                         </div>
-                                        <h3 class="title">17PIN 星果杯 樱花粉</h3>
-                                        <p class="desc">随心随行，悦饮随心</p>
+                                        <h3 class="title">如何识别和评估创业机会</h3>
+                                        <p class="desc" style="color: #666">厦门大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">木志荣</p>
                                         <p class="price">
-                                            <span>99</span>
+                                            <span>799</span>
                                             元
-                                            <del>139元</del>
+                                            <del>999元</del>
                                         </p>
                                     </div>
                                 </li>
-                                <li class="rainbow-item-3">
+                            </ul>
+                                <!--<li class="rainbow-item-2">-->
+                                    <!--<div class="content">-->
+                                        <!--<div class="thumb">-->
+                                            <!--<img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/17pin.jpg">-->
+                                        <!--</div>-->
+                                        <!--<h3 class="title">17PIN 星果杯 樱花粉</h3>-->
+                                        <!--<p class="desc">随心随行，悦饮随心</p>-->
+                                        <!--<p class="price">-->
+                                            <!--<span>99</span>-->
+                                            <!--元-->
+                                            <!--<del>139元</del>-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</li>-->
+                                <!--<li class="rainbow-item-3">-->
+                                    <!--<div class="content">-->
+                                        <!--<div class="thumb">-->
+                                            <!--<img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/chouzhi.webp">-->
+                                        <!--</div>-->
+                                        <!--<h3 class="title">日常元素抽纸 青春版 24包/箱</h3>-->
+                                        <!--<p class="desc">精选原生竹浆，健康环保</p>-->
+                                        <!--<p class="price">-->
+                                            <!--<span>27.9</span>-->
+                                            <!--元-->
+                                            <!--<del>32.9元</del>-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</li>-->
+                                <!--<li class="rainbow-item-4">-->
+                                    <!--<div class="content">-->
+                                        <!--<div class="thumb">-->
+                                            <!--<img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/youxiben.jpg">-->
+                                        <!--</div>-->
+                                        <!--<h3 class="title">Redmi G i5/16GB/512GB PCIe/GTX 1650 </h3>-->
+                                        <!--<p class="desc">不满足一种突破，也不安于被视野束缚</p>-->
+                                        <!--<p class="price">-->
+                                            <!--<span>4999</span>-->
+                                            <!--元-->
+                                            <!--<del>5299元</del>-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/chouzhi.webp">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s4.webp">
                                         </div>
-                                        <h3 class="title">日常元素抽纸 青春版 24包/箱</h3>
-                                        <p class="desc">精选原生竹浆，健康环保</p>
+                                        <h3 class="title">中学化学教学设计与实践</h3>
+                                        <p class="desc" style="color: #666">北京师范大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">王磊</p>
                                         <p class="price">
-                                            <span>27.9</span>
+                                            <span>799</span>
                                             元
-                                            <del>32.9元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-4">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/youxiben.jpg">
-                                        </div>
-                                        <h3 class="title">Redmi G i5/16GB/512GB PCIe/GTX 1650 </h3>
-                                        <p class="desc">不满足一种突破，也不安于被视野束缚</p>
-                                        <p class="price">
-                                            <span>4999</span>
-                                            元
-                                            <del>5299元</del>
+                                            <del>999元</del>
                                         </p>
                                     </div>
                                 </li>
@@ -1760,179 +1897,39 @@
                         </div>
                         <div class="swiper-slide">
                             <ul>
-                                <li class="rainbow-item-5">
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/mijialiaoliji.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s2.webp">
                                         </div>
-                                        <h3 class="title">米家料理机 白色</h3>
-                                        <p class="desc">顺滑细腻，畅饮随心</p>
+                                        <h3 class="title">VisualBasic6.0程序设计</h3>
+                                        <p class="desc" style="color: #666">同济大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">龚沛曾</p>
                                         <p class="price">
-                                            <span>149</span>
-                                            元
-                                            <del>169元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-6">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/lanyaerji.jpg">
-                                        </div>
-                                        <h3 class="title">小米真无线蓝牙耳机 Air 2 白色</h3>
-                                        <p class="desc">智能真无线，轻松舒适戴</p>
-                                        <p class="price">
-                                            <span>299</span>
-                                            元
-                                            <del>399元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-7">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/chongdianbao.jpg">
-                                        </div>
-                                        <h3 class="title">小米移动电源3 10000mAh USB-C双向快充版 黑色</h3>
-                                        <p class="desc">双向18W快充 / 输入输出双接口 / 可上飞机，安全贴心</p>
-                                        <p class="price">
-                                            <span>99</span>
-                                            元
-                                            <del>129元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-8">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/dianreguo.jpg">
-                                        </div>
-                                        <h3 class="title">圈厨多用途电热锅 白色</h3>
-                                        <p class="desc">煎烤烙炖蒸焖涮，样样精通</p>
-                                        <p class="price">
-                                            <span>169</span>
-                                            元
-                                            <del>199元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="swiper-slide">
-                            <ul>
-                                <li class="rainbow-item-9">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/duijiangji.webp">
-                                        </div>
-                                        <h3 class="title">小米对讲机1S 蓝色</h3>
-                                        <p class="desc">再次出发，陪你轻聊一路</p>
-                                        <p class="price">
-                                            <span>199</span>
-                                            元
-                                            <del>249元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-10">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/rm13.jpg">
-                                        </div>
-                                        <h3 class="title">RedmiBook 13 i5 8G 512G SSD MX250 2G 银</h3>
-                                        <p class="desc">让高性能全面展现</p>
-                                        <p class="price">
-                                            <span>3999</span>
-                                            元
-                                            <del>4799元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-11">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/mj.webp">
-                                        </div>
-                                        <h3 class="title">最生活毛巾·Air（10条装） 白色+素蓝</h3>
-                                        <p class="desc">给生活一条好毛巾</p>
-                                        <p class="price">
-                                            <span>99</span>
-                                            元
-                                            <del>169元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-12">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/rma13.webp">
-                                        </div>
-                                        <h3 class="title">RedmiBook Air 13 I5/16G/512G/2.5K100%sRGB 灰色</h3>
-                                        <p class="desc">轻盈便携 | 轻松办公</p>
-                                        <p class="price">
-                                            <span>4999</span>
-                                            元
-                                            <del>5199元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="swiper-slide">
-                            <ul>
-                                <li class="rainbow-item-13">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/chushiqi.jpg">
-                                        </div>
-                                        <h3 class="title">乐秀除湿机 白色</h3>
-                                        <p class="desc">快速除湿，干湿适宜更舒适</p>
-                                        <p class="price">
-                                            <span>699</span>
+                                            <span>499</span>
                                             元
                                             <del>899元</del>
                                         </p>
                                     </div>
                                 </li>
-                                <li class="rainbow-item-14">
+                            </ul>
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/rm14.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s5.webp">
                                         </div>
-                                        <h3 class="title">RedmiBook 14 I5/8G/512G SSD/MX250 银色</h3>
-                                        <p class="desc">十代酷睿更强劲</p>
+                                        <h3 class="title">机械原理</h3>
+                                        <p class="desc" style="color: #666">东北大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">李翠玲</p>
                                         <p class="price">
-                                            <span>3999</span>
+                                            <span>499</span>
                                             元
-                                            <del>4499元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-15">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/rujiao.jpg">
-                                        </div>
-                                        <h3 class="title">米家天然乳胶护颈枕S 灰色</h3>
-                                        <p class="desc">大颗粒释压体验，升级好睡眠</p>
-                                        <p class="price">
-                                            <span>199</span>
-                                            元
-                                            <del>249元</del>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="rainbow-item-16">
-                                    <div class="content">
-                                        <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/xiaomiyouxinben.jpg">
-                                        </div>
-                                        <h3 class="title">小米游戏本 i5-9300H 8G 512GB GTX1660Ti 144Hz 深灰</h3>
-                                        <p class="desc">性能怪兽再升级</p>
-                                        <p class="price">
-                                            <span>5999</span>
-                                            元
-                                            <del>7499元</del>
+                                            <del>899元</del>
                                         </p>
                                     </div>
                                 </li>
@@ -1940,59 +1937,100 @@
                         </div>
                         <div class="swiper-slide">
                             <ul>
-                                <li class="rainbow-item-17">
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/yejin.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s7.webp">
                                         </div>
-                                        <h3 class="title">小米米家液晶小黑板 13.5英寸</h3>
-                                        <p class="desc">随想随画，记录灵感瞬间</p>
+                                        <h3 class="title">国际金融学</h3>
+                                        <p class="desc" style="color: #666">湖南大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">杨胜刚</p>
                                         <p class="price">
-                                            <span>95</span>
+                                            <span>299</span>
                                             元
-                                            <del>99元</del>
+                                            <del>599元</del>
                                         </p>
                                     </div>
                                 </li>
-                                <li class="rainbow-item-18">
+                            </ul>
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/xiamiair.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s6.webp">
                                         </div>
-                                        <h3 class="title">小米笔记本Air 12.5" 2019款 8代M3 4G 128G 金色</h3>
-                                        <p class="desc">像杂志一样随身携带</p>
+                                        <h3 class="title">作物育种学</h3>
+                                        <p class="desc" style="color: #666">南京农业大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">洪德林</p>
                                         <p class="price">
-                                            <span>3299</span>
+                                            <span>99</span>
                                             元
-                                            <del>3599元</del>
+                                            <del>299元</del>
                                         </p>
                                     </div>
                                 </li>
-                                <li class="rainbow-item-19">
+                            </ul>
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/jiangzaoerji.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s8.webp">
                                         </div>
-                                        <h3 class="title">小米降噪项圈蓝牙耳机 黑色</h3>
-                                        <p class="desc">无线降噪，静无止境</p>
+                                        <h3 class="title">市场营销</h3>
+                                        <p class="desc" style="color: #666">四川大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">左仁淑</p>
                                         <p class="price">
-                                            <span>399</span>
+                                            <span>499</span>
                                             元
-                                            <del>499元</del>
+                                            <del>899元</del>
                                         </p>
                                     </div>
                                 </li>
-                                <li class="rainbow-item-20">
+                            </ul>
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="rainbow-item-1">
                                     <div class="content">
                                         <div class="thumb">
-                                            <img alt="小爱老师 4G版 白色" width="160" height="160" src="./../static/images/xiaomikongtiao.jpg">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s9.webp">
                                         </div>
-                                        <h3 class="title">巨省电 | 小米新1级立式空调 2匹</h3>
-                                        <p class="desc">新一级能效巨省电，自清洁</p>
+                                        <h3 class="title">汇编语言程序设计</h3>
+                                        <p class="desc" style="color: #666">电子科技大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">邢建川</p>
                                         <p class="price">
-                                            <span>3999</span>
+                                            <span>499</span>
                                             元
-                                            <del>4999元</del>
+                                            <del>899元</del>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <ul>
+                                <li class="rainbow-item-1">
+                                    <div class="content">
+                                        <div class="thumb">
+                                            <img alt="C++程序设计" width="100%" height="160px"
+                                                 src="./../static/images/s10.webp">
+                                        </div>
+                                        <h3 class="title">大学计算机基础</h3>
+                                        <p class="desc" style="color: #666">中国农业大学</p>
+                                        <p class="desc" style="margin-top: 0;margin-bottom: 20px;">陈雷</p>
+                                        <p class="price">
+                                            <span>499</span>
+                                            元
+                                            <del>899元</del>
                                         </p>
                                     </div>
                                 </li>
@@ -2022,9 +2060,9 @@
                     <span class="swiper-flashsale-next"></span>
                 </div>
             </div>
-            <!-- <div class="home-banner-box">
-                <img src="./../static/images/xiaomibanner.webp" alt="">
-            </div> -->
+             <div class="home-banner-box">
+                <img src="./../static/images/shengdan.png" alt="">
+            </div>
         </div>
     </div>
     <!-- <div class="aaaa"></div> -->
@@ -2032,12 +2070,12 @@
     <div class="home-brick-box">
         <div class="container">
             <div class="box-hd">
-                <h2 class="title">手机</h2>
+                <h2 class="title">课程</h2>
             </div>
             <div class="box-bd clearfix">
                 <div class="span4">
                     <a href="">
-                        <img src="./../static/images/xioamialpla.webp" alt="">
+                        <img src="./../static/images/mooc.jpg" alt="">
                     </a>
                 </div>
                 <div class="span16">
@@ -3007,53 +3045,54 @@
             </div>
         </div>
     </div> -->
+    <div style="text-align: center;background-color: #F5F5F5"><img src="../static/images/dognzhi.png"></div>
 
     <div class="home-video-box">
         <div class="container">
             <div class="box-hd">
-                <h2 class="title">视频</h2>
+                <h2 class="title">精品课程</h2>
             </div>
             <div class="box-bd">
                 <ul>
                     
                     <li>
                         <div class="figure">
-                            <img src="./../static/images/x10fbh.webp" alt="">
+                            <img src="./../static/images/jinpin1.webp" alt="">
                             <span class="play">
                             </i></span>
                         </div>
                         <h3 class="title">
-                            Redmi 10X系列发布会
+                            Python数据分析与展示
                         </h3>
                     </li>
                     <li>
                         <div class="figure">
-                            <img src="./../static/images/m10litefbh.webp" alt="">
+                            <img src="./../static/images/jinpin2.webp" alt="">
                             <span class="play">
                             </i></span>
                         </div>
                         <h3 class="title">
-                            小米10 青春版 发布会
+                            侵权责任法
                         </h3>
                     </li>
                     <li>
                         <div class="figure">
-                            <img src="./../static/images/m108k.webp" alt="">
+                            <img src="./../static/images/jinpin3.webp" alt="">
                             <span class="play">
                             </i></span>
                         </div>
                         <h3 class="title">
-                            小米10 8k手机拍大片
+                            摄像基础
                         </h3>
                     </li>
                     <li>
                         <div class="figure">
-                            <img src="./../static/images/m10fhb.webp" alt="">
+                            <img src="./../static/images/jinpin4.webp" alt="">
                             <span class="play">
                             </i></span>
                         </div>
                         <h3 class="title">
-                            小米10发布会
+                            宇宙探索与发现
                         </h3>
                     </li>
                 </ul>
@@ -3065,16 +3104,16 @@
         <div class="container">
              <div class="footer-service">
                 <ul class="list-service clearfix">
-                    <li>7天无理由退货</li>
-                    <li>7天无理由退货</li>
-                    <li>15天免费换货</li>
-                    <li>满99元包邮</li>
-                    <li>520余家售后网点</li>
+                    <li>关于我们</li>
+                    <li>联系我们</li>
+                    <li>帮助中心</li>
+                    <li>意见反馈</li>
+                    <li>友情链接</li>
                 </ul>
             </div>
         </div>
-        <div class="footer-links clearfix">
-            
+        <div class="footer-links clearfix" style="text-align: center;font-size: 16px;margin: 30px 0;">
+            Copyright © 2020 imooc.com All Rights Reserved
         </div> 
     </div>
    
@@ -3087,6 +3126,36 @@
                 x
             </span>
         </div>
+    </div>
+</div>
+
+
+<div class="right-tab">
+    <ul>
+        <a href="person.html"><li class="course">
+            <img src="../static/images/person-white.png">
+            <p>我的课程</p>
+        </li></a>
+        <a href="task.html"><li class="task">
+            <img src="../static/images/task-white.png">
+            <p>课程任务</p>
+        </li></a>
+        <a><li class="service">
+            <img src="../static/images/service-white.png">
+            <p>售后服务</p>
+        </li></a>
+        <a>
+            <li class="shop">
+                <img src="../static/images/shoppingcar-white.png">
+                <p>购物车</p>
+            </li>
+        </a>
+
+    </ul>
+
+    <div class="retrun-top">
+        <img src="../static/images/totop.png">
+        <p>回顶部</p>
     </div>
 </div>
     
@@ -3135,15 +3204,16 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-    })
+    });
 
     var swiper = new Swiper('#swiper2', {
+      // loop : true,
       slidesPerView: 4,
-    //   spaceBetween: 30,
-    //   pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true,
-    //   },
+      spaceBetween: 30,
+      // pagination: {
+      //   el: '.swiper-pagination',
+      //   clickable: true,
+      // },
         speed:1000,
       navigation: {
             nextEl: '.swiper-button-next',
@@ -3269,6 +3339,64 @@
     $(".mi-media .mi-dialong .media-head span").click(function(){
         $(".mi-media").css("display","none")
         // alert(11)
+    });
+    $(window).scroll(function(event){
+       let height = $(document).scrollTop();
+        if (height >= 800) {
+            $(".retrun-top").show();
+        }else {
+            $(".retrun-top").hide();
+        }
+    });
+    $(".retrun-top").hover(function () {
+
+        $(".retrun-top img").attr("src","../static/images/totop_hover.png");
+        $(".retrun-top").css("color","#FF6700");
+    },function () {
+        $(".retrun-top img").attr("src","../static/images/totop.png");
+        $(".retrun-top").css("color","#757575");
+    });
+
+    $(".course").hover(function () {
+
+        $(".course img").attr("src","../static/images/person-yellow.png");
+        $(".course").css("color","#FF6700");
+    },function () {
+        $(".course img").attr("src","../static/images/person-white.png");
+        $(".course").css("color","#757575");
+    });
+    $(".task").hover(function () {
+
+        $(".task img").attr("src","../static/images/task-yellow.png");
+        $(".task").css("color","#FF6700");
+    },function () {
+        $(".task img").attr("src","../static/images/task-white.png");
+        $(".task").css("color","#757575");
+    });
+    $(".service").hover(function () {
+
+        $(".service img").attr("src","../static/images/service-yellow.png");
+        $(".service").css("color","#FF6700");
+    },function () {
+        $(".service img").attr("src","../static/images/service-white.png");
+        $(".service").css("color","#757575");
+    });
+    $(".shop").hover(function () {
+
+        $(".shop img").attr("src","../static/images/shoppingcar-yellow.png");
+        $(".shop").css("color","#FF6700");
+    },function () {
+        $(".shop img").attr("src","../static/images/shoppingcar-white.png");
+        $(".shop").css("color","#757575");
+    });
+
+
+
+
+    $(".retrun-top").click(function () {
+        $('html,body').animate({scrollTop: '0px'}, 800);
     })
+    
+    
 </script>
 </html>

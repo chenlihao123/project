@@ -2,6 +2,8 @@ package com.service;
 
 import com.entity.Student;
 
+import java.util.List;
+
 /**
  * @author chenlihao
  * @create 2020-12-09 15:31
@@ -32,6 +34,11 @@ public interface StudentService {
     Student queryStudentByEmail(String email);
     Student queryStudentByUsername(String username);
     Student queryStudentByPhone(String phone);
+
+    List<Student> queryAllStudent();
+
+    int deleteStudentById(int id);
+
     //更新学生信息
     boolean updateStuInfo(Student student);
 }
