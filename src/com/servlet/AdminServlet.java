@@ -46,10 +46,9 @@ public class AdminServlet extends BaseServlet {
     }
 
     //通过id删除学生
-    public void deleteStuentById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void deleteStudentById(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id =Integer.parseInt(request.getParameter("id"));
         int flag = studentService.deleteStudentById(id);
         response.getWriter().write(flag);
     }
-
 }

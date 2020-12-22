@@ -6,6 +6,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -54,12 +55,12 @@ public class FileUtils {
         return map;
     }
 
-    public static void singleDownload(HttpServletRequest request, HttpServletResponse response, String path, String fileName) throws Exception {
+    public static void singleDownload(HttpServletRequest request, HttpServletResponse response, String path, String fileName,String mimeType) throws Exception {
         //金句：防止中文乱码
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
-        //将响应的类型设置为图片
-        response.setContentType("image/jpeg");
+        //设置相应类型
+        response.setContentType(mimeType);
         // 把中文名进行UTF-8 编码操作。
         String str = "attachment; fileName=" + URLEncoder.encode(fileName, "UTF-8");
         //金句：文件下载

@@ -23,9 +23,10 @@ public interface StudentDao {
     Student queryStudentByUsername(String username);
     //返回所以用户信息
     List<Student> queryAllStudent();
-
     //通过id删除学生
     int delectStudentById(int id);
     //更新学生信息
     boolean updateStuInfo(Student student);
+    //通过id查找学生
+    Student queryStudentById(int id);
 }

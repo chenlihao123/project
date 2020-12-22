@@ -105,6 +105,17 @@
 			</div>
 		</div>
 	</body>
+	<script src="../static/js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#chakan").on("click",function () {
+				window.location.href="check.html"
+			});
+			$("#piyue").on("click",function () {
+				window.location.href="check.html"
+			})
+		})
+	</script>
 	<script src="../static/layuiadmin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		//Demo
@@ -119,8 +130,8 @@
 		});
 	</script>
 	<script type="text/html" id="barDemo">
-	  <a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
-	  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">批阅</a>
+	  <a class="layui-btn layui-btn-xs" lay-event="edit" id="chakan">查看</a>
+	  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" id="piyue">批阅</a>
 	</script>
 	<script>
 	layui.use('table', function(){
@@ -234,8 +245,8 @@
 	  
 	  table.render({
 	    elem: '#test2'
-	    // ,url: 'json/table/demo1.json'
-	    ,contentType: 'application/json'
+	    ,url: 'http://localhost:8080/onlinelearning/teacher.do?action=managerHomework'
+	    // ,contentType: 'application/json'
 	    ,page: { //详细参数可参考 laypage 组件文档
 	      curr: 5
 	      ,groups: 1
@@ -249,10 +260,10 @@
 	    ,toolbar: true
 	    ,cols: [[
 	      {field: 'id', hide: true}
-	      ,{field: 'username',align:'center',  title: '发布时间'}
-	      ,{field: 'email',align:'center', title: '作业标题'}
-	      ,{field: 'count',align:'center', title: '提交人数'}
-	      ,{field: 'view',align:'center', title: '批阅进度'}
+	      ,{field: 'endTime',align:'center',  title: '发布时间'}
+	      ,{field: 'title',align:'center', title: '作业标题'}
+	      ,{field: 'total',align:'center', title: '提交人数'}
+	      ,{field: 'progress',align:'center', title: '批阅进度'}
 	      ,{title:'操作', align:'center', toolbar: '#barDemo'}
 	      /*
 	      {type:'numbers'}
@@ -263,15 +274,7 @@
 	      ,{field:'lock', title:'是否锁定', templet: '#checkboxTpl', minWidth: 110, align:'center'}
 	      ,{field:'city', title:'城市'}
 	      */
-	    ]],
-		data:[{
-			"id":"1",
-			"username":"20201220",
-			"email":"sdfsfd",
-			"count":"sdfsfd",
-			"view":"sdfsfd"
-			
-		}]
+	    ]]
 		    ,skin: 'row' //表格风格
 		    ,even: true
 		    //,size: 'lg' //尺寸

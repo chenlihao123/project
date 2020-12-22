@@ -41,4 +41,7 @@ public interface StudentService {
 
     //更新学生信息
     boolean updateStuInfo(Student student);
+    //通过id查找学生
+    Student queryStudentById(int id);
+
 }

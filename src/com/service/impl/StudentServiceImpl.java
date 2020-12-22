@@ -76,4 +76,9 @@ public class StudentServiceImpl implements StudentService {
     public boolean updateStuInfo(Student student) {
         return studentDao.updateStuInfo(student);
     }
+
+    @Override
+    public Student queryStudentById(int id) {
+        return studentDao.queryStudentById(id);
+    }
 }

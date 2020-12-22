@@ -65,6 +65,12 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         return i>=0?true:false;
     }
 
+    @Override
+    public Student queryStudentById(int id) {
+        String sql="select * from student where id = ?";
+        return queryForOne(Student.class,sql,id);
+    }
+
 
 //    测试sql语句是否正确
 //    public static void main(String[] args) {

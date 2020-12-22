@@ -177,42 +177,33 @@
 									学生列表
 								</div>
 								<div id="submit-info">
-									已提交1/6份,以批阅0/6份
+<!--									已提交1/6份,以批阅0/6份-->
 								</div>
 							</div>
 							
 							
-							<ul class="student-ul">
-								<li>
-									<img class="head-pic" src="../static/images/bg.jpg" width="50px" height="50px" >
-									<span class="name">
-										胡歌
-									</span>
-									<span class="score">得分:80</span>
-									<span id="ischeck">
-										已批阅
-									</span>
-								</li>
-								<li>
-									<img class="head-pic" src="../static/images/bg.jpg" width="50px" height="50px" >
-									<span class="name">
-										胡歌
-									</span>
-									<span class="score">得分:80</span>
-									<span id="ischeck">
-										已批阅
-									</span>
-								</li>
-								<li>
-									<img class="head-pic" src="../static/images/bg.jpg" width="50px" height="50px" >
-									<span class="name">
-										胡歌
-									</span>
-									<span class="score">得分:80</span>
-									<span id="ischeck">
-										已批阅
-									</span>
-								</li>
+							<ul class="student-ul" id="studentUl">
+
+<!--								<li>-->
+<!--									<img class="head-pic" src="../static/images/bg.jpg" width="50px" height="50px" >-->
+<!--									<span class="name">-->
+<!--										胡歌-->
+<!--									</span>-->
+<!--									<span class="score">得分:80</span>-->
+<!--									<span id="ischeck">-->
+<!--										已批阅-->
+<!--									</span>-->
+<!--								</li>-->
+<!--								<li>-->
+<!--									<img class="head-pic" src="../static/images/bg.jpg" width="50px" height="50px" >-->
+<!--									<span class="name">-->
+<!--										胡歌-->
+<!--									</span>-->
+<!--									<span class="score">得分:80</span>-->
+<!--									<span id="ischeck">-->
+<!--										已批阅-->
+<!--									</span>-->
+<!--								</li>-->
 							</ul>
 							
 						</div>
@@ -225,7 +216,7 @@
 								<div id="" style="margin-bottom: 5px;">
 									作业评分
 								</div>
-								<input type="" class="layui-input" name="" id="" value="" placeholder="0-100" />
+								<input type="" class="layui-input" name="" id="pingfen" value="" placeholder="0-100" />
 							</div>
 							
 							<div class="homework-score">
@@ -239,26 +230,26 @@
 							  <i class="layui-icon"></i>
 							  <p>点击上传，或将文件拖拽到此处</p>
 							</div>
-						<div>
-							<button class="layui-btn layui-btn-normal" style="background-color: #4DD172;margin-left: 0px;margin-top: 50px">提交点评</button>
+						<div id="btnDiv">
+							<button class="layui-btn layui-btn-normal" style="background-color: #4DD172;margin-left: 0px;margin-top: 50px" id="submitBtn">提交点评</button>
 						</div>
 						
 					</li>
 					<li class="homework">
-						<div class="stu-homework">
-							xx的作业,提交时间:xxxxxx
+						<div class="stu-homework" id="div1">
+<!--							xx的作业,提交时间:xxxxxx-->
 						</div>
 						<div class="homework-content" style="margin-bottom: 5px">
 							作业内容
 						</div>
 						<div class="homework-editor" style="margin-bottom: 25px">
-							    <textarea name="demo" id="demo" class="layui-hide">
+							    <textarea style="height: 200px" name="demo" id="contentTextarea" class="layui-textarea" readonly>
 
 							        </textarea>
 						</div>
 						<p>作业附件</p>
 						<div class="homework-file">
-							作业的附件
+							<a id="fileA">点击下载</a>
 						</div>
 					</li>
 				</ul>
@@ -267,6 +258,72 @@
 	</body>
 	<script src="../static/layuiadmin/layui/layui.js"></script>
 	<script src="../static/js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+        let score=$("#pingfen").val();
+        let stuHomeworkId;
+		$(function () {
+			initStudent();
+			$("#submitBtn").on("click",function () {
+                returnStuId();
+            })
+		});
+		function initStudent() {
+			$.getJSON("http://localhost:8080/onlinelearning/teacher.do","action=getStudent",function (data) {
+				console.log(data);
+				console.log(data.stuValue);
+				// console.log(data.get("homeworkValue"));
+				for (let i = 0; i < data.stuValue.length; i++) {
+					let img=data.stuValue[i].imgPath;
+					img=img.substring(2);
+					img="http://localhost:8080"+img;
+					let score=data.homeworkValue[i].score;
+					if(score==null){
+						score=0;
+					}
+					let correct="已批阅";
+					if(score==0){
+						correct="未批阅";
+					}
+					let str=`\t\t\t\t\t\t\t\t<li data-name="${data.stuValue[i].realName}" data-time="${data.homeworkValue[i].createTime}" data-content="${data.homeworkValue[i].content}" data-file="${data.homeworkValue[i].file}" data-shid="${data.homeworkValue[i].id}" onclick="func1(this)">
+					<input type="hidden" name="stuHomeworkId" value="${data.homeworkValue[i].id}">
+\t\t\t\t\t\t\t\t\t<img class="head-pic" src=${img} width="50px" height="50px" >
+\t\t\t\t\t\t\t\t\t<span class="name">
+\t\t\t\t\t\t\t\t\t\t ${data.stuValue[i].realName}
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t\t<span class="score">得分:${score}</span>
+\t\t\t\t\t\t\t\t\t<span id="ischeck">
+\t\t\t\t\t\t\t\t\t\t ${correct}
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</li>`;
+					$("#studentUl").append(str);
+				}
+
+			})
+		}
+		function func1(a) {
+			// alert($(a).data("createTime"));
+			// alert($(a).data("name"));
+			// alert($(a).data("content"));
+            $("#pingfen").val("");
+			$(a).css("background","#DBE5F6").siblings().css("background","#ffffff");
+			$("#div1").text($(a).data("name")+"的作业,提交时间:"+$(a).data("time"));
+			$("#contentTextarea").text($(a).data("content"));
+			let file=$(a).data("file");
+			file=file.substring(8);
+			$("#fileA").attr("href","http://localhost:8080/onlinelearning/stu.do?action=downloadHomework&downloadFileName="+file);
+            stuHomeworkId=$(a).data("shid");
+ 			}
+		function returnStuId() {
+			$.getJSON("http://localhost:8080/onlinelearning/teacher.do","action=judgeHomework&stuHomeworkId="+stuHomeworkId+"&score="+$("#pingfen").val(),function (data) {
+			    // console.log(data)
+                if(data=="1"){
+                    window.location.href="check.html"
+                }else {
+                    alert("提交失败")
+                }
+            })
+		}
+	</script>
 	<script>
 		$(".student-ul li").click(function(){
 			$(this).css("background","#DBE5F6").siblings().css("background","#ffffff");

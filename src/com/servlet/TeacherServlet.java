@@ -198,6 +198,48 @@ public class TeacherServlet extends BaseServlet {
         response.getWriter().write(homeworkMsg);
     }
 
+    //管理作业
+    public void managerHomework(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        List<HomeworkManage> manages = homeworkService.getHomeworkManageByTeacherId(teacher.getId());
+        Map<Object, Object> dataMap = new HashMap<>();
+        int studentCount = manages.size();
+        dataMap.put("data",manages);
+        dataMap.put("code",0);
+        dataMap.put("msg","");
+        dataMap.put("count",studentCount);
+        Gson gson = new Gson();
+        String jsonStr = gson.toJson(dataMap);
+        response.getWriter().write(jsonStr);
+    }
+
+    //获取作业学生
+    public void getStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        Integer homeworkId = Integer.valueOf(request.getParameter("homeworkId"));
+        Integer homeworkId = 18;
+        List<StuHomework> stuHomeworks = stuHomeworkService.queryStuHomeworkByHomeworkId(homeworkId);
+        ArrayList<Student> students = new ArrayList<>();
+        for (StuHomework stuHomework : stuHomeworks) {
+            //获取学生名字放到列表里
+            students.add(studentService.queryStudentById(stuHomework.getStudentId()));
+        }
+        HashMap<String, List> map = new HashMap<>();
+        map.put("stuValue",students);
+        map.put("homeworkValue",stuHomeworks);
+        response.getWriter().write(new Gson().toJson(map));
+    }
+
+    //给作业评分
+    public void judgeHomework(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer stuHomeworkId = Integer.valueOf( request.getParameter("stuHomeworkId"));
+        Double score = Double.valueOf( request.getParameter("score"));
+        StuHomework stuHomework = stuHomeworkService.queryStuHomeworkById(stuHomeworkId);
+        stuHomework.setScore(score);
+        boolean b = stuHomeworkService.updateStuHomeworkInfo(stuHomework);
+        String updateMsg=b?"1":"2";
+        response.getWriter().write(new Gson().toJson(updateMsg));
+    }
+
     //将作业分布到每个学生
     private void addHomeworkToStu(Homework homework){
         List<StuCourse> stuCourses = stuCourseService.queryStuCourseByCourseId(homework.getCourseId());
