@@ -13,227 +13,268 @@
     <!-- <link rel="stylesheet" href="./css/sojson.com_.css"> -->
     <link rel="stylesheet" href="../static/css/test.css">
     <link rel="stylesheet" href="../static/js/danmu.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/layuiadmin/layui/css/layui.css">
+    <script src="../static/layuiadmin/layui/layui.js"></script>
     <!--<link rel="stylesheet" href="../static/css/person.css">-->
     <style>
-
-        .uc-main-box {
-            min-height: 500px;
-        }
-
-        .courseList li {
-            width: 200px;
-            height: 230px;
-            background-color: burlywood;
-            float: left;
-            margin-right: 30px;
-            margin-bottom: 30px;
-        }
-
-        .uc-main-box {
-            min-height: 500px;
-
-        }
-
-        .courseList li {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
-            width: 224px;
-            height: 250px;
-            background-color: white;
-        }
-
-        .title {
-            margin-bottom: 5px;
-            max-height: 36px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-            font-weight: bold;
-            font-family: PingFangSC-Medium, PingFangSC;
-            line-height: 18px;
-            overflow: hidden;
-            -o-text-overflow: ellipsis;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .price {
-            line-height: 12px;
-            font-size: 12px;
-            margin-top: 8px;
-            color: #666;
-        }
-
-        .container {
-            width: 1226px;
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        .breadcrumbs, .breadcrumbs a {
-            color: #757575;
-        }
-
-        .breadcrumbs {
-            height: 40px;
-            font-size: 12px;
-            line-height: 40px;
-            background: #f5f5f5;
-        }
-
-        .page-main {
-            padding-bottom: 40px;
-        }
-
-        .page-main {
-            background: #f5f5f5;
-        }
-
-        .row {
-            margin-left: -14px
-        }
-
-        .row:after, .row:before {
-            content: " ";
-            display: table
-        }
-
-        .row:after {
-            clear: both
-        }
-
-        .user-address-menu {
+        .xm-product-box {
+            position: relative;
+            z-index: 4;
             background: #fff;
-            padding: 36px 0;
-        }
-
-        .user-address-menu .menu-box {
-            /*margin: 0 48px 12px;*/
-        }
-
-        .menu-box {
-            cursor: pointer;
-            height: 48px;
-            /*text-align: center;*/
-        }
-
-        .user-address-menu h3 {
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 48px;
-            color: #333;
-
-            margin-left: 40px;
-            padding: 0;
-        }
-
-        .user-address-menu ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .user-address-menu li {
-            padding: 6px 0;
-        }
-
-        .span4 {
-            width: 234px;
-        }
-
-        .user-address-menu li a {
-            color: #757575;
-        }
-
-        a, a:hover {
-            text-decoration: none;
-        }
-
-        .span16 {
-            width: 978px;
-        }
-
-        .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16, .span17, .span18, .span19, .span20 {
-            float: left;
-            margin-left: 14px;
-            min-height: 1px;
-        }
-
-        .mi-uc-box {
-            padding: 36px 48px;
-            background: #fff;
-        }
-
-        .portal-content-box .portal-main[data-v-6cfb7de2] {
-            padding-top: 24px;
-        }
-
-        .clearfix:after, .clearfix:before {
-            content: " ";
-            display: table;
-        }
-
-        .clearfix:after {
-            clear: both;
-        }
-
-        .clearfix:after, .clearfix:before {
-            content: " ";
-            display: table;
-        }
-        .mi-uc-box .box-hd .notice {
-            margin: 0;
-            font-size: 30px;
-            font-weight: 400;
-            line-height: 68px;
-            color: #757575;
-        }
-        .mi-uc-box .box-hd .more {
+            border-top: 1px solid #e0e0e0;
             border-bottom: 1px solid #e0e0e0;
+            -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .07);
+            box-shadow: 0 5px 5px rgba(0, 0, 0, .07);
         }
-        .mi-uc-box .box-hd .filter-list {
-            float: left;
-            margin: 0;
-            padding: 18px 0;
-            list-style-type: none;
-            font-size: 16px;
-            line-height: 1.25;
-        }
-        .mi-uc-box .box-hd .filter-list li.active, .mi-uc-box .box-hd .filter-list li.active a {
-            color: #ff6700;
-        }
-        .mi-uc-box .box-hd .filter-list li.first {
-            padding-left: 0;
-            border-left: 0;
-        }
-        .mi-uc-box .box-hd .filter-list li {
-            float: left;
-            padding: 0 20px;
-            border-left: 1px solid #e0e0e0;
-            color: #757575;
-        }
-        .mi-uc-box .box-hd .filter-list {
-            float: left;
-            margin: 0;
-            padding: 18px 0;
-            list-style-type: none;
-            font-size: 16px;
-            line-height: 1.25;
-        }
-        .box-hd .notice{
-            height: 68px;
-        }
-        .empty {
-            margin: 40px 0;
-            font-size: 18px;
-            text-align: center;
-            color: #b0b0b0;
-        }
-        h3{
-             margin-top: 0px;
-         }
 
+        .xm-product-box .nav-bar {
+            position: relative;
+            height: 63px;
+            width: 100%;
+            margin-top: 0;
+            color: #616161;
+        }
+
+        .xm-product-box .nav-bar h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 60px;
+            color: #424242;
+            float: left;
+        }
+
+        .courseImg {
+            margin-top: 30px;
+            float: left;
+            width: 45%;
+            /*height: 400px;*/
+            text-align: center;
+        }
+
+        .courseImg img {
+
+        }
+
+        .courseInfo {
+            margin-top: 30px;
+            float: left;
+            width: 55%;
+            /*background-color: black;*/
+            height: 400px;
+        }
+
+        .course-title h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            font-weight: 400;
+            color: #212121;
+        }
+
+        .info-box {
+            margin: 15px 0;
+        }
+
+        .product-info {
+            height: 70px;
+            padding: 15px 0;
+            position: relative;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+        }
+
+        .course-from {
+            margin-top: 10px;
+        }
+
+        .join {
+
+            width: 300px;
+            height: 54px;
+            border: 1px solid #ff6700;
+            background: #fff;
+            color: #ff6700;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .join p {
+            line-height: 54px;
+        }
+
+        .join:hover {
+            background: #F25807;
+            color: #FFFFFF;
+        }
+
+        .title{
+            /*line-height: 76.8px;*/
+            height: 76px;
+            font-size: 22px;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 1em 0;
+        }
+        .product-detail[data-v-eb8da102] {
+            padding-bottom: 50px;
+        }
+        .page-main {
+            background: #f5f5f5;
+        }
+        .product-detail .detail-item .title h3[data-v-eb8da102] {
+            font-size: 22px;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 1em 0;
+        }
+        .ux-mooc-comment-course-comment_head {
+            margin-bottom: 14px;
+            height: 64px;
+        }
+        .ux-mooc-comment-course-comment_head_rating-scores {
+            line-height: 64px;
+            font-size: 48px;
+            width: 73px;
+            color: #FF7A3E;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .ux-mooc-comment-course-comment_head_rating-scores {
+            line-height: 64px;
+            font-size: 48px;
+            width: 73px;
+            color: #FF7A3E;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .ux-mooc-comment-course-comment_head_rating-action {
+            width: 132px;
+        }
+        .ux-mooc-comment-course-comment_head_comment-btn, .ux-mooc-comment-course-comment_head_rating-action, .ux-mooc-comment-course-comment_head_not-enough-comments {
+            margin-top: 12px;
+        }
+        .ux-mooc-comment-course-comment_head_rating-scores, .ux-mooc-comment-course-comment_head_rating-action {
+            float: left;
+        }
+        .ux-mooc-comment-course-comment_head_rating-action_rate {
+            height: 25px;
+        }
+        .ux-rating-star {
+            display: inline-block;
+            position: relative;
+            white-space: nowrap;
+        }
+        .ux-rating-star .star-lose-point {
+            font-size: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .ux-rating-star .star {
+            display: inline-block;
+            margin-right: 9px;
+            overflow: hidden;
+        }
+        .ux-mooc-comment-course-comment_head_rating-action_tips {
+            font-size: 13px;
+            color: #999999;
+        }
+        .ux-mooc-comment-course-comment_head_rating-action_tips {
+            font-size: 13px;
+            color: #999999;
+        }
+        .comment-list li{
+            position: relative;
+            width: 100%;
+            height: 110px;
+            /*background-color: black;*/
+        }
+        .comment-name,comment-content,comment-time{
+            margin-bottom: 9px;
+        }
+        .comment-name p{
+            color: #333333;
+            font-size: 13px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .comment-content p{
+            color: #666666;
+            font-size: 14px;
+            position: relative;
+            line-height: 24px;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+        .comment-time p{
+            color: #999999;
+        }
+        .stu-headPic{
+            float: left;
+        }
+        .stu-headPic img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            /*background-color: black;*/
+        }
+        .comment-right{
+            margin-left: 17px;
+        }
+        .comment-time p{
+            float: left;
+        }
+        .comment-time div{
+
+            right: 100px;
+            position: absolute;
+            bottom: 20px;
+        }
+        .comment-time div img{
+            width: 30px;
+            height: 30px;
+        }
+        .good-count{
+            line-height: 30px;
+            font-size: 20px;
+            color: #999999;
+            position: relative;
+            bottom: 7px;
+            left: 10px;
+        }
+        #test4 {
+            position: relative;
+            bottom: 8px;
+        }
+        .tijiao-title{
+            width: 100%;
+            background-color: #F5F5F5;
+        }
+        .tijao{
+
+            height: 90px;
+            line-height: 90px;
+            font-size: 22px;
+            font-weight: 400;
+        }
+        .job-submit{
+            width: 100%;
+            background-color: #F5F5F5;
+        }
+        .job-content {
+            background-color: white;
+            /*height: 500px;*/
+        }
+        .job-info {
+            padding-left: 50px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 18px;
+            color: #333333;
+        }
     </style>
 </head>
 <body>
@@ -686,196 +727,75 @@
             </div>
         </div>
     </div>
-    <div class="breadcrumbs">
-        <div class="container"><a href="indexPage.html" stat_exposure="true">首页</a> <span class="sep">/</span> <span>消息中心</span>
+    <div class="tijiao-title">
+        <div class="container tijao">
+            <h3>提交作业</h3>
         </div>
-    </div>
-    <div class="mi-user-portal page-main">
-        <div class="container ">
-            <div class="row">
-                <div class="span4">
-                    <div id="J_userMenu" class="user-address-menu">
-                        <a href="person.html"><div class="menu-box">
-                            <h3 class="title">我的课程</h3>
-                        </div></a>
-                        <a href="task.html"><div class="menu-box">
-                            <h3 class="title">课程任务</h3>
-                        </div></a>
-                        <a href="notice.html"><div class="menu-box" style="background-color: black; opacity: 0.3">
-                            <h3 class="title" style="color: #FFFFFF">消息通知</h3>
-                        </div></a>
-                        <a href="modify.html"><div class="menu-box">
-                            <h3 class="title">个人信息</h3>
-                        </div></a>
+        <div class="job-submit clearfix">
+            <div class="container job-content">
+                <p style="padding-left: 50px;font-size: 20px">作业信息</p>
+                <div style="width: 50%;float: left;border-bottom: 1px solid gray">
+                    <div class="info-1 job-info">
+                        <span>课程名:</span><span></span>
+                    </div>
+                    <div class="info-2 job-info">
+                        <span>授课教师:</span><span></span>
                     </div>
                 </div>
-                <div class="span16">
-                    <div class="mi-uc-box uc-main-box">
-                        <div class="box-hd"><h1 class="notice">消息通知</h1>
-                            <div class="more clearfix">
-                                <ul class="filter-list J_addrType">
-                                    <li class="first active"><a href="?category=all" stat_exposure="true">全部消息</a><span
-                                            class="m-num"></span></li>
-                                    <li class=""><a href="?category=express" stat_exposure="true">系统消息</a></li>
-                                    <li class=""><a href="?category=activity" stat_exposure="true">课程消息</a></li>
-                                </ul>
-                            </div>
+                <div style="width: 50%;float: left;border-bottom: 1px solid gray" >
+                    <div class="info-3 job-info">
+                        <span>作业标题:</span><span></span>
+                    </div>
+                    <div class="info-4 job-info">
+                        <span>作业内容:</span><span></span>
+                    </div>
+                </div>
+                <div>
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <textarea name="demo" id="demo" class="layui-hide"></textarea>
                         </div>
-                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
-                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
-                        <div data-v-61b083d8="" class="empty" type="all">暂无数据</div>
-                    </div>
+                        <input type="file" value="添加附件">
+                        <div style="margin: 50px 0;">
+                            <button class="layui-btn" style="margin-left: 500px" >提交</button>
+                            <button class="layui-btn" type="reset" style="margin-left: 30px;background-color: #00C758">清除</button>
+
+                        </div>
+
+                    </form>
                 </div>
+
+
             </div>
         </div>
     </div>
-</div>
 
 
-<!-- 视频播放video -->
-<!-- <div class="content" id="content">
-    <ul class="shanpe" id="shanpe"></ul>
-    <form action="/" method="post" id="dang">
-        <input type="text" name="name" value="¥ㄟ(´･ᴗ･`)ノ$暴富" id="dangmu" />
-        <span id="fan">发送弹幕</span>
-    </form>
-</div> -->
 
-
-<!-- <div data-v-f6440f00="" data-v-54b15c30="" class="mi-popup" style="z-index: 100;">
-        <div data-v-f6440f00="" class="mi-popup__mask mi-modal">
-        </div>
-        <div data-v-f6440f00="" class="mi-popup__box">
-            <div data-v-f6440f00="" class="mi-popup__content">
-                <div data-v-54b15c30="" data-v-f6440f00="" class="mi-dialog__wrapper home-video-dialog" style="width: 880px;">
-                    <div data-v-54b15c30="" data-v-f6440f00="" aria-modal="true" class="mi-dialog">
-                        <div data-v-54b15c30="" data-v-f6440f00="" class="mi-dialog__header">
-                            <span data-v-54b15c30="" data-v-f6440f00="" class="mi-dialog__title">Redmi 10X系列发布会</span>
-                        </div>
-                        <a data-v-54b15c30="" data-v-f6440f00="" class="mi-dialog__headerbtn">
-                            <i data-v-54b15c30="" data-v-f6440f00="" class="mi-dialog__close iconfont"></i>
-                        </a>
-                        <div data-v-54b15c30="" data-v-f6440f00="" class="mi-dialog__body">
-                            <div class="mi-dialog__inner"><div data-v-e073abaa="" class="mi-video-player">
-                                <div data-v-e073abaa="" id="miPlayerVideoWrapper" class="mi-video-wrapper">
-                                    <div data-v-e073abaa="" class="mi-video-box">
-                                        <video data-v-e073abaa="" id="miPlayerVideo" poster="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/101b19aca4bb489bcef0f503e44ec866.jpg" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11c70c96529b6e6938567ec1aa0910e0.mp4" preload="none">
-                                        </video>
-                                    </div>
-                                    <div data-v-e073abaa="" class="mi-video-loading" style="display: none;">
-                                        <img data-v-e073abaa="" src="//hd.mi.com/x/03021d/img/loading.gif" alt="正在加载...">
-                                    </div>
-                                    <div data-v-e073abaa="" class="mi-video-play-btn" style="">
-                                    </div>
-                                    <div data-v-e073abaa="" class="mi-video-control clearfix">
-                                        <div data-v-e073abaa="" id="miPlayerVideoProgress" class="video-progress">
-                                            <div data-v-e073abaa="" class="video-progress-loaded" style="width: 0.658306%;">
-                                            </div>
-                                            <div data-v-e073abaa="" class="video-progress-played" style="width: 0.632004%;">
-                                            </div>
-                                            <div data-v-e073abaa="" id="miPlayerVideoPointer" class="video-progress-pointer" style="left: 0.632004%;">
-                                            </div>
-                                        </div>
-                                        <div data-v-e073abaa="" class="control-item control-btns">
-                                            <span data-v-e073abaa="" class="control-btn play" style=""></span>
-                                            <span data-v-e073abaa="" class="control-btn pause" style="display: none;"></span>
-                                        </div>
-                                        <div data-v-e073abaa="" class="control-item control-times">
-                                            <span data-v-e073abaa="" class="cur">00:57</span>
-                                            <em data-v-e073abaa="" class="sep">/</em><span data-v-e073abaa="" class="dur">150:29</span>
-                                        </div>
-                                        <div data-v-e073abaa="" class="control-item control-full-screen" style="">
-                                            <span data-v-e073abaa="" class="control-btn full"></span>
-                                            <span data-v-e073abaa="" class="control-btn reset" style="display: none;"></span>
-                                        </div>
-                                        <div data-v-e073abaa="" class="control-item control-volume">
-                                            <span data-v-e073abaa="" id="miPlayerVolume" class="control-btn"></span>
-                                            <div data-v-e073abaa="" id="miPlayerVolumeProgress" class="volume-progress">
-                                                <div data-v-e073abaa="" class="volume-progress-current" style="width: 50%;">
-                                                </div>
-                                                <div data-v-e073abaa="" id="miPlayerVolumePointer" class="volume-pointer" style="left: 50px;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<div class="mi-media">
-    <div class="mi-dialong">
-        <div class="media-head">
-            <span>
-                x
-            </span>
-        </div>
-    </div>
 </div>
 
 </body>
 <!-- <script src="./js/swiper.js"></script> -->
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-    $(function () {
-        init()
-    });
 
-    function init() {
-        $.getJSON("http://localhost:8080/onlinelearning/stu.do", "action=initCourse", function (data) {
-            for (let i = 0; i < data.length; i++) {
-                let imgPath = data[i].imgPath;
-                imgPath = imgPath.substring(2);
-                imgPath = "http://localhost:8080" + imgPath;
-                let str = `<a href="video.html?courseId=${data[i].id}&courseName=${data[i].courseName}"><li>
-                                        <div>
-                                            <img src=${imgPath} alt="" width="200px" height="140px">
-                                        </div>
-                                        <div class="title">${data[i].courseName}</div>
-                                        <p class="price">${data[i].teacherName}</p>
-                                        <p class="price">${data[i].courseInfo}</p>
-                                    </li></a>`;
-                $("#courseUl").append(str);
-            }
-        })
+    function getQueryVariable(variable) {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
     }
+
+
+
+
 </script>
 <script src="../static/js/danmu.js"></script>
 <script>
 
-    // var mySwiper = new Swiper('#swiper1', {
-    //     loop : true,
-    //     autoplay: 5000,//可选选项，自动滑动
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //     },
-    //     navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     },
-    // })
-
-    // var swiper = new Swiper('#swiper2', {
-    //   slidesPerView: 4,
-    // //   spaceBetween: 30,
-    // //   pagination: {
-    // //     el: '.swiper-pagination',
-    // //     clickable: true,
-    // //   },
-    //     speed:1000,
-    //   navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     },
-    //     autoplay: {
-    //         // delay: 2000,//1秒切换一次
-    //     },
-    // });
 
     $(".swiper-flashsale-prev").click(function () {
         $(".swiper2-button-prev").trigger("click");
@@ -962,40 +882,98 @@
         })
     })
 
-
-    //headbar
-    //    $(".brick-item").hover(function(){
-    //        console
-    //        alert(22)
-    //     $(this).animate({top:"100px"},200)
-    //     },function(){
-    //         $(this).animate({top:"0px"},200)
-    //     })
-    // $(".brick-item1").hover(function(){
-    //     // alert(22)
-    //     $(this).animate({marginTop:"-2px"},200)
-    //     // console.log(dfsaf)
-    // },function(){
-    //     $(this).animate({marginTop:"0px"},200)
-    // })
-
-    // more
     $(".tab-list li").hover(function () {
         $(this).addClass("tab-active").siblings().removeClass("tab-active");
-        // console.log($(this).index()) 
+        // console.log($(this).index())
         $(".span10 ul").eq($(this).index()).removeClass("hide").siblings().addClass("hide");
-    })
+    });
 
     $(".home-video-box .container ul li").click(function () {
         $(".mi-media").css("display", "block")
         // alert(11)
-    })
+    });
     $(".mi-media .mi-dialong .media-head span").click(function () {
         $(".mi-media").css("display", "none")
         // alert(11)
     })
 
 </script>
+<script>
+    // var value = 3;
+    // layui.use(['rate'], function(){
+    //     var rate = layui.rate;
+    //
+    //
+    //     rate.render({
+    //         elem: '#test4'
+    //         ,value: value
+    //         ,half: true
+    //         ,readonly: true
+    //     })
+    // });
+    $("#btn").click(function () {
+        // let value = 3;
+        // layui.use(['rate'], function(){
+        //     var rate = layui.rate;
+        //
+        //
+        //     rate.render({
+        //         elem: '#test4'
+        //         ,value: value
+        //         ,half: true
+        //         ,readonly: true
+        //     })
+        // });
+        $.ajax({
+            url: "sdf",
+            data:{das: "sdf"},
+            type: "post",
+            success:function(){
+
+            },
+            error:function () {
+                for (let i = 0; i < 5; i++) {
+                    $("#btn").append(`<div id = "${"id"+i}"></div>`);
+                    layui.use(['rate'], function(){
+                        var rate = layui.rate;
 
 
+                        rate.render({
+                            elem: `${"#id"+i}`
+                            ,value: 4
+                            ,half: true
+                            ,readonly: true
+                        })
+                    });
+                }
+
+
+
+            }
+        })
+    });
+
+
+</script>
+
+<script>
+    layui.use('layedit', function(){
+        var layedit = layui.layedit;
+
+        var index = layedit.build('demo', {
+            //hideTool: ['image']
+            uploadImage: {
+                url: 'json/upload/demoLayEdit.json'
+                ,type: 'get'
+            }
+            //,tool: []
+            //,height: 100
+        });
+
+        getChoose.onclick = function(){
+            alert(layedit.getSelection(index));
+        };
+
+    });
+</script>
 </html>

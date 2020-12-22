@@ -155,7 +155,7 @@
         }
 
         .span16 {
-            width: 948px;
+            width: 978px;
         }
 
         .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12, .span13, .span14, .span15, .span16, .span17, .span18, .span19, .span20, .span40 {
@@ -397,9 +397,9 @@
             </div> -->
         </div>
         <div class="site-topbar">
-            <div class="container">
+            <div class="container" style="padding: 0">
                 <div class="topbar-nav">
-                    <a href="">学习平台</a>
+                    <a href="indexPage.html">学习平台</a>
                     <span class="sep">|</span>
                     <a href="">精品</a>
                     <span class="sep">|</span>
@@ -415,7 +415,7 @@
                     <span class="sep">|</span>
                     <a href="" class="download ">下载app
                         <span class="appcode">
-                                    <img src="../static/images/download.png" alt="">
+                                    <img src="../static/images/appload.png" alt="">
                                     在线学习APP
                                 </span>
                     </a>
@@ -452,10 +452,10 @@
             </div>
         </div> -->
         <div class="site-header">
-            <div class="container">
+            <div class="container" style="padding: 0">
                 <div class="header-logo">
                     <a class="logo-home"></a>
-                    <a href="" class="logo"></a>
+                    <a href="" class="logo"><img width="100%" height="100%" src="../static/images/header1.jpg"></a>
                 </div>
                 <div class="nav-list">
                     <ul>
@@ -463,7 +463,7 @@
                         <li class="nav-item">
                             <a href="">免费课程</a>
                             <div class="children-list">
-                                <div class="container">
+                                <div class="container" >
                                     <ul>
                                         <li class="first-item">
                                             <div>
@@ -520,7 +520,7 @@
                         <li class="nav-item">
                             <a href="">精品课程</a>
                             <div class="children-list">
-                                <div class="container">
+                                <div class="container" style="padding: 0">
                                     <ul>
                                         <li class="first-item">
                                             <div>
@@ -877,38 +877,38 @@
         </div>
     </div>
     <div class="breadcrumbs">
-        <div class="container"><a href="/" stat_exposure="true">首页</a> <span class="sep">/</span> <span>个人中心</span>
+        <div class="container" style="padding: 0"><a href="indexPage.html" stat_exposure="true">首页</a> <span class="sep">/</span> <span>个人信息</span>
         </div>
     </div>
     <div class="mi-user-portal page-main">
-        <div class="container ">
+        <div class="container " style="padding: 0">
             <div class="row">
                 <div class="span40">
                     <div id="J_userMenu" class="user-address-menu">
                         <a href="person.html">
                             <div class="menu-box">
-                                <h3 class="title">我的课程</h3>
+                                <h3 class="title" style="margin-top: 0">我的课程</h3>
                             </div>
                         </a>
                         <a href="task.html">
                             <div class="menu-box">
-                                <h3 class="title">课程任务</h3>
+                                <h3 class="title" style="margin-top: 0">课程任务</h3>
                             </div>
                         </a>
                         <a href="notice.html">
                             <div class="menu-box">
-                                <h3 class="title">消息通知</h3>
+                                <h3 class="title" style="margin-top: 0">消息通知</h3>
                             </div>
                         </a>
                         <a href="modify.html">
                             <div class="menu-box" style="background-color: black; opacity: 0.3">
-                                <h3 class="title" style="color: #FFFFFF">个人信息</h3>
+                                <h3 class="title" style="color: #FFFFFF;margin-top: 0;">个人信息</h3>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="span16">
-                    <div class="mi-uc-box uc-main-box">
+                    <div class="mi-uc-box uc-main-box" style="height: 600px">
                         <div class="main_l">
                             <div class="naInfoImgBox t_c">
                                 <div class="na-img-area marauto">
@@ -1124,7 +1124,7 @@
     function initStuInfo() {
         $.getJSON("http://localhost:8080/onlinelearning/stu.do", "action=getStuInfo", function (data) {
             let baseInfoStr1 = `<div class="base-username">
-                                    <span>姓名：${data.realName}</span>
+                                    <span style="position: relative;right: 62px">姓名：${data.realName}</span>
                                     <span class="username-value"></span>
                                 </div>
                                 <div class="base-username">
@@ -1137,7 +1137,7 @@
                                 </div>`;
             $("#baseInfo1").append(baseInfoStr1);
             let baseInfoStr2 = `<div class="base-username">
-                                    <span>手机：${data.phone}</span>
+                                    <span style="position: relative;right: 62px">手机：${data.phone}</span>
                                     <span class="username-value"></span>
                                 </div>
                                 <div class="base-username">

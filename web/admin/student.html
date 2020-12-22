@@ -54,9 +54,9 @@
       </div>
       
       <div class="layui-card-body">
-        <div style="padding-bottom: 10px;">
-          <button class="layui-btn layuiadmin-btn-useradmin" data-type="batchdel">删除</button>
-          <button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>
+        <div style="padding-bottom: 50px;">
+          <!--<button class="layui-btn layuiadmin-btn-useradmin" data-type="batchdel">删除</button>-->
+          <!--<button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>-->
         </div>
         <!--<div style="text-align: center">-->
           <table id="LAY-user-manage" lay-filter="test"></table>
@@ -72,6 +72,62 @@
       </div>
     </div>
   </div>
+
+
+
+
+  <div class="layui-row" id="popUpdateTest" style="display:none;">
+    <div class="layui-col-md10">
+      <form class="layui-form layui-from-pane" action="" style="margin-top:20px" >
+        <div class="layui-form-item">
+          <label class="layui-form-label">采集设备类型</label>
+          <div class="layui-input-block">
+            <select name="eqptType" lay-filter="eqptType">
+              <option value="0a0003biac">0a0003biac</option>
+              <option value="0a0003ahup" selected="">0a0003ahup</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">eqptIdCode</label>
+          <div class="layui-input-block">
+            <input type="text" name="neweqptIdCode"  required  lay-verify="required" autocomplete="off" placeholder="请输入采集设备地址" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">eqptName</label>
+          <div class="layui-input-block">
+            <input type="text" name="neweqptName"  required  lay-verify="required" autocomplete="off" placeholder="请输入采集设备名称" class="layui-input">
+          </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-top:40px">
+          <div class="layui-input-block">
+            <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="demo11">确认修改</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script src="../static/js/jquery-3.4.1.js"></script>
   <script src="../static/layuiadmin2/layui/layui.js"></script>
@@ -164,7 +220,7 @@
     <div class="layui-btn-container">
       <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
       <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
-      <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+      <!--<button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>-->
     </div>
   </script>
 
@@ -190,29 +246,17 @@
                   {field: 'id', title: 'ID', align:"center", sort: true, fixed: 'left'}
                   ,{field: 'username',align:"center", title: '用户名'}
                   ,{field: 'gender',align:"center", title: '性别',sort: true}
-                  ,{field: 'realName',align:"center", title: '城市'}
-                  ,{field: 'phone',align:"center", title: '签名'}
-                  ,{field: 'email',align:"center", title: '积分', sort: true}
-                  ,{field: 'school',align:"center", title: '评分',sort: true}
-                  ,{field: 'department',align:"center", title: '职业'}
-                  ,{field: 'classId',align:"center", title: '财富',  sort: true}
-                  ,{field: 'imgPath',align:"center", title: '财富', sort: true}
-                  ,{field: 'password',align:"center", title: '财富',  sort: true}
+                  ,{field: 'realName',align:"center", title: '姓名'}
+                  ,{field: 'phone',align:"center", title: '手机号'}
+                  ,{field: 'email',align:"center", title: '邮箱', sort: true}
+                  ,{field: 'school',align:"center", title: '学校',sort: true}
+                  ,{field: 'department',align:"center", title: '专业'}
+                  ,{field: 'classId',align:"center", title: '班级',  sort: true}
+                  ,{field: 'imgPath',align:"center", title: '头像', sort: true}
+                  ,{field: 'password',align:"center", title: '密码',  sort: true}
                   ,{fixed: 'right',  align:"center", title:'操作', toolbar: '#barDemo' ,width:180}
               ]]
 
-              // ,done: function(res, curr, count){
-              //     //如果是异步请求数据方式，res即为你接口返回的信息。
-              //     //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-              //     alert(234);
-              //     console.log(res);
-              //
-              //     //得到当前页码
-              //     console.log(curr);
-              //
-              //     //得到数据总量
-              //     console.log(count);
-              // }
           });
           //监听行单击事件（双击事件为：rowDouble）
           // table.on('row(test)', function(obj){
@@ -238,7 +282,7 @@
                           type: "get",
                           url:"http://localhost:8080/onlinelearning/admin.do",
                           data:{
-                              action:"deleteStuentById",
+                              action:"deleteStudentById",
                               id:obj.data.id
                           },
                           success:function (data) {
@@ -249,16 +293,56 @@
                       layer.close(index);
                   });
               } else if(obj.event === 'edit'){
-                  layer.prompt({
-                      formType: 2
-                      ,value: data.email
-                  }, function(value, index){
-                      obj.update({
-                          email: value
-                      });
-                      layer.close(index);
-                  });
+                  // layer.prompt({
+                  //     formType: 2
+                  //     ,value: data.email
+                  // }, function(value, index){
+                  //     obj.update({
+                  //         email: value
+                  //     });
+                  //     layer.close(index);
+                  // });
+
+                  layer.open({
+                      //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                      type: 1,
+                      title: "修改学生信息",
+                      area: ['450px', '500px'],
+                      content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
+              });
+                  //动态向表传递赋值可以参看文章进行修改界面的更新前数据的显示，当然也是异步请求的要数据的修改数据的获取
+                  setFormValue(obj,data);
               }
+          });
+          table.on('toolbar(test)', function(obj){
+              var checkStatus = table.checkStatus(obj.config.id);
+              // console.log(obj.config.data[0].id)
+              console.log(checkStatus);
+              alert(checkStatus)
+              switch(obj.event){
+                  case 'add':
+                      // layer.msg('添加');
+                      break;
+                  case 'delete':
+                      layer.msg('删除');
+                      $.ajax({
+                          type: "get",
+                          url:"http://localhost:8080/onlinelearning/admin.do",
+                          data:{
+                              action:"deleteStudentByIds",
+                              id:checkStatus
+                          },
+                          success:function (data) {
+                              // alert(data)
+                          }
+                      });
+
+
+                      break;
+                  case 'update':
+                      layer.msg('编辑');
+                      break;
+              };
           });
 
       });

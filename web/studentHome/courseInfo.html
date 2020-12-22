@@ -22,10 +22,10 @@
             position: relative;
             z-index: 4;
             background: #fff;
-            border-top: 1px solid #e0e0e0;
-            border-bottom: 1px solid #e0e0e0;
-            -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .07);
-            box-shadow: 0 5px 5px rgba(0, 0, 0, .07);
+            /*border-top: 1px solid #e0e0e0;*/
+            /*border-bottom: 1px solid #e0e0e0;*/
+            /*-webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .07);*/
+            /*box-shadow: 0 5px 5px rgba(0, 0, 0, .07);*/
         }
 
         .xm-product-box .nav-bar {
@@ -34,6 +34,14 @@
             width: 100%;
             margin-top: 0;
             color: #616161;
+        }
+        .p1{
+            position: relative;
+            bottom: 30px;
+        }
+        .comment-time{
+            position: relative;
+            bottom: 43px;
         }
 
         .xm-product-box .nav-bar h2 {
@@ -188,8 +196,8 @@
         }
         .comment-list li{
             position: relative;
-            width: 100%;
-            height: 110px;
+            /*width: 100%;*/
+            /*height: 110px;*/
             /*background-color: black;*/
         }
         .comment-name,comment-content,comment-time{
@@ -233,21 +241,34 @@
             position: absolute;
             bottom: 20px;
         }
+        .good{
+            position: absolute;
+            left: 1000px;
+            top: -8px;
+        }
+        .comment-time{
+            position: relative;
+        }
         .comment-time div img{
-            width: 30px;
-            height: 30px;
+            position: relative;
+            /*left: 800px;*/
+            width: 25px;
+            height: 25px;
         }
         .good-count{
             line-height: 30px;
-            font-size: 20px;
+            font-size: 18px;
             color: #999999;
             position: relative;
-            bottom: 7px;
-            left: 10px;
+            bottom: 25px;
+            left: 25px;
         }
         #test4 {
             position: relative;
             bottom: 8px;
+        }
+        #courseInfoDiv{
+            background-color: #F5F5F5;
         }
     </style>
 </head>
@@ -266,7 +287,7 @@
         <div class="site-topbar">
             <div class="container">
                 <div class="topbar-nav">
-                    <a href="">学习平台</a>
+                    <a href="indexPage.html">学习平台</a>
                     <span class="sep">|</span>
                     <a href="">精品</a>
                     <span class="sep">|</span>
@@ -851,7 +872,7 @@
             </div>
         </div>
     </div>
-    <div class="container clearfix">
+    <div class="container clearfix" style="background-color: white">
         <div class="courseImg">
             <img src=${imgPath} width="450px">
         </div>
@@ -936,11 +957,11 @@
                                                 <p style="float: left" class=>${result[i].studentName}</p><div style="float: left;position: relative;bottom: 13px" id="${i}" ></div>
                                             </div>
                                             <div class="comment-content">
-                                                <p class=>${result[i].content}</p>
+                                                <p class="p1">${result[i].content}</p>
                                             </div>
                                             <div class="comment-time clearfix">
                                                 <p>${result[i].createTime}</p>
-                                                <div>
+                                                <div class="good">
                                                     <img src="../static/images/dianzan-gray.png">
                                                     <span class="good-count">10</span>
                                                 </div>
