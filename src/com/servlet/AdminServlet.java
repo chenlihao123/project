@@ -162,4 +162,9 @@ public class AdminServlet extends BaseServlet {
         }
         response.getWriter().write(LoginMsg);
     }
+    //注销
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().invalidate();
+        response.getWriter().write(new Gson().toJson(""));
+    }
 }

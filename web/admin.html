@@ -68,13 +68,13 @@
           </li>
           <li class="layui-nav-item" lay-unselect>
             <a href="javascript:;">
-              <cite>贤心</cite>
+              <cite>管理员</cite>
             </a>
             <dl class="layui-nav-child">
               <dd><a lay-href="set/user/info.html">基本资料</a></dd>
               <dd><a lay-href="set/user/password.html">修改密码</a></dd>
               <hr>
-              <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+              <dd  style="text-align: center;" id="logout"><a>退出</a></dd>
             </dl>
           </li>
           
@@ -464,7 +464,17 @@
       <div class="layadmin-body-shade" layadmin-event="shade"></div>
     </div>
   </div>
+  <script src="static/js/jquery-3.4.1.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#logout").on("click",function () {
+        $.getJSON("http://localhost:8080/onlinelearning/admin.do","action=logout",function (data) {
+          window.location.href="adminLogin.html";
+        })
 
+      })
+    })
+  </script>
   <script src="static/layuiadmin2/layui/layui.js"></script>
   <script>
   layui.config({

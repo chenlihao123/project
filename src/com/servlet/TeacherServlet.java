@@ -57,7 +57,8 @@ public class TeacherServlet extends BaseServlet {
     //注销
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();
-        response.sendRedirect("/onlinelearning/index.html");//重定向到home首页
+//        response.sendRedirect("/onlinelearning/teacherLogin.html");//重定向到home首页
+        response.getWriter().write(new Gson().toJson("1"));
     }
 
     //上传课程
@@ -159,6 +160,12 @@ public class TeacherServlet extends BaseServlet {
         Gson gson = new Gson();
         String json = gson.toJson(list);
         response.getWriter().write(json);
+    }
+
+    //初始化教师姓名
+    public void initTeacherName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        response.getWriter().write(new Gson().toJson(teacher));
     }
 
     //发布作业
