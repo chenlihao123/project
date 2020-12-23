@@ -1,6 +1,8 @@
 package com.servlet;
 
 import com.alibaba.fastjson.JSON;
+import com.dao.impl.AdminDaoImpl;
+import com.entity.Admin;
 import com.entity.Student;
 import com.entity.Teacher;
 import com.entity.Total;
@@ -30,6 +32,7 @@ public class AdminServlet extends BaseServlet {
     private StudentServiceImpl studentService = new StudentServiceImpl();
     private TeacherServiceImpl teacherService=new TeacherServiceImpl();
     private TotalServiceImpl totalService=new TotalServiceImpl();
+    private AdminDaoImpl adminDao=new AdminDaoImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request, response);
     }
@@ -145,5 +148,18 @@ public class AdminServlet extends BaseServlet {
     public void getTotal(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Total total = totalService.queryTotal();
         response.getWriter().write(new Gson().toJson(total));
+    }
+    //登录
+    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        Admin admin = adminDao.QueryAdminByUsernameAndPassword(username, password);
+        String LoginMsg = "0";
+        if (admin != null) {//如果学生查找到，返回1，代表登陆成功
+            LoginMsg = "1";
+            //将学生放入session域当众
+            request.getSession().setAttribute("admin", admin);
+        }
+        response.getWriter().write(LoginMsg);
     }
 }
