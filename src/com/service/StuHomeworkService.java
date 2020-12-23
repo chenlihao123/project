@@ -18,4 +18,6 @@ public interface StuHomeworkService {
     StuHomework queryStuHomeworkById(int id);
     //更新学生作业状态
     boolean updateStuHomeworkInfo(StuHomework stuHomework);
+    //根据学生id和homeworkId查找StuHomework
+    StuHomework queryStuHomeworkByStudentIdAndHomeworkId(int studentId,int homeworkId);
 }

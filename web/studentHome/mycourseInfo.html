@@ -727,17 +727,17 @@
 
         <div class="nav-bar">
             <div class="container">
-                <h2>${courseData.courseName}</h2>
+                <h2 id="courseNameH2">${courseData.courseName}</h2>
             </div>
         </div>
     </div>
     <div class="container clearfix" style="background-color: white">
         <div class="courseImg">
-            <img src=${imgPath} width="450px">
+            <img id="courseImg" src=${imgPath} width="450px">
         </div>
         <div class="courseInfo">
             <div class="course-title">
-                <h2>作业成绩</h2>
+                <h2>课程成绩</h2>
             </div>
             <div class="course-from" style="background-color: #FAFAFA;color: #333;border: 1px solid #e0e0e0;padding: 30px 30px;">
                 <!--<p style="color: #333; font-size: 18px">作业:xxx,成绩</p>-->
@@ -745,27 +745,33 @@
                 <!--<p style="color: #333; font-size: 18px">作业:xxx,成绩</p>-->
                 <!--<p style="color: #333; font-size: 18px">${courseData.teacherType}</p>-->
                 <!--<p style="color: #333; font-size: 18px">${courseData.teacherName}</p>-->
+<!--                <div style="height: 30px;line-height: 30px;font-size: 17px">-->
+<!--                    <span>评分规则</span>   <span>课程成绩=作业成绩*0.4+视频成绩*0.6</span>-->
+<!--                </div>-->
                 <div style="height: 30px;line-height: 30px;font-size: 17px">
-                    <span>作业:xxx</span>   <span>85分</span>
+                    <span>当前课程成绩: </span>   <span id="courseScoreSpan">85分</span>
                 </div>
                 <div style="height: 30px;line-height: 30px;font-size: 17px">
-                    <span>作业:xxx</span>
+                    <span>当前作业成绩: </span>   <span id="homeworkScoreSpan">85分</span>
                 </div>
                 <div style="height: 30px;line-height: 30px;font-size: 17px">
-                    <span>作业:xxx</span>
+                    <span>当前视频成绩: </span>    <span id="videoScoreSpan">85分</span>
                 </div>
+<!--                <div style="height: 30px;line-height: 30px;font-size: 17px">-->
+<!--                    <span>作业:xxx</span>-->
+<!--                </div>-->
             </div>
             <div class="course-title" style="margin: 8px 0;">
                 <h2>视频进度</h2>
 
             </div>
-            <div class="layui-progress layui-progress-big" lay-showpercent="true" style="margin-bottom: 5px">
-                <div class="layui-progress-bar" lay-percent="70%"></div>
+            <div class="layui-progress layui-progress-big" lay-showpercent="true" style="margin-bottom: 5px" id="progressDiv">
+                <div class="layui-progress-bar" lay-percent="70%" id="progressDiv1"></div>
             </div>
 
 
             <div class="join" onclick="joinCourse(courseId)">
-                <p  >观看视频</p>
+                <a id="watchA"><p  >观看视频</p></a>
             </div>
 
         </div>
@@ -804,9 +810,9 @@
     <div id="test1"></div>
     <p>评价内容</p>
     <textarea class="layui-textarea" style="height: 300px;" placeholder="可以从课程内容组织、授课方式的角度评价课程，或者分享课程给你带来了什么收获和启发
-"></textarea>
+" id="contentTextarea"></textarea>
     <div style="padding-top: 30px">
-        <button style="float: left;margin-left: 70%" class="layui-btn">提交</button>
+        <button style="float: left;margin-left: 70%" class="layui-btn" id="submitBtn">提交</button>
         <button style="background-color: #00C758;float: left" class="layui-btn">取消</button>
     </div>
 
@@ -816,6 +822,14 @@
 <!-- <script src="./js/swiper.js"></script> -->
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+    $(function () {
+        initCourse();
+        initScore();
+        // $("#submitBtn").on("click",returnGrade());
+        $("#submitBtn").on("click",function () {
+            returnGrade();
+        });
+    });
     function getQueryVariable(variable) {
         let query = window.location.search.substring(1);
         let vars = query.split("&");
@@ -825,7 +839,44 @@
         }
         return (false);
     }
+    function getQueryVariable(variable) {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+    function initCourse() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getChoiceCourseInfo&courseId="+getQueryVariable("courseId"),function (data) {
+            console.log(data);
+            $("#courseNameH2").text(data.courseMsg.courseName);
+            $("#courseImg").attr("src","http://localhost:8080"+data.courseMsg.imgPath.substring(2));
+            $("#watchA").attr("href","video.html?courseId="+getQueryVariable("courseId")+"&courseName="+getQueryVariable("courseName"))
+        });
 
+    }
+    function initScore() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getStuCourseScore&courseId="+getQueryVariable("courseId"),function (data) {
+            // console.log(data)
+            data.courseScore;
+            $("#courseScoreSpan").text(data.courseScore+"分");
+            $("#homeworkScoreSpan").text(data.homeworkScore+"分");
+            $("#videoScoreSpan").text(data.videoScore+"分");
+            let progress=data.videoScore/0.4+"%";
+            $("#progressDiv1").attr("lay-percent",progress);
+            // let str=`<div class="layui-progress-bar" lay-percent="${progress}"></div>`;
+            // $("#progressDiv").append(str);
+        })
+    }
+    function returnGrade() {
+        alert(1)
+        let dataStr="action=updateCourseGrade&courseId="+getQueryVariable("courseId")+"&courseName="+getQueryVariable("courseName")+"&grade="+starValue+"&content="+$("#contentTextarea").val();
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do",dataStr,function (data) {
+            console.log(data);
+        })
+    }
 </script>
 <script src="../static/js/danmu.js"></script>
 <script>
@@ -1075,7 +1126,7 @@
 </script>
 
 <script>
-
+    let starValue;
     layui.use(['rate'], function(){
         var rate = layui.rate;
 
@@ -1098,7 +1149,7 @@
             ,text: true
             // ,half: true
             ,setText: function(value){
-
+                starValue=value;
                 var arrs = {
                     '1' : '有点失望'
                     ,'2': '咳咳！有待提高'
@@ -1106,7 +1157,6 @@
                     ,'4': '棒！实属上乘'
                     ,'5': '哇！超出预期了'
                 };
-
                 this.span.text(arrs[value] || ( value + "星"));
             }
         })

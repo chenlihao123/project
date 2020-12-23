@@ -15,10 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +33,7 @@ public class StudentServlet extends BaseServlet {
     private CourseServiceImpl courseService = new CourseServiceImpl();
     private CourseGradeServiceImpl courseGradeService = new CourseGradeServiceImpl();
     private HomeworkServiceImpl homeworkService = new HomeworkServiceImpl();
+    private StuHomeworkServiceImpl stuHomeworkService=new StuHomeworkServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request, response);
@@ -171,6 +170,14 @@ public class StudentServlet extends BaseServlet {
         response.getWriter().write(json);
     }
 
+    //回填学生课程成绩
+    public void getStuCourseScore(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
+        Student student = (Student) request.getSession().getAttribute("student");
+        StuCourseScore score = stuCourseService.getStuCourseScoreByCourseIdAndStudentId(courseId, student.getId());
+        response.getWriter().write(new Gson().toJson(score));
+    }
+
     //添加课程
     public void addCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StuCourse stuCourse = new StuCourse();
@@ -262,11 +269,62 @@ public class StudentServlet extends BaseServlet {
         response.getWriter().write(updateMsg);
     }
 
+    //更新课程评价
+    public void updateCourseGrade(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer courseId = Integer.valueOf(request.getParameter("courseId"));
+        String courseName = request.getParameter("courseName");
+        Integer grade = Integer.valueOf(request.getParameter("grade"));
+        String content = request.getParameter("content");
+        Student student = (Student) request.getSession().getAttribute("student");
+        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        CourseGrade courseGrade = new CourseGrade(student.getId(), student.getRealName(), student.getImgPath(), courseId, courseName, content, grade, date);
+        boolean b = courseGradeService.addCourseGrade(courseGrade);
+        String Msg=b?"1":"0";
+        response.getWriter().write(new Gson().toJson(Msg));
+    }
+
     //回填作业信息
     public void getHomeworkInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Student student = (Student) request.getSession().getAttribute("student");
         List<HomeworkInfo> homeworkInfos = homeworkService.queryHomeworkInfoByStudentId(student.getId());
         response.getWriter().write(new Gson().toJson(homeworkInfos));
+    }
+
+    //提交作业
+    public void putHomework(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Student student = (Student) request.getSession().getAttribute("student");
+        StuHomework stuHomework=null;
+        for (FileItem fileItem : list) {
+            if(fileItem.isFormField()){
+                String fieldName = fileItem.getFieldName();
+                String value = fileItem.getString("UTF-8");
+                if("homeworkId".equals(fieldName)){
+                    Integer homeworkId = Integer.valueOf(value);
+                    stuHomework= stuHomeworkService.queryStuHomeworkByStudentIdAndHomeworkId(student.getId(), homeworkId);
+                }
+            }
+        }
+        for (FileItem fileItem : list) {
+            if(fileItem.isFormField()){
+                String fieldName = fileItem.getFieldName();
+                String value = fileItem.getString("UTF-8");
+                switch (fieldName){
+                    case "content":
+                        stuHomework.setContent(value);
+                        break;
+                }
+            }else {
+                File file = new File("E:\\file\\" + new Date().getTime() + fileItem.getName());
+                fileItem.write(file);
+                String path = file.getAbsolutePath();
+                stuHomework.setFile(path);
+            }
+        }
+        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        stuHomework.setCreateTime(date);
+        boolean b = stuHomeworkService.updateStuHomeworkInfo(stuHomework);
+        String msg=b?"1":"0";
+        response.getWriter().write(msg);
     }
 
     //下载作业
@@ -295,6 +353,13 @@ public class StudentServlet extends BaseServlet {
 //        // 3、把下载的文件内容回传给客户端
 //        // 读取输入流中全部的数据，复制给输出流，输出给客户端
 //        IOUtils.copy(resourceAsStream, outputStream);
+    }
+
+    //回填通知
+    public void getNotice(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Student student = (Student) request.getSession().getAttribute("student");
+        List<Notice> notices = studentService.queryNoticeByStudentId(student.getId());
+        response.getWriter().write(new Gson().toJson(notices));
     }
 }
 

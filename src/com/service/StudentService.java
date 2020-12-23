@@ -1,5 +1,6 @@
 package com.service;
 
+import com.entity.Notice;
 import com.entity.Student;
 
 import java.util.List;
@@ -43,5 +44,9 @@ public interface StudentService {
     boolean updateStuInfo(Student student);
     //通过id查找学生
     Student queryStudentById(int id);
-
+    //发布通知
+    boolean addNoticeToStudentByAdmin(int studentId,String title,String content,String createTime);
+    //根据学生id获取通知
+    List<Notice> queryNoticeByStudentId(int studentId);
+    List<Student> queryStudent(String id, String name, String school, String sex);
 }

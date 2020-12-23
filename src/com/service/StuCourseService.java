@@ -2,6 +2,7 @@ package com.service;
 
 import com.entity.Course;
 import com.entity.StuCourse;
+import com.entity.StuCourseScore;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface StuCourseService {
     boolean addCourse(StuCourse stuCourse);
     //根据课程id查询StuCourse
     List<StuCourse> queryStuCourseByCourseId(int id);
+    //统计学生课程成绩
+    StuCourseScore getStuCourseScoreByCourseIdAndStudentId(int courseId,int studentId);
 }

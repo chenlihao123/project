@@ -16,4 +16,14 @@ public class CourseGradeServiceImpl implements CourseGradeService {
     public List<CourseGrade> queryCourseGradeByCourseId(int courseId) {
         return courseGradeDao.queryCourseGradeByCourseId(courseId);
     }
+
+    @Override
+    public CourseGrade queryCourseGradeByCourseIdAndStudentId(int courseId, int stundentId) {
+        return courseGradeDao.queryCourseGradeByCourseIdAndStudentId(courseId,stundentId);
+    }
+
+    @Override
+    public boolean addCourseGrade(CourseGrade courseGrade) {
+        return courseGradeDao.addCourseGrade(courseGrade);
+    }
 }

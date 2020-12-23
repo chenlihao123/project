@@ -2,6 +2,7 @@ package com.dao.impl;
 
 import com.dao.BaseDao;
 import com.dao.StudentDao;
+import com.entity.Notice;
 import com.entity.Student;
 
 import java.util.List;
@@ -71,7 +72,23 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         return queryForOne(Student.class,sql,id);
     }
 
+    @Override
+    public boolean addNoticeToStudentByAdmin(int studentId,String title,String content,String createTime) {
+        String sql="insert into notice (studentId,title,content,createTime) values (?,?,?,?)";
+        return update(sql,studentId,title,content,createTime)>=0?true:false;
+    }
 
+    @Override
+    public List<Notice> queryNoticeByStudentId(int studentId) {
+        String sql="select * from notice where studentId = ?";
+        return queryForList(Notice.class,sql,studentId);
+    }
+
+    @Override
+    public List<Student> queryStudent(String id, String name, String school, String sex) {
+        String sql ="select * from student where id like ? and realName like ? and school like ? and gender like ?";
+        return queryForList(Student.class,sql, id, name, school, sex);
+    }
 //    测试sql语句是否正确
 //    public static void main(String[] args) {
 //        StudentDaoImpl studentDao = new StudentDaoImpl();

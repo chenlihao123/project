@@ -736,36 +736,33 @@
                 <p style="padding-left: 50px;font-size: 20px">作业信息</p>
                 <div style="width: 50%;float: left;border-bottom: 1px solid gray">
                     <div class="info-1 job-info">
-                        <span>课程名:</span><span></span>
+                        <span id="courseNameSpan">课程名:</span><span></span>
                     </div>
                     <div class="info-2 job-info">
-                        <span>授课教师:</span><span></span>
+                        <span id="teacherSpan">授课教师:</span><span></span>
                     </div>
                 </div>
                 <div style="width: 50%;float: left;border-bottom: 1px solid gray" >
                     <div class="info-3 job-info">
-                        <span>作业标题:</span><span></span>
+                        <span id="titleSpan">作业标题:</span><span></span>
                     </div>
                     <div class="info-4 job-info">
-                        <span>作业内容:</span><span></span>
+                        <span id="contentSpan">作业要求:</span><span></span>
                     </div>
                 </div>
                 <div>
-                    <form class="layui-form">
+                    <form class="layui-form" id="submitForm">
+                        <input type="hidden" name="action" value="putHomework">
                         <div class="layui-form-item">
-                            <textarea name="demo" id="demo" class="layui-hide"></textarea>
+                            <textarea class="layui-textarea" name="content"></textarea>
                         </div>
-                        <input type="file" value="添加附件">
-                        <div style="margin: 50px 0;">
-                            <button class="layui-btn" style="margin-left: 500px" >提交</button>
-                            <button class="layui-btn" type="reset" style="margin-left: 30px;background-color: #00C758">清除</button>
-
-                        </div>
-
+                        <input type="file" name="添加附件">
                     </form>
+                        <div style="margin: 50px 0;">
+                            <button class="layui-btn" style="margin-left: 500px" id="submitBtn">提交</button>
+                            <button class="layui-btn" type="reset" style="margin-left: 30px;background-color: #00C758">清除</button>
+                        </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -778,7 +775,14 @@
 <!-- <script src="./js/swiper.js"></script> -->
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-
+    $(function () {
+        initHomeworkInfo();
+        let str=`<input type="hidden" name="homeworkId" value="${getQueryVariable("homeworkId")}">`;
+        $("#submitForm").append(str);
+        $("#submitBtn").on("click",function () {
+            submitHomework()
+        })
+    });
     function getQueryVariable(variable) {
         let query = window.location.search.substring(1);
         let vars = query.split("&");
@@ -788,7 +792,32 @@
         }
         return (false);
     }
-
+    function initHomeworkInfo() {
+        $.getJSON("http://localhost:8080/onlinelearning/stu.do","action=getHomeworkInfo",function (data) {
+            for (let i = 0; i < data.length; i++) {
+                if(data[i].id==getQueryVariable("homeworkId")){
+                    $("#courseNameSpan").text("课程名: "+data[i].courseName);
+                    $("#teacherSpan").text("授课教师: "+data[i].teacherId);
+                    $("#titleSpan").text("作业标题: "+data[i].title);
+                    $("#contentSpan").text("作业内容: "+data[i].content);
+                }
+            }
+        })
+    }
+    function submitHomework() {
+        let homeworkForm = new FormData(document.getElementById("submitForm"));
+        $.ajax({
+            url:"http://localhost:8080/onlinelearning/stu.do",
+            type:"POST",
+            datatype:"text",
+            data:homeworkForm,
+            processData:false,
+            contentType:false,
+            success:function (data) {
+                alert(data)
+            }
+        });
+    }
 
 
 

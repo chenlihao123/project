@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.dao.impl.StudentDaoImpl;
+import com.entity.Notice;
 import com.entity.Student;
 import com.service.StudentService;
 import com.utils.SmsUtil;
@@ -80,5 +81,19 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student queryStudentById(int id) {
         return studentDao.queryStudentById(id);
+    }
+
+    @Override
+    public boolean addNoticeToStudentByAdmin(int studentId, String title, String content, String createTime) {
+        return studentDao.addNoticeToStudentByAdmin(studentId,title,content,createTime);
+    }
+
+    @Override
+    public List<Notice> queryNoticeByStudentId(int studentId) {
+        return studentDao.queryNoticeByStudentId(studentId);
+    }
+    @Override
+    public List<Student> queryStudent(String id, String name, String school, String sex) {
+        return studentDao.queryStudent(id,name,school,sex);
     }
 }

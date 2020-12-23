@@ -31,4 +31,9 @@ public class StuHomeworkServiceImpl implements StuHomeworkService {
     public boolean updateStuHomeworkInfo(StuHomework stuHomework) {
         return stuHomeworkDao.updateStuHomeworkInfo(stuHomework);
     }
+
+    @Override
+    public StuHomework queryStuHomeworkByStudentIdAndHomeworkId(int studentId, int homeworkId) {
+        return stuHomeworkDao.queryStuHomeworkByStudentIdAndHomeworkId(studentId,homeworkId);
+    }
 }

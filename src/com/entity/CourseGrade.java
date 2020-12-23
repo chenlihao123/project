@@ -18,6 +18,17 @@ public class CourseGrade {
     public CourseGrade() {
     }
 
+    public CourseGrade(Integer studentId, String studentName, String studentImg, Integer courseId, String courseName, String content, Integer grade, String createTime) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.studentImg = studentImg;
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.content = content;
+        this.grade = grade;
+        this.createTime = createTime;
+    }
+
     @Override
     public String toString() {
         return "CourseGrade{" +

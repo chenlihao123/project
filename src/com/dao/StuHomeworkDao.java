@@ -17,4 +17,8 @@ public interface StuHomeworkDao {
     StuHomework queryStuHomeworkById(int id);
     //更新学生作业状态
     boolean updateStuHomeworkInfo(StuHomework stuHomework);
+    //根据课程id和学生id查找StuHomework
+    List<StuHomework> queryStuHomeworkByCourseIdAndStudentId(int courseId, int studentId);
+    //根据学生id和homeworkId查找StuHomework
+    StuHomework queryStuHomeworkByStudentIdAndHomeworkId(int studentId,int homeworkId);
 }

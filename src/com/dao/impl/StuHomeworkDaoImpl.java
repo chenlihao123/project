@@ -31,8 +31,20 @@ public class StuHomeworkDaoImpl extends BaseDao implements StuHomeworkDao {
     }
 
     @Override
-    public boolean updateStuHomeworkInfo(StuHomework stuHomework) {
-        String sql="update stuhomework set score = ? where id = ?";
-        return update(sql,stuHomework.getScore(),stuHomework.getId())>=0?true:false;
+    public boolean updateStuHomeworkInfo(StuHomework s) {
+        String sql="update stuhomework set studentId=?,homeworkId=?,courseId=?,content=?,file=?,createTime=?,score = ? where id = ?";
+        return update(sql,s.getStudentId(),s.getHomeworkId(),s.getCourseId(),s.getContent(),s.getFile(),s.getCreateTime(),s.getScore(),s.getId())>=0?true:false;
+    }
+
+    @Override
+    public List<StuHomework> queryStuHomeworkByCourseIdAndStudentId(int courseId, int studentId) {
+        String sql="select * from stuhomework where courseId = ? and studentId = ?";
+        return queryForList(StuHomework.class,sql,courseId,studentId);
+    }
+
+    @Override
+    public StuHomework queryStuHomeworkByStudentIdAndHomeworkId(int studentId, int homeworkId) {
+        String sql="select * from stuhomework where studentId = ? and homeworkId = ?";
+        return queryForOne(StuHomework.class,sql,studentId,homeworkId);
     }
 }

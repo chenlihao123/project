@@ -134,6 +134,59 @@
 
 
 
+  <div class="layui-row" id="popUpdateTest1" style="display:none;">
+    <div class="layui-col-md10" id="form3">
+      <form class="layui-form layui-from-pane"  style="margin-top:20px" >
+        <input id="studentid1" hidden name="id" value="">
+        <div class="layui-form-item" >
+          <label class="layui-form-label">姓名</label>
+          <div class="layui-input-block">
+            <input type="text" name="modify-name"  id="modify-name1"  required  lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">手机号</label>
+          <div class="layui-input-block">
+            <input type="text" name="modify-phone" id="modify-phone1" required  lay-verify="required" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">学校</label>
+          <div class="layui-input-block">
+            <input type="text" name="modify-school" id="modify-school1"  required  lay-verify="required" autocomplete="off" placeholder="请输入学校名称" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">专业</label>
+          <div class="layui-input-block">
+            <input type="text" name="modify-department"  id="modify-department1" required  lay-verify="required" autocomplete="off" placeholder="请输入专业名称" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">密码</label>
+          <div class="layui-input-block">
+            <input type="text" name="modify-psd" id="modify-psd1"  required  lay-verify="required" autocomplete="off" placeholder="请输入新密码" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">性别</label>
+          <div class="layui-input-block">
+            <select name="modify-gender" id="modify-gender1" lay-filter="eqptType">
+              <option value="男"  >男</option>
+              <option value="女"   >女</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item" style="margin-top:40px">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo11" type="submit" id="modify-info1">确认修改</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 
 
 
@@ -241,13 +294,13 @@
               elem: '#LAY-user-manage'
               ,toolbar: '#toolbarDemo'
               // ,height: full-20
-              // ,height: 312
+              // ,height: 400
               ,defaultToolbar: ['filter', 'exports', 'print', {
                   title: '帮助'
                   ,layEvent: 'LAYTABLE_TIPS'
                   ,icon: 'layui-icon-tips'
               }]
-              ,url: "http://localhost:8080/onlinelearning/admin.do?action=studentList" //数据接口
+              ,url: "http://localhost:8080/onlinelearning/admin.do?action=teachertList" //数据接口
               ,page: true //开启分页
               ,cols: [[ //表头
                   {type: 'checkbox', fixed: 'left'},
@@ -259,24 +312,11 @@
                   ,{field: 'email',align:"center", title: '邮箱', sort: true}
                   ,{field: 'school',align:"center", title: '学校',sort: true}
                   ,{field: 'department',align:"center", title: '专业'}
-                  ,{field: 'classId',align:"center", title: '班级',  sort: true}
-                  // ,{field: 'imgPath',align:"center", title: '头像', sort: true}
                   ,{field: 'password',align:"center", title: '密码',  sort: true}
                   ,{fixed: 'right',  align:"center", title:'操作', toolbar: '#barDemo' ,width:180}
               ]]
 
           });
-          //监听行单击事件（双击事件为：rowDouble）
-          // table.on('row(test)', function(obj){
-          //     var data = obj.data;
-          //     // alert(23434)
-          //     layer.alert(JSON.stringify(data), {
-          //         title: '当前行数据：'
-          //     });
-          //
-          //     //标注选中样式
-          //     obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
-          // });
           table.on('tool(test)', function(obj){
               var data = obj.data;
               //console.log(obj)
@@ -290,44 +330,18 @@
                           type: "get",
                           url:"http://localhost:8080/onlinelearning/admin.do",
                           data:{
-                              action:"deleteStudentById",
+                              action:"deleteTeacherById",
                               id:obj.data.id
                           },
                           success:function (data) {
                               // alert(data)
+                              table.reload("LAY-user-manage");
                           }
                       });
                       table.reload("LAY-user-manage");
                       layer.close(index);
                   });
               } else if(obj.event === 'edit'){
-                  // layer.prompt({
-                  //     formType: 2
-                  //     ,value: data.email
-                  // }, function(value, index){
-                  //     obj.update({
-                  //         email: value
-                  //     });
-                  //     layer.close(index);
-                  // });
-                  // alert(23)
-                  // console.log(obj)
-                  // console.log(obj.data.gender);
-                  // $("#modify-gender option").each(function(i,n) {
-                  //     // alert($(n));
-                  //     console.log($(n).text())
-                  //     if ($(n).text() == obj.data.gender) {
-                  //         $(n).prop("selected", true);
-                  //
-                  //     }
-                  // });
-
-                  // $("#modify-gender option[text=obj.data.geder]").prop("selected", true);
-                  // $("#modify-gender").find("option[text='女']").attr("selected",false);
-
-
-                  // $("#modify-gender").val("女");
-                  // console.log(obj.data.realName);
                   $("#modify-name").val(obj.data.realName);
                   $("#modify-phone").val(obj.data.phone);
                   $("#modify-department").val(obj.data.department);
@@ -339,7 +353,7 @@
                   layer.open({
                       //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                       type: 1,
-                      title: "修改学生信息",
+                      title: "修改教师信息",
                       area: ['450px', '500px'],
                       content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
               });
@@ -355,6 +369,52 @@
               switch(obj.event){
                   case 'add':
                       // layer.msg('添加');
+
+                      layer.open({
+                          //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                          type: 1,
+                          title: "添加教师信息",
+                          area: ['450px', '500px'],
+                          content: $("#popUpdateTest1")//引用的弹出层的页面层的方式加载修改界面表单
+                      });
+
+
+
+
+
+                      $("#modify-info1").click(function () {
+                          let school = $("#modify-school1").val();
+                          let name = $("#modify-name1").val();
+                          let phone = $("#modify-phone1").val();
+                          let department = $("#modify-department1").val();
+                          let psd = $("#modify-psd1").val();
+                          let sex = $("#modify-gender1").val();
+                          // alert(school);
+                          $.ajax({
+                              url:"http://localhost:8080/onlinelearning/admin.do",
+                              type: "get",
+                              data:{
+                                  action:"addTeacher",
+                                  school:school,
+                                  name:name,
+                                  department:department,
+                                  psd:psd,
+                                  sex:sex,
+                                  phone:phone
+                              },
+                              success:function (data) {
+                                  // alert(data);
+                                  alert("修改成功!");
+
+                              }
+                          })
+
+
+                      })
+
+
+
+
                       break;
                   case 'delete':
                       layer.msg('删除');
