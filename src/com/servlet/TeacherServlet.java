@@ -276,6 +276,7 @@ public class TeacherServlet extends BaseServlet {
     //回填课程视频信息
     public void getCourseVideo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String courseName = request.getParameter("courseName");//获取课程名称
+        System.out.println(courseName);
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         Course course = courseService.queryCourseByTeacherIdAndCourseName(courseName, teacher.getId());
         List<CourseVideo> courseVideos = courseVideoService.queryVideoByCourseId(course.getId());
