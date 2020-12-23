@@ -112,11 +112,12 @@
                             </div>
                         </div>
                         <div class="topbar-info">
-                            <a href="">登录</a>
-                            <span>|</span>
-                            <a href="">注册</a>
-                            <span>|</span>
-                            <a href="">消息通知</a>
+                            <!--<a id="a1" href="">登录</a>-->
+                            <!--<span id="s1">|</span>-->
+                            <!--<a id ="a2" href="">注册</a>-->
+                            <!--<a id="a3"  style="width: 110px;text-align: center"><span>sdfsdf</span><img style="margin-left: 5px;margin-top: 12px" width="10px" height="10px" src="../static/images/list.png"></a>-->
+                            <!--<span>|</span>-->
+                            <!--<a href="">消息通知</a>-->
                         </div>
                     </div>
                 </div>
@@ -131,7 +132,7 @@
                     <div class="container">
                         <div class="header-logo">
                             <a href="person.html" class="logo-home"></a>
-                            <a href="person.html" class="logo"><img width="100%" height="100%" src="../static/images/header1.jpg"></a>
+                            <a href="person.html" class="logo"><img id="stuHeaderPic" width="100%" height="100%" src="../static/images/header1.jpg"></a>
                         </div>
                         <div class="nav-list">
                             <ul>
@@ -3165,6 +3166,7 @@
 <script type="text/javascript">
     $(function () {
         initAllCourse();
+        initStudentInfo();
     });
     //回填所有课程
     function initAllCourse() {
@@ -3191,6 +3193,49 @@
             }
         })
     }
+
+    function initStudentInfo() {
+        $.ajax({
+            url: "http://localhost:8080/onlinelearning/stu.do",
+            type: "POST",
+            data:{
+                action: "getStudentInfo"
+            },
+            success:function (data) {
+
+                let jsonObj =  JSON.parse(data);
+                console.log(jsonObj)
+                if (!isEmpty(jsonObj.imgPath)) {
+                    let imgPath = jsonObj.imgPath;
+                    imgPath = imgPath.substring(2);
+                    imgPath = "http://localhost:8080" + imgPath;
+                    $("#stuHeaderPic").attr("src",imgPath);
+                    let str =`<a   style="position: relative;width: 110px;text-align: center">${jsonObj.realName}<img onclick="stuOut()"  style="position: absolute; left: 80px;top: 13px" width="13px" height="13px" src="../static/images/exit1.png"></a><span>|</span><a href="">消息通知</a>`;
+                    $(".topbar-info").html(str);
+                }
+            }
+        })
+    }
+    function isEmpty(obj){
+        if(typeof obj == "undefined" || obj == null || obj == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function stuOut() {
+        $.ajax({
+            url:"http://localhost:8080/onlinelearning/stu.do",
+            type: "POST",
+            data:{
+                action: "logout"
+            }
+        });
+        window.location.href ="http://localhost:8080/onlinelearning/index.html";
+    }
+    
+    
+    
 </script>
 <script>
 

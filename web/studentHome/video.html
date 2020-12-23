@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../static/css/videoplayer.css">
     <!-- <link rel="stylesheet" href="./css/index.css"> -->
-
+    <link rel="stylesheet" href="../static/layuiadmin/layui/css/layui.css">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
     <link rel="stylesheet" href="../static/css/test.css">
     <link rel="stylesheet" href="../static/js/danmu.css">
@@ -29,7 +29,14 @@
         .nav-wrapper{
             display: none;
         }
-
+        .clearfix:after,
+        .clearfix:before {
+            content: " ";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
 
 
     </style>
@@ -491,7 +498,7 @@
 <!-- 轮播图+导航栏 -->
 <div class="dwo-wrap">
     <div>
-        <P class="courseName" id="courseNameP">课程名字</P>
+        <!--<P class="courseName" id="courseNameP">课程名字</P>-->
     </div>
     <div class="swiper-container" id="swiper1">
         <video src="../static/images/My all.mp4" id="courseVideo" controls></video>
@@ -578,11 +585,15 @@
     </div>
 </div>
 
-<div style="width:800px; height: 300px;background-color: white; position: relative;" id="container">
+<!--<div style="width:800px; height: 300px;background-color: white; position: relative;" id="container">-->
 
+<!--</div>-->
+<div class="clearfix container" style="padding: 30px 0;position: relative">
+
+    <input  type="text" name=""style="width: 250px;position: absolute;right: 100px" placeholder="发送弹幕" id="text" class="layui-input" >
+    <button style="float: left;position: absolute;right: 0" id="btn" class="layui-btn" >发送弹幕</button>
 </div>
-<button id="btn">发送弹幕</button>
-<input type="text" name="" id="text">
+
 <div class="mi-media">
     <div class="mi-dialong">
         <div class="media-head">
@@ -596,6 +607,7 @@
 </body>
 <script src="../static/js/jquery-3.4.1.js"></script>
 <script src="../static/js/danmu.js"></script>
+<script src="../static/js/userInfo.js"></script>
 <script>
 
     $(".swiper-flashsale-prev").click(function(){

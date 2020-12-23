@@ -295,7 +295,7 @@
         <div class="site-topbar">
             <div class="container">
                 <div class="topbar-nav">
-                    <a href="">学习平台</a>
+                    <a href="indexPage.html">学习平台</a>
                     <span class="sep">|</span>
                     <a href="">精品</a>
                     <span class="sep">|</span>
@@ -351,7 +351,7 @@
             <div class="container">
                 <div class="header-logo">
                     <a class="logo-home"></a>
-                    <a href="" class="logo"></a>
+                    <a href="" class="logo"><img width="100%" height="100%" src="../static/images/header1.jpg"></a>
                 </div>
                 <div class="nav-list">
                     <ul>
@@ -773,7 +773,7 @@
         </div>
     </div>
     <div class="breadcrumbs">
-        <div class="container"><a href="/" stat_exposure="true">首页</a> <span class="sep">/</span> <span>个人中心</span>
+        <div class="container"><a href="indexPage.html" stat_exposure="true">首页</a> <span class="sep">/</span> <span>个人中心</span>
         </div>
     </div>
     <div class="mi-user-portal page-main">
@@ -851,6 +851,7 @@
 </body>
 <!-- <script src="./js/swiper.js"></script> -->
 <script src="../static/js/jquery-3.4.1.js"></script>
+<script src="../static/js/userInfo.js"></script>
 <script type="text/javascript">
     $(function () {
         initHomework();
@@ -863,7 +864,7 @@
                 let file=data[i].file;
                 file=file.substring(8);
                 let str = `
-                                <li>
+                                <li style="margin-bottom: 10px">
                                     <p class="course-name" id="courseName">${data[i].courseName}</p>
                                     <div style="margin-bottom: 10px"><span class="task-name">${data[i].title}</span><span class="endTime"> &nbsp;截止时间:${data[i].endTime}</span></div>
 
