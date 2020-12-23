@@ -34,7 +34,7 @@ public class StudentServlet extends BaseServlet {
     private CourseGradeServiceImpl courseGradeService = new CourseGradeServiceImpl();
     private HomeworkServiceImpl homeworkService = new HomeworkServiceImpl();
     private StuHomeworkServiceImpl stuHomeworkService=new StuHomeworkServiceImpl();
-
+    private TotalServiceImpl totalService=new TotalServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request, response);
     }
@@ -54,6 +54,10 @@ public class StudentServlet extends BaseServlet {
             //将学生放入session域当众
             request.getSession().setAttribute("student", student);
         }
+        //更新访问人数
+        Total total = totalService.queryTotal();
+        total.setVisitTotal(total.getVisitTotal()+1);
+        totalService.updateTotal(total);
         response.getWriter().write(LoginMsg);
     }
 
@@ -208,6 +212,11 @@ public class StudentServlet extends BaseServlet {
 
     //更新视频完成情况
     public void updateVideoFinish(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //更新视频访问次数
+        Total total = totalService.queryTotal();
+        total.setWatchTotal(total.getWatchTotal()+1);
+        totalService.updateTotal(total);
+
         Integer videoId = Integer.valueOf(request.getParameter("videoId"));
         System.out.println(videoId);
         boolean b = courseVideoService.updateStudentVideoState(videoId);
@@ -360,6 +369,16 @@ public class StudentServlet extends BaseServlet {
         Student student = (Student) request.getSession().getAttribute("student");
         List<Notice> notices = studentService.queryNoticeByStudentId(student.getId());
         response.getWriter().write(new Gson().toJson(notices));
+    }
+
+    //获取学生头像和名字
+    public void getStudentInfo(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        HttpSession session = request.getSession();
+        Student student = (Student) session.getAttribute("student");
+        System.out.println(student);
+        Gson gson = new Gson();
+        String jsonStr = gson.toJson(student);
+        response.getWriter().write(jsonStr);
     }
 }
 

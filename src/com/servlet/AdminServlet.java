@@ -3,9 +3,11 @@ package com.servlet;
 import com.alibaba.fastjson.JSON;
 import com.entity.Student;
 import com.entity.Teacher;
+import com.entity.Total;
 import com.google.gson.Gson;
 import com.service.impl.StudentServiceImpl;
 import com.service.impl.TeacherServiceImpl;
+import com.service.impl.TotalServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +29,7 @@ import java.util.Map;
 public class AdminServlet extends BaseServlet {
     private StudentServiceImpl studentService = new StudentServiceImpl();
     private TeacherServiceImpl teacherService=new TeacherServiceImpl();
+    private TotalServiceImpl totalService=new TotalServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request, response);
     }
@@ -137,5 +140,10 @@ public class AdminServlet extends BaseServlet {
         int id =Integer.parseInt(request.getParameter("id"));
         int flag = teacherService.deleteTeacherById(id);
         response.getWriter().write(flag);
+    }
+    //回填total
+    public void getTotal(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Total total = totalService.queryTotal();
+        response.getWriter().write(new Gson().toJson(total));
     }
 }

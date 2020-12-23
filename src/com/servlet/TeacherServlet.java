@@ -29,6 +29,7 @@ public class TeacherServlet extends BaseServlet {
     private StudentServiceImpl studentService=new StudentServiceImpl();
     private StuCourseServiceImpl stuCourseService=new StuCourseServiceImpl();
     private StuHomeworkServiceImpl stuHomeworkService=new StuHomeworkServiceImpl();
+    private TotalServiceImpl totalService=new TotalServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         super.doPost(request,response);
     }
@@ -46,6 +47,10 @@ public class TeacherServlet extends BaseServlet {
             loginMsg="1";//1登陆成功
             request.getSession().setAttribute("teacher",teacher);
         }
+        //更新访问人数
+        Total total = totalService.queryTotal();
+        total.setVisitTotal(total.getVisitTotal()+1);
+        totalService.updateTotal(total);
         response.getWriter().write(loginMsg);
     }
 
