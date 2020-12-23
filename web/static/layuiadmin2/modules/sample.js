@@ -43,23 +43,23 @@
             legend: {data: ["访问量", "下载量", "平均访问量"]},
             xAxis: [{
                 type: "category",
-                data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+                data: ["12.13", "12.14", "12.15", "12.16", "12.17", "12.18", "12.19", "12.20", "12.21", "12.22", "12.23", "12.24"]
             }],
-            yAxis: [{type: "value", name: "访问量", axisLabel: {formatter: "{value} 万"}}, {
+            yAxis: [{type: "value", name: "访问量", axisLabel: {formatter: "{value} 个"}}, {
                 type: "value",
                 name: "下载量",
-                axisLabel: {formatter: "{value} 万"}
+                axisLabel: {formatter: "{value} 个"}
             }],
             series: [{
                 name: "访问量",
                 type: "line",
-                data: [900, 850, 950, 1e3, 1100, 1050, 1e3, 1150, 1250, 1370, 1250, 1100]
+                data: [9, 8, 9, 3, 11, 10, 8, 5, 12, 13, 12, 11]
             }, {
-                name: "下载量",
+                name: "视频播放量",
                 type: "line",
                 yAxisIndex: 1,
-                data: [850, 850, 800, 950, 1e3, 950, 950, 1150, 1100, 1240, 1e3, 950]
-            }, {name: "平均访问量", type: "line", data: [870, 850, 850, 950, 1050, 1e3, 980, 1150, 1e3, 1300, 1150, 1e3]}]
+                data: [8, 8, 15, 9, 3, 9, 9, 11, 15, 12, 8, 9]
+            }, {name: "平均访问量", type: "line", data: [9, 8, 9, 3, 11, 10, 8, 5, 12, 13, 12, 11]}]
         }], i = e("#LAY-index-pagetwo").children("div"), n = function (e) {
             l[e] = a.init(i[e], layui.echartsTheme), l[e].setOption(t[e]), window.onresize = l[e].resize
         };
